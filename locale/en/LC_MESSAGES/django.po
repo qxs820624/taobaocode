@@ -1,0 +1,1269 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-29 20:59+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\models.py:162
+msgid "Sending"
+msgstr ""
+
+#: .\models.py:164
+msgid "Rejected"
+msgstr ""
+
+#: .\models.py:166
+#, fuzzy
+msgid "Accepted"
+msgstr "create at"
+
+#: .\apps\project\views.py:143
+msgid "total_visit_times"
+msgstr "visit Top50"
+
+#: .\apps\project\views.py:186
+msgid "total_watched_times"
+msgstr "attention Top50"
+
+#: .\apps\project\views.py:199
+msgid "total_issue_times"
+msgstr "issue Top50"
+
+#: .\apps\project\views.py:212
+msgid "total_submit_times"
+msgstr "submit Top50"
+
+#: .\apps\project\views.py:226
+msgid "total_download_times"
+msgstr "download Top50"
+
+#: .\apps\user\activity.py:26
+msgid "Commited"
+msgstr ""
+
+#: .\apps\user\activity.py:27
+#, fuzzy
+msgid "Create Project"
+msgstr "continue create project"
+
+#: .\apps\user\activity.py:28
+#, fuzzy
+msgid "Watch Project"
+msgstr "continue create project"
+
+#: .\apps\user\activity.py:29
+#, fuzzy
+msgid "New Issue"
+msgstr "close issue"
+
+#: .\apps\user\activity.py:30
+#, fuzzy
+msgid "Closed Issue"
+msgstr "close issue"
+
+#: .\apps\user\activity.py:31
+#, fuzzy
+msgid "Update Issue"
+msgstr "create"
+
+#: .\apps\user\activity.py:32
+msgid "Reopen Issue"
+msgstr "Reopen issue"
+
+#: .\apps\user\activity.py:33
+msgid "Del Issue"
+msgstr "close issue"
+
+#: .\apps\user\forms.py:60 .\apps\user\forms.py:141
+msgid "error password format"
+msgstr "error password format"
+
+#: .\apps\user\forms.py:91
+msgid "email address"
+msgstr ""
+
+#: .\apps\user\forms.py:92
+msgid "eg:user@example.org"
+msgstr ""
+
+#: .\apps\user\forms.py:97
+msgid "phone"
+msgstr ""
+
+#: .\apps\user\forms.py:104
+msgid "title"
+msgstr "Home"
+
+#: .\apps\user\forms.py:105
+msgid "eg:taobao,diaosi ','"
+msgstr ""
+
+#: .\apps\user\forms.py:112
+msgid "password"
+msgstr "old password"
+
+#: .\apps\user\forms.py:120
+msgid "password(replay)"
+msgstr "password error"
+
+#: .\apps\user\forms.py:124 .\apps\user\forms.py:144
+msgid "password must same as twice"
+msgstr "password not match"
+
+#: .\apps\user\forms.py:129
+msgid "accept privacy"
+msgstr "accept privacy"
+
+#: .\apps\user\forms.py:130
+msgid "must accept privacy"
+msgstr "must accept privacy"
+
+#: .\apps\user\forms.py:155
+msgid "E-mail"
+msgstr "Email"
+
+#: .\apps\user\forms.py:163
+msgid ""
+"That e-mail address doesn't have an associated user account. Are you sure "
+"you've registered?"
+msgstr ""
+
+#: .\apps\user\forms.py:183
+msgid ""
+"Please enter a correct username and password. Note that both fields are case-"
+"sensitive."
+msgstr ""
+
+#: .\apps\user\forms.py:185
+msgid ""
+"Your Web browser doesn't appear to have cookies enabled. Cookies are "
+"required for logging in."
+msgstr ""
+
+#: .\apps\user\forms.py:187
+msgid "This account is inactive."
+msgstr ""
+
+#: .\apps\user\views.py:385
+msgid "Email Not Exist"
+msgstr ""
+
+#: .\apps\user\views.py:389 .\apps\user\views.py:403
+msgid "InValid Request"
+msgstr ""
+
+#: .\apps\user\views.py:399
+msgid "Name Not Exist"
+msgstr ""
+
+#: .\apps\wiki\parser.py:313
+#, python-format
+msgid "HTML parsing error: %(message)s"
+msgstr ""
+
+#: .\apps\wiki\parser.py:318
+msgid ""
+"Error: Forbidden character sequence \"--\" in htmlcomment wiki code block"
+msgstr ""
+
+#: .\apps\wiki\parser.py:398
+#, python-format
+msgid "!#%(name)s must contain at most one table"
+msgstr ""
+
+#: .\apps\wiki\parser.py:402
+#, python-format
+msgid "!#%(name)s must contain at least one table cell (and table cells only)"
+msgstr ""
+
+#: .\helper\validator.py:27
+msgid "has exist"
+msgstr ""
+
+#: .\templates\index.html.py:153 .\templates\layouts\baseview-nav.html.py:63
+#: .\templates\layouts\baseview-nav.html.py:65
+#: .\templates\layouts\baseview.html.py:71
+#: .\templates\layouts\baseview.html.py:73
+msgid "projects"
+msgstr ""
+
+#: .\templates\index.html.py:155 .\templates\layouts\baseview.html.py:76
+#: .\templates\layouts\user-nav.html.py:27
+#: .\templates\layouts\user-nav.html.py:33
+msgid "help"
+msgstr "help"
+
+#: .\templates\index.html.py:171 .\templates\layouts\baseview.html.py:92
+#: .\templates\layouts\baseview2.html.py:47 .\templates\main\search.html.py:40
+#: .\templates\main\search.html.py:51 .\templates\main\search.html.py:69
+#: .\templates\message\list.html.py:70 .\templates\project\new.html.py:17
+#: .\templates\user\change_password.html.py:18
+#: .\templates\user\edit_my.html.py:81 .\templates\user\view.html.py:120
+msgid "main"
+msgstr ""
+
+#: .\templates\index.html.py:177 .\templates\user\view.html.py:126
+msgid "sinaweibo"
+msgstr "sina weibo"
+
+#: .\templates\index.html.py:177 .\templates\user\view.html.py:126
+msgid "tweibo"
+msgstr ""
+
+#: .\templates\index.html.py:179 .\templates\user\view.html.py:128
+msgid "editmy"
+msgstr "edit"
+
+#: .\templates\index.html.py:179 .\templates\layouts\user-nav.html.py:25
+#: .\templates\user\view.html.py:128
+msgid "message"
+msgstr "Messages"
+
+#: .\templates\index.html.py:182 .\templates\index.html.py:256
+#: .\templates\user\view.html.py:134 .\templates\user\view.html.py:215
+msgid "created"
+msgstr "create at"
+
+#: .\templates\index.html.py:184 .\templates\user\view.html.py:139
+msgid "send message"
+msgstr "Messages"
+
+#: .\templates\index.html.py:185 .\templates\user\view.html.py:140
+msgid "mail"
+msgstr "mail"
+
+#: .\templates\index.html.py:190 .\templates\user\view.html.py:145
+msgid "new create project"
+msgstr "create project"
+
+#: .\templates\index.html.py:192 .\templates\index.html.py:198
+#: .\templates\user\view.html.py:147 .\templates\user\view.html.py:153
+msgid "myproject"
+msgstr "my project"
+
+#: .\templates\index.html.py:193 .\templates\index.html.py:199
+#: .\templates\user\view.html.py:148 .\templates\user\view.html.py:154
+msgid "watchedproject"
+msgstr "watched project"
+
+#: .\templates\index.html.py:194 .\templates\index.html.py:200
+#: .\templates\user\view.html.py:149 .\templates\user\view.html.py:155
+msgid "worklogs"
+msgstr "worklogs"
+
+#: .\templates\index.html.py:212 .\templates\user\view.html.py:167
+msgid "projectadmin"
+msgstr "project admin"
+
+#: .\templates\index.html.py:213 .\templates\user\view.html.py:168
+msgid "deleteproject"
+msgstr "delete project"
+
+#: .\templates\index.html.py:225 .\templates\user\view.html.py:180
+msgid "EXIT"
+msgstr "EXIT"
+
+#: .\templates\index.html.py:231 .\templates\user\view.html.py:187
+msgid "ACCEPT"
+msgstr "ACCEPT"
+
+#: .\templates\index.html.py:232 .\templates\user\view.html.py:188
+msgid "REJECT"
+msgstr "REJECT"
+
+#: .\templates\index.html.py:257 .\templates\user\view.html.py:216
+msgid "language:"
+msgstr "language"
+
+#: .\templates\index.html.py:257 .\templates\project\prj-info.html.py:10
+#: .\templates\user\view.html.py:216
+msgid "project_member_count"
+msgstr "project member"
+
+#: .\templates\index.html.py:314 .\templates\user\login.html.py:23
+#, fuzzy
+msgid "All projects"
+msgstr "continue create project"
+
+#: .\templates\index.html.py:315 .\templates\user\login.html.py:24
+#, fuzzy
+msgid "All members"
+msgstr "Activest Users"
+
+#: .\templates\index.html.py:316 .\templates\user\login.html.py:25
+#, fuzzy
+msgid "Yesterday commit"
+msgstr "view comments"
+
+#: .\templates\index.html.py:317 .\templates\user\login.html.py:26
+#, fuzzy
+msgid "Yesterday issue"
+msgstr "create"
+
+#: .\templates\index.html.py:323
+msgid "fastregister"
+msgstr "register"
+
+#: .\templates\index.html.py:338 .\templates\layouts\user-nav.html.py:31
+#: .\templates\user\login.html.py:32 .\templates\user\login.html.py:42
+#: .\templates\user\password_reset_done.html.py:8
+msgid "login"
+msgstr "login"
+
+#: .\templates\index.html.py:369 .\templates\layouts\baseview-nav.html.py:112
+#: .\templates\layouts\baseview.html.py:117
+#: .\templates\layouts\baseview2.html.py:87
+msgid "About Taobao"
+msgstr "About Taobao"
+
+#: .\templates\index.html.py:371 .\templates\layouts\baseview-nav.html.py:114
+#: .\templates\layouts\baseview.html.py:119
+#: .\templates\layouts\baseview2.html.py:88
+msgid "About Us"
+msgstr "About Us"
+
+#: .\templates\index.html.py:374 .\templates\layouts\baseview-nav.html.py:117
+#: .\templates\layouts\baseview.html.py:123
+#: .\templates\layouts\baseview2.html.py:89
+msgid "Open-source web site"
+msgstr "Open-source web site"
+
+#: .\templates\index.html.py:378 .\templates\layouts\baseview-nav.html.py:121
+#: .\templates\layouts\baseview.html.py:127
+#: .\templates\layouts\baseview2.html.py:92
+msgid "help center"
+msgstr "help center"
+
+#: .\templates\index.html.py:380 .\templates\layouts\baseview-nav.html.py:123
+#: .\templates\layouts\baseview.html.py:129
+#: .\templates\layouts\baseview2.html.py:93
+#: .\templates\repos\browse.html.py:110
+msgid "How to create a project"
+msgstr "How to create a project"
+
+#: .\templates\index.html.py:383 .\templates\layouts\baseview-nav.html.py:126
+#: .\templates\layouts\baseview.html.py:132
+#: .\templates\layouts\baseview2.html.py:94
+#: .\templates\repos\browse.html.py:113
+msgid "How to become a project member"
+msgstr ""
+
+#: .\templates\index.html.py:386 .\templates\layouts\baseview-nav.html.py:129
+#: .\templates\layouts\baseview.html.py:135
+msgid "Issue reponse"
+msgstr ""
+
+#: .\templates\index.html.py:390 .\templates\layouts\baseview-nav.html.py:133
+#: .\templates\layouts\baseview.html.py:139
+#: .\templates\layouts\baseview2.html.py:97
+msgid "Contact Us"
+msgstr "Contact Us"
+
+#: .\templates\index.html.py:392 .\templates\layouts\baseview-nav.html.py:135
+#: .\templates\layouts\baseview.html.py:141
+#: .\templates\layouts\baseview2.html.py:99
+#: .\templates\layouts\baseview2.html.py:101
+#: .\templates\open\taobao\login_ext.html.py:103
+#: .\templates\open\wb\login_ext.html.py:104
+msgid "Email"
+msgstr "Email"
+
+#: .\templates\index.html.py:393 .\templates\layouts\baseview-nav.html.py:136
+#: .\templates\layouts\baseview.html.py:142
+#: .\templates\layouts\baseview2.html.py:100
+msgid "weibo"
+msgstr "weibo"
+
+#: .\templates\privacy.html.py:4
+msgid "See also:"
+msgstr ""
+
+#: .\templates\issue\list.html.py:21 .\templates\issue\view.html.py:44
+msgid "Are you sure delete this issue?"
+msgstr ""
+
+#: .\templates\issue\list.html.py:21 .\templates\issue\view.html.py:18
+#: .\templates\issue\view.html.py:44 .\templates\issue\view.html.py:53
+#: .\templates\message\list.html.py:39 .\templates\project\admin.html.py:75
+#: .\templates\project\admin.html.py:110 .\templates\user\view.html.py:68
+#: .\templates\user\view.html.py:77 .\templates\user\view.html.py:87
+#: .\templates\wiki\view.html.py:12 .\templates\wiki\view.html.py:36
+msgid "Yes"
+msgstr ""
+
+#: .\templates\issue\list.html.py:21 .\templates\issue\view.html.py:18
+#: .\templates\issue\view.html.py:44 .\templates\issue\view.html.py:53
+#: .\templates\message\list.html.py:39 .\templates\project\admin.html.py:75
+#: .\templates\project\admin.html.py:110 .\templates\user\view.html.py:68
+#: .\templates\user\view.html.py:77 .\templates\user\view.html.py:87
+#: .\templates\wiki\view.html.py:12 .\templates\wiki\view.html.py:36
+msgid "No"
+msgstr ""
+
+#: .\templates\issue\list.html.py:25
+msgid "can not remove issue!"
+msgstr ""
+
+#: .\templates\issue\list.html.py:40 .\templates\repos\browse.html.py:38
+#: .\templates\repos\view_diff.html.py:38
+#: .\templates\repos\view_logs.html.py:56
+msgid "all"
+msgstr ""
+
+#: .\templates\issue\list.html.py:41
+msgid "opened"
+msgstr ""
+
+#: .\templates\issue\list.html.py:42
+msgid "closed"
+msgstr ""
+
+#: .\templates\issue\list.html.py:45 .\templates\issue\view.html.py:101
+msgid "question"
+msgstr ""
+
+#: .\templates\issue\new.html.py:41
+msgid "qtitle"
+msgstr "Home"
+
+#: .\templates\issue\new.html.py:43
+msgid "input limit"
+msgstr ""
+
+#: .\templates\issue\new.html.py:44
+msgid "question description"
+msgstr "description"
+
+#: .\templates\issue\new.html.py:47
+msgid "submit question"
+msgstr "submit question"
+
+#: .\templates\issue\view.html.py:18
+msgid "Are you sure delete this comment?"
+msgstr "Are you sure delete this comment?"
+
+#: .\templates\issue\view.html.py:28
+msgid "can not del comment"
+msgstr "can not delete comment"
+
+#: .\templates\issue\view.html.py:35
+msgid "need comment content!"
+msgstr "need comment content!"
+
+#: .\templates\issue\view.html.py:53
+#, fuzzy
+msgid "Are you sure close this issue?"
+msgstr "Are you sure delete this comment?"
+
+#: .\templates\issue\view.html.py:79 .\templates\project\view.html.py:44
+msgid "close issue"
+msgstr "close issue"
+
+#: .\templates\issue\view.html.py:84 .\templates\issue\view.html.py:126
+#: .\templates\message\list.html.py:136 .\templates\project\admin.html.py:55
+#: .\templates\project\admin.html.py:94 .\templates\wiki\view.html.py:70
+msgid "delete"
+msgstr "delete"
+
+#: .\templates\issue\view.html.py:92 .\templates\issue\view.html.py:123
+msgid "yu"
+msgstr "at"
+
+#: .\templates\issue\view.html.py:92 .\templates\project\view.html.py:37
+msgid "new issue"
+msgstr ""
+
+#: .\templates\issue\view.html.py:105 .\templates\issue\view.html.py:110
+#: .\templates\issue\view.html.py:141
+msgid "answer"
+msgstr ""
+
+#: .\templates\issue\view.html.py:117
+msgid "answ"
+msgstr ""
+
+#: .\templates\issue\view.html.py:123
+msgid "replay"
+msgstr ""
+
+#: .\templates\issue\view.html.py:143
+msgid "Post comment"
+msgstr ""
+
+#: .\templates\layouts\baseview-nav.html.py:77
+#: .\templates\layouts\baseview2.html.py:33
+msgid "gailan"
+msgstr "Overview"
+
+#: .\templates\layouts\baseview-nav.html.py:78
+#: .\templates\layouts\baseview2.html.py:34
+msgid "the latest open source"
+msgstr "New"
+
+#: .\templates\layouts\baseview-nav.html.py:79
+#: .\templates\layouts\baseview2.html.py:35
+msgid "the Popular items"
+msgstr "Popular"
+
+#: .\templates\layouts\baseview-nav.html.py:80
+#: .\templates\layouts\baseview2.html.py:36
+msgid "the last updated"
+msgstr "latest"
+
+#: .\templates\layouts\baseview-nav.html.py:81
+#: .\templates\layouts\baseview2.html.py:37
+msgid "Language Classification"
+msgstr "Language Classification"
+
+#: .\templates\layouts\baseview-nav.html.py:82
+msgid "taobaokaiyuanxiangmu"
+msgstr "Open-source items"
+
+#: .\templates\layouts\baseview.html.py:93
+#: .\templates\layouts\baseview2.html.py:48
+msgid "projectLanguage"
+msgstr "project"
+
+#: .\templates\layouts\baseview2.html.py:38
+msgid "Taobao open source project"
+msgstr ""
+
+#: .\templates\layouts\page-nav.html.py:7
+#: .\templates\layouts\page-nav.html.py:9
+msgid "first"
+msgstr "first"
+
+#: .\templates\layouts\page-nav.html.py:12
+#: .\templates\layouts\page-nav.html.py:14
+msgid "prev"
+msgstr "Preview"
+
+#: .\templates\layouts\page-nav.html.py:17
+#: .\templates\layouts\page-nav.html.py:19
+msgid "next"
+msgstr "next page"
+
+
+#: .\templates\layouts\page-nav.html.py:23
+#: .\templates\layouts\page-nav.html.py:25
+msgid "last"
+msgstr "last"
+
+#: .\templates\layouts\user-nav.html.py:8
+msgid "pick something"
+msgstr ""
+
+#: .\templates\layouts\user-nav.html.py:12
+msgid "s_project"
+msgstr "Projects"
+
+#: .\templates\layouts\user-nav.html.py:13
+msgid "s_user"
+msgstr "userName"
+
+#: .\templates\layouts\user-nav.html.py:15
+msgid "s_language"
+msgstr "project"
+
+#: .\templates\layouts\user-nav.html.py:20
+msgid "search"
+msgstr "search labs"
+
+#: .\templates\layouts\user-nav.html.py:28
+msgid "logout"
+msgstr "Logout"
+
+#: .\templates\layouts\user-nav.html.py:32 .\templates\user\login.html.py:48
+#: .\templates\user\register.html.py:25
+msgid "register"
+msgstr "register"
+
+#: .\templates\mail\change_email.html.py:5
+msgid "change email"
+msgstr "change"
+
+#: .\templates\mail\change_email.html.py:12
+msgid "You can use this link to change your new email at our site!"
+msgstr ""
+
+#: .\templates\mail\reset_password.html.py:4
+#: .\templates\user\password_reset.html.py:13
+#: .\templates\user\password_reset_form.html.py:12
+msgid "reset password"
+msgstr "reset password"
+
+#: .\templates\mail\reset_password.html.py:11
+msgid "You can use this link to change your new password at our site!"
+msgstr ""
+
+#: .\templates\main\files.html.py:5
+msgid "Attachments"
+msgstr ""
+
+#: .\templates\main\files.html.py:25
+msgid "Delete"
+msgstr "delete"
+
+#: .\templates\main\search.html.py:41
+msgid "Please pick something,to search"
+msgstr ""
+
+#: .\templates\main\search.html.py:52 .\templates\main\search.html.py:70
+msgid "search have"
+msgstr "search labs"
+
+#: .\templates\main\search.html.py:52 .\templates\main\search.html.py:70
+msgid "people，have"
+msgstr "peoples:"
+
+#: .\templates\main\search.html.py:52 .\templates\main\search.html.py:70
+msgid "ge"
+msgstr ""
+
+#: .\templates\message\list.html.py:14
+msgid "del message ok!"
+msgstr ""
+
+#: .\templates\message\list.html.py:17
+msgid "can not del message!"
+msgstr ""
+
+#: .\templates\message\list.html.py:23
+msgid "move message ok!"
+msgstr ""
+
+#: .\templates\message\list.html.py:26
+msgid "can not move message!"
+msgstr ""
+
+#: .\templates\message\list.html.py:39
+msgid "Are you sure delete this message?"
+msgstr ""
+
+#: .\templates\message\list.html.py:97
+msgid "sender"
+msgstr ""
+
+#: .\templates\message\list.html.py:99
+msgid "receiver"
+msgstr ""
+
+#: .\templates\message\list.html.py:101
+msgid "message content"
+msgstr ""
+
+#: .\templates\message\list.html.py:102
+msgid "send time"
+msgstr ""
+
+#: .\templates\message\list.html.py:129
+msgid "recovery"
+msgstr ""
+
+#: .\templates\message\list.html.py:134
+msgid "reply"
+msgstr ""
+
+#: .\templates\open\taobao\login_ext.html.py:4
+#: .\templates\open\taobao\login_ext.html.py:90
+msgid "Taobao Login Ext"
+msgstr ""
+
+#: .\templates\open\taobao\login_ext.html.py:31
+#: .\templates\open\wb\login_ext.html.py:31
+msgid "Name exist,Confirm binding Account?"
+msgstr ""
+
+#: .\templates\open\taobao\login_ext.html.py:48
+#: .\templates\open\wb\login_ext.html.py:48
+msgid "Email exist,Confirm binding Account?"
+msgstr ""
+
+#: .\templates\open\taobao\login_ext.html.py:63
+#: .\templates\open\taobao\login_ext.html.py:71
+#: .\templates\open\wb\login_ext.html.py:63
+#: .\templates\open\wb\login_ext.html.py:71
+msgid "password not match"
+msgstr ""
+
+#: .\templates\open\taobao\login_ext.html.py:78
+#: .\templates\open\wb\login_ext.html.py:78
+msgid "binding account must check password first"
+msgstr ""
+
+#: .\templates\open\taobao\login_ext.html.py:99
+#: .\templates\open\wb\login_ext.html.py:100
+msgid "UserName"
+msgstr "UserName"
+
+#: .\templates\open\taobao\login_ext.html.py:113
+#: .\templates\open\wb\login_ext.html.py:114
+msgid "BindAccount"
+msgstr "BindAccount"
+
+#: .\templates\open\taobao\login_ext.html.py:115
+#: .\templates\open\wb\login_ext.html.py:116
+msgid "Bind Reged Account"
+msgstr "Bind Reged Account"
+
+#: .\templates\open\taobao\login_ext.html.py:118
+#: .\templates\open\wb\login_ext.html.py:119
+msgid "Password"
+msgstr "old password"
+
+#: .\templates\open\taobao\login_ext.html.py:128
+#: .\templates\open\wb\login_ext.html.py:129
+msgid "Login"
+msgstr "Login"
+
+#: .\templates\open\wb\login_ext.html.py:4
+#: .\templates\open\wb\login_ext.html.py:90
+msgid "Weibo Login Ext"
+msgstr ""
+
+#: .\templates\project\admin.html.py:74 .\templates\project\admin.html.py:109
+#, fuzzy
+msgid "Are you sure remove "
+msgstr "Are you sure?"
+
+#: .\templates\project\admin.html.py:214
+msgid "proinfo"
+msgstr ""
+
+#: .\templates\project\admin.html.py:217
+msgid "meminfo"
+msgstr "memo"
+
+#: .\templates\project\admin.html.py:220
+msgid "downinfo"
+msgstr ""
+
+#: .\templates\project\admin.html.py:224
+msgid "issue"
+msgstr ""
+
+#: .\templates\project\admin.html.py:224
+msgid "tiao"
+msgstr ""
+
+#: .\templates\project\admin.html.py:225
+msgid "preview"
+msgstr "Preview"
+
+#: .\templates\project\admin.html.py:225
+msgid "ci"
+msgstr ""
+
+#: .\templates\project\admin.html.py:238 .\templates\project\new.html.py:31
+msgid "project des"
+msgstr "project status"
+
+#: .\templates\project\admin.html.py:244
+msgid "license"
+msgstr "page"
+
+#: .\templates\project\admin.html.py:265
+msgid "public"
+msgstr "publish at"
+
+#: .\templates\project\admin.html.py:267 .\templates\project\new.html.py:60
+msgid "yes"
+msgstr ""
+
+#: .\templates\project\admin.html.py:268 .\templates\project\new.html.py:61
+msgid "no"
+msgstr ""
+
+#: .\templates\project\admin.html.py:275 .\templates\project\new.html.py:68
+msgid "language"
+msgstr "project"
+
+#: .\templates\project\admin.html.py:315
+msgid "save"
+msgstr ""
+
+#: .\templates\project\admin.html.py:325
+msgid "projectmem"
+msgstr "project members"
+
+#: .\templates\project\admin.html.py:334
+msgid "add new member"
+msgstr "add memo"
+
+#: .\templates\project\admin.html.py:336
+msgid "send invite"
+msgstr ""
+
+#: .\templates\project\explore-proj.html.py:31
+msgid "Recommended projects"
+msgstr "join project"
+
+#: .\templates\project\explore-proj.html.py:50
+msgid "Hot languages"
+msgstr "project"
+
+#: .\templates\project\explore-proj.html.py:51
+#: .\templates\project\explore-proj.html.py:104
+msgid "More"
+msgstr "more"
+
+#: .\templates\project\explore-proj.html.py:76
+msgid "remengxiangmu"
+msgstr "Hot project"
+
+#: .\templates\project\explore-proj.html.py:79
+msgid "Today"
+msgstr ""
+
+#: .\templates\project\explore-proj.html.py:82
+msgid "This week"
+msgstr ""
+
+#: .\templates\project\explore-proj.html.py:85
+msgid "This month"
+msgstr ""
+
+#: .\templates\project\explore-proj.html.py:103
+msgid "zuixinkaiyuan"
+msgstr "Latest"
+
+#: .\templates\project\explore-proj.html.py:122
+msgid "Active Members"
+msgstr "Activest Users"
+
+#: .\templates\project\explore-proj.html.py:137
+msgid "The number of projects"
+msgstr "my projects"
+
+#: .\templates\project\explore-proj.html.py:149
+msgid "Recently"
+msgstr ""
+
+#: .\templates\project\explore-proj.html.py:155
+msgid "In"
+msgstr ""
+
+#: .\templates\project\lang-proj.html.py:24
+#: .\templates\project\lang-view.html.py:17
+msgid "Search all languages"
+msgstr ""
+
+#: .\templates\project\lang-proj.html.py:25
+#: .\templates\project\lang-view.html.py:18
+msgid "Search"
+msgstr "search labs"
+
+#: .\templates\project\lang-proj.html.py:45
+#: .\templates\project\prj-info.html.py:7
+msgid "Open from"
+msgstr ""
+
+#: .\templates\project\lang-proj.html.py:45
+#: .\templates\project\prj-info.html.py:8
+msgid "project_lang"
+msgstr "project"
+
+#: .\templates\project\lang-proj.html.py:45
+msgid "The number of members"
+msgstr ""
+
+#: .\templates\project\lang-proj.html.py:45
+msgid "People"
+msgstr ""
+
+#: .\templates\project\new.html.py:25
+msgid "new project name"
+msgstr "view project"
+
+#: .\templates\project\new.html.py:57
+msgid "is public"
+msgstr "publish at"
+
+#: .\templates\project\new.html.py:62
+msgid "all people can see"
+msgstr ""
+
+#: .\templates\project\new.html.py:63
+msgid "member can see"
+msgstr ""
+
+#: .\templates\project\new.html.py:91
+msgid "create project"
+msgstr "continue create project"
+
+#: .\templates\project\projectGraph.html.py:76
+msgid "hotproject-down"
+msgstr "project owner"
+
+#: .\templates\project\projectGraph.html.py:80
+msgid "hotproject-visit"
+msgstr "hot T50"
+
+#: .\templates\project\projectGraph.html.py:83
+msgid "hotproject-attention"
+msgstr "attention T50"
+
+#: .\templates\project\projectGraph.html.py:86
+msgid "hotproject-submit"
+msgstr "submit T50"
+
+#: .\templates\project\projectGraph.html.py:89
+msgid "hotproject-faqs"
+msgstr "faqs T50"
+
+#: .\templates\project\view.html.py:23
+msgid "new project"
+msgstr "new project"
+
+#: .\templates\project\view.html.py:29 .\templates\project\view.html.py:36
+#: .\templates\project\view.html.py:43 .\templates\project\view.html.py:48
+msgid "at project"
+msgstr "continue create project"
+
+#: .\templates\project\view.html.py:30
+msgid "new commit"
+msgstr "view comments"
+
+#: .\templates\project\view.html.py:49
+msgid "delete issue"
+msgstr "create"
+
+#: .\templates\repos\browse.html.py:42 .\templates\repos\view_diff.html.py:42
+#: .\templates\repos\view_logs.html.py:60
+msgid "want more"
+msgstr ""
+
+#: .\templates\repos\browse.html.py:57 .\templates\repos\view_diff.html.py:57
+#: .\templates\repos\view_logs.html.py:75
+msgid "want join"
+msgstr "join"
+
+#: .\templates\repos\browse.html.py:70
+msgid "View all versions"
+msgstr ""
+
+#: .\templates\repos\browse.html.py:76
+msgid "Path"
+msgstr ""
+
+#: .\templates\repos\browse.html.py:77
+msgid "Last Changed"
+msgstr ""
+
+#: .\templates\repos\browse.html.py:78
+msgid "Size"
+msgstr ""
+
+#: .\templates\repos\browse.html.py:79 .\templates\repos\logs.html.py:15
+msgid "Author"
+msgstr ""
+
+#: .\templates\repos\browse.html.py:80 .\templates\repos\logs.html.py:13
+#: .\templates\repos\view_log.html.py:23
+#: .\templates\repos\view_logs.html.py:92
+msgid "Revision"
+msgstr ""
+
+#: .\templates\repos\browse.html.py:111
+msgid "readme1"
+msgstr ""
+
+#: .\templates\repos\browse.html.py:114
+msgid "readme2"
+msgstr ""
+
+#: .\templates\repos\logs.html.py:8 .\templates\repos\logs.html.py:33
+#: .\templates\repos\view_logs.html.py:88
+msgid "View changes"
+msgstr "change"
+
+#: .\templates\repos\logs.html.py:14 .\templates\repos\view_logs.html.py:93
+msgid "Message"
+msgstr "Messages"
+
+#: .\templates\repos\logs.html.py:16 .\templates\repos\view_logs.html.py:95
+msgid "Date"
+msgstr "Date"
+
+#: .\templates\repos\view_file.html.py:30
+msgid "History"
+msgstr ""
+
+#: .\templates\repos\view_file.html.py:36
+msgid "Download"
+msgstr ""
+
+#: .\templates\repos\view_log.html.py:24
+msgid "Added by"
+msgstr ""
+
+#: .\templates\repos\view_logs.html.py:94 .\templates\wiki\list.html.py:16
+msgid "author"
+msgstr ""
+
+#: .\templates\user\change_password.html.py:41
+msgid "old password"
+msgstr "old password"
+
+#: .\templates\user\change_password.html.py:47
+msgid "new password"
+msgstr "new password:"
+
+#: .\templates\user\change_password.html.py:53
+msgid "new password again"
+msgstr "new password:"
+
+#: .\templates\user\change_password.html.py:58
+msgid "change"
+msgstr "change"
+
+#: .\templates\user\change_password_done.html.py:7
+msgid "change password done!"
+msgstr "new password:"
+
+#: .\templates\user\edit_my.html.py:104
+msgid "username"
+msgstr "userName"
+
+#: .\templates\user\edit_my.html.py:110
+msgid "regmail"
+msgstr "reg email"
+
+#: .\templates\user\edit_my.html.py:116 .\templates\user\edit_my.html.py:125
+msgid "signature"
+msgstr ""
+
+#: .\templates\user\edit_my.html.py:131
+msgid "edit my gravatar"
+msgstr ""
+
+#: .\templates\user\edit_my.html.py:133
+msgid "gravatar"
+msgstr ""
+
+#: .\templates\user\edit_my.html.py:137
+msgid "Change your avatar at"
+msgstr ""
+
+#: .\templates\user\edit_my.html.py:146 .\templates\wiki\edit.html.py:36
+msgid "Save"
+msgstr ""
+
+#: .\templates\user\login.html.py:47
+msgid "Forgot password"
+msgstr "reset password"
+
+#: .\templates\user\password_reset_check.html.py:11
+msgid "We send a verify mail to"
+msgstr ""
+
+#: .\templates\user\password_reset_check.html.py:14
+msgid "You need check this mail for found you password!"
+msgstr ""
+
+#: .\templates\user\password_reset_done.html.py:6
+msgid "your password is reset now!"
+msgstr ""
+
+#: .\templates\user\password_reset_done.html.py:8
+msgid "please"
+msgstr "page"
+
+#: .\templates\user\password_reset_form.html.py:10
+#: .\templates\user\register.html.py:39
+msgid "r_email"
+msgstr "reg email"
+
+#: .\templates\user\register.html.py:33
+msgid "r_username"
+msgstr "userName"
+
+#: .\templates\user\register.html.py:34
+msgid "r_title"
+msgstr "Home"
+
+#: .\templates\user\register.html.py:35
+msgid "r_phone"
+msgstr "reg phone"
+
+#: .\templates\user\register.html.py:38
+msgid "r_password_0"
+msgstr "old password"
+
+#: .\templates\user\register.html.py:42
+msgid "r_password_1"
+msgstr "old password"
+
+#: .\templates\user\register.html.py:43
+msgid "r_accept"
+msgstr "accept"
+
+#: .\templates\user\register.html.py:53
+msgid "already hava account"
+msgstr ""
+
+#: .\templates\user\view.html.py:68
+#, fuzzy
+msgid "Are you sure exit"
+msgstr "Are you sure?"
+
+#: .\templates\user\view.html.py:77
+#, fuzzy
+msgid "Are you sure reject "
+msgstr "Are you sure?"
+
+#: .\templates\user\view.html.py:87
+#, fuzzy
+msgid "Are you sure delete "
+msgstr "Are you sure?"
+
+#: .\templates\wiki\changes.html.py:17 .\templates\wiki\view_change.html.py:24
+msgid "Changes:"
+msgstr ""
+
+#: .\templates\wiki\changes.html.py:22 .\templates\wiki\list.html.py:17
+msgid "last author"
+msgstr ""
+
+#: .\templates\wiki\changes.html.py:23 .\templates\wiki\list.html.py:19
+msgid "modify time"
+msgstr "Modify"
+
+#: .\templates\wiki\changes.html.py:31
+msgid "raw"
+msgstr ""
+
+#: .\templates\wiki\changes.html.py:32
+msgid "diff"
+msgstr "Modify"
+
+#: .\templates\wiki\edit.html.py:29
+msgid "See Wiki Formats"
+msgstr ""
+
+#: .\templates\wiki\edit.html.py:37
+msgid "Preview"
+msgstr "Preview"
+
+#: .\templates\wiki\list.html.py:15
+msgid "page name"
+msgstr "project name"
+
+#: .\templates\wiki\list.html.py:18
+msgid "create time"
+msgstr "create at"
+
+#: .\templates\wiki\view.html.py:12
+msgid "Are you sure delete this page?"
+msgstr ""
+
+#: .\templates\wiki\view.html.py:36
+msgid "Are you sure delete this file?"
+msgstr ""
+
+#: .\templates\wiki\view.html.py:40
+msgid "can not remove this file!"
+msgstr ""
+
+#: .\templates\wiki\view.html.py:54
+msgid "Creater"
+msgstr "Creative"
+
+#: .\templates\wiki\view.html.py:55
+msgid "CreateTime:"
+msgstr "create at"
+
+#: .\templates\wiki\view.html.py:65
+msgid "Wiki index"
+msgstr ""
+
+#: .\templates\wiki\view.html.py:66 .\templates\wiki\view.html.py:126
+msgid "All wiki pages"
+msgstr ""
+
+#: .\templates\wiki\view.html.py:67
+msgid "Raw text"
+msgstr ""
+
+#: .\templates\wiki\view.html.py:68
+msgid "changes"
+msgstr "change"
+
+#: .\templates\wiki\view.html.py:69
+msgid "edit"
+msgstr "edit"
+
+#: .\templates\wiki\view.html.py:82
+msgid "Add attachment"
+msgstr ""
+
+#: .\templates\wiki\view.html.py:94
+msgid "Append file"
+msgstr ""
+
+#: .\templates\wiki\view.html.py:103
+msgid "submit"
+msgstr ""
+
+#: .\templates\wiki\view.html.py:115
+msgid "Not found page"
+msgstr ""
+
+#: .\templates\wiki\view.html.py:124
+msgid "Create Page"
+msgstr "create at"
+
+#: .\templatetags\short_uri.py:139
+msgid "just"
+msgstr " just"
+
+#: .\templatetags\short_uri.py:141
+#, fuzzy
+msgid "minuts_ago"
+msgstr " minuts agao"
+
+#: .\templatetags\short_uri.py:143
+#, fuzzy
+msgid "hours_ago"
+msgstr " hours agao"
+
+#: .\templatetags\short_uri.py:145
+#, fuzzy
+msgid "days_ago"
+msgstr " days agao"
+
+#: .\templatetags\short_uri.py:147
+#, fuzzy
+msgid "month_ago"
+msgstr " months agao"
+
+#: .\templatetags\short_uri.py:149
+#, fuzzy
+msgid "years_ago"
+msgstr " years agao"
+
+#, fuzzy
+#~ msgid "Are you sure exit "
+#~ msgstr "Are you sure?"
+
+#~ msgid "my_user"
+#~ msgstr "userName"
+
+#, fuzzy
+#~ msgid "please handle"
+#~ msgstr "page"
+
+#~ msgid "project_date"
+#~ msgstr "Open from"

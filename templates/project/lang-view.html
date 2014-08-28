@@ -1,0 +1,39 @@
+{% extends "layouts/baseview-nav.html" %}
+{% load i18n %}
+{% load short_uri %}
+
+{%block title%}Language view{%endblock%}
+{% block extrascript %}
+<link rel="stylesheet" href="/css/new_open.css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="/js/app/project/highcharts.js"></script>
+{% endblock %}
+
+
+{%block main-block%}
+<div class="d-g-wrapper layout d-p-languagearts">
+    <div class="col-sub">
+        <div class="d-p-languagesearch">
+            <input type="text" name="" id="" class="search-text" value='{%trans "Search all languages" %}' maxlength="">
+            <a class="search-btn" href="javascript:void(0);">{%trans "Search" %}</a>
+        </div>
+        <ul class="d-p-languagelist">
+			{%for lang in langs%}
+					<li><a title="{{lang}}" href="/project/lang/list/{{lang|urlencode}}/1/">{{lang|truncatechars:12}}</a></li>
+        	{%endfor%}
+        </ul>
+    </div>
+    <div class="col-main">
+        <div id="container">
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+    KISSY.use('js/app/main/new_open');
+    KISSY.use('js/app/project/language-pic');
+</script>
+{%endblock%}
+

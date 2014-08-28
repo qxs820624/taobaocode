@@ -1,0 +1,161 @@
+{% extends "layouts/baseview.html" %}
+{% load i18n %}
+{% load short_uri %}
+
+{%block title%}my{%endblock%}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/user-min.css" />
+{% endblock %}
+
+{%block ready_js%}
+
+
+    $('#__clean_nick__ input').blur(function () {
+	var new_nick = $(this).val();
+	if (new_nick.length == 0 || new_nick == '{{user.nick}}') {	    
+	    return;
+	}	
+	__fclean('/ajax/user/clean/newuserform_nick/', '__clean_nick__');	
+    });
+
+    $('#__clean_email__ input').blur(function () {
+	var new_email = $(this).val();
+	if (new_email.length == 0 || new_email == '{{user.email}}') {	    
+	    return;
+	}	
+	__fclean('/ajax/user/clean/newuserform_email/', '__clean_email__');	
+    });
+
+
+    $('#edit-user-pub').click(function() {
+	$('.user-pub .edit-form').toggle(100);	
+    });
+
+    $('#edit-user-mail').click(function() {
+	$('.user-mail .edit-form').toggle(100);	
+    });
+
+    $(".user-pub #btn-save").click(function() {
+	var new_nick = $("#id_nick").val();
+	if (new_nick.length == 0 || new_nick == '{{user.nick}}') {	    
+	    return;
+	}
+	
+	q_get("user/edit_my", {'n':new_nick}, function(result) {
+	    show_info('change profile ok!');
+	    user.nick = new_nick;
+	    $('#nav-my .nick').text('('+new_nick+')');
+
+	}, function () {
+	    show_info('can not change profile!');
+	});
+    });
+    
+    $(".user-mail #btn-save").click(function() {
+	var new_email = $("#id_email").val();
+	if (new_email.length == 0 || new_email == '{{user.email}}') {	    
+	    return;
+	}
+	
+	q_get("user/edit_email", {'e':new_email}, function(result) {
+	    var t = 'change email ok, please check the verify code with '+new_email;
+	    show_info(t);
+	    $('#new-mail-notify').text(t);
+	}, function () {
+	    show_info('can not change email');
+	});
+    });
+
+{%endblock%}
+	{% block main-nav %} 
+
+	
+	{% endblock %}
+
+
+{%block main-block%}
+<div class="d-g-wrapper d-p-user">
+
+	<div class="d-p-user-top">
+		<h2 class="d-p-project-name"><a href="/project/explore">{% trans "main" %}</a><span>&nbsp;&nbsp;>&nbsp;&nbsp;</span><a href="{{user|url}}">{{user.name}}</a>
+		</h2>
+
+{%if profilenavmenus%}
+<ul class="layout d-p-user-tabs">
+	  {%for m in profilenavmenus%}
+	  {%if m.choice%}
+	  <li class="d-p-user-tab">
+	    <a href="{{m.uri}}/" class="current">{{m.txt}}</a>
+	  </li>
+	  {%else%}
+	  <li class="d-p-user-tab">
+	    <a href="{{m.uri}}/">{{m.txt}}</a>
+	  </li>
+	  {%endif%}
+	  {%endfor%}
+</ul>
+{%endif%}
+
+<div class="d-p-user-content d-p-usersetting">
+	<form action="/my/doedit/" method="post">
+		{% csrf_token %}
+		<dl class="layout">
+			<dt>{%trans "username"%}:</dt>
+			<dd>
+			    <input class="text" id="id_name" type="label" name="username" value="{{user.name}}" readOnly ></input>
+			</dd>
+		</dl>
+		<dl class="layout">
+            <dt>{%trans "regmail"%}:</dt>
+            <dd>
+                <input class="text"  id="id_email" type="text" name="email" value="{{user.email}}"></input>
+            </dd>
+        </dl>
+		<!-- <dl class="layout">
+            <dt>{%trans "signature"%}:</dt>
+            <dd>
+                <input type="hidden" id="tages" name="title" value="{{user.title}}"/>
+                <span class="p-p-project-btn tag"><span>我是标签1</span><a href="javascript:void(0);" class="close">close</a></span><span class="p-p-project-btn tag"><span>我是标签2</span>
+                <a href="javascript:void(0);" class="close">close</a></span><span class="p-p-project-btn tag"><span>我是标签3</span><a href="javascript:void(0);" class="close">close</a></span>
+                <a href="javascript:void(0);" class="addtag">+添加标签</a>
+            </dd>
+        </dl> -->
+		<dl class="layout">
+                <dt>{%trans "signature"%}:</dt>
+                <dd>
+                    <textarea name="signature" class="text" style="width:500px;height:70px;">{{user.signature}}</textarea>
+                </dd>
+         </dl>
+		 <div class="user-photo">
+                <p>{%trans "edit my gravatar"%}</p>
+                <dl class="layout">
+                    <dt>{%trans "gravatar"%}:</dt>
+                    <dd>
+                    <input type="text" class="text" value="{{user.email}}">
+                  	
+                        {%trans "Change your avatar at"%} <a href="http://www.gravatar.com">gravatar.com</a>
+                        <div>
+                            {%gravatar user.email user.name 100%}
+                            {%gravatar user.email user.name 50%}
+                            {%gravatar user.email user.name 33%}
+                        </div>
+                    </dd>
+                </dl>
+		
+		<input type="submit" class="p-p-project-btn save-btn" value="{%trans "Save"%}">
+		</div>
+	</form>
+</div>
+
+
+
+
+
+<script>
+	KISSY.use('js/app/user/user_setting');
+</script>
+
+
+
+{%endblock%}
