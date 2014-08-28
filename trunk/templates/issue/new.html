@@ -1,0 +1,55 @@
+{% extends "layouts/baseview.html" %}
+{% load i18n %}
+{% load short_uri %}
+
+{%block title%}{{project.name}}{%endblock%}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/code-min.css" />
+{% endblock %}
+
+{%block ready_js%}
+$('#add_file_line').click(function() {
+    if ($('#files .file_line').length >= 5) {
+	return;
+    }
+    $('#files').append('<div class="file_line"><input type="file" name="attachment"/></div>');
+});
+
+$('#btn_create_issue').click(function () {
+   if ($("#new-issue-form input[name^='title']").val().length <= 0) {
+     show_info('need title');
+     return;
+   }
+
+   if ($("#new-issue-form textarea").val().length <= 0) {
+     show_info("need content");
+     return;
+   }
+
+   $('#new-issue-form').submit();
+});
+
+{%endblock%}
+
+
+{%block main-block%}
+
+<div class="d-p-project-content d-p-project-askquestion">	
+	<form id="new-issue-form" action="" method="POST" enctype="multipart/form-data">
+	{%csrf_token%}
+		<p class="answer-count answer-title">{%trans "qtitle"%}</p>
+		<input name="title" type="text" class="text" value="" placeholder="请输入问题的标题，50字之内会比较合适哦~"/>
+		<p class="answer-titlecount">{%trans "input limit"%}<span>0</span>/50</p>
+		<p class="answer-count">{%trans "question description"%}</p>
+		<textarea name="content" class="text answer-content" style="width:910px;height:70px;margin-bottom:20px;" placeholder="请输入问题描述"></textarea>
+		<!-- <div>上传附件:<a href="javascript:void(0);" class="p-p-project-btn select-file">选择文件</a></div> -->
+        <a id="btn_create_issue" href="javascript:;" class="p-p-project-btn answer-btn">{%trans "submit question"%}</a>
+		
+		
+		
+	</form>
+
+
+</div>
+{%endblock%}

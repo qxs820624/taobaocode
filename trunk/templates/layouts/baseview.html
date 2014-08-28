@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load i18n %} 
+{% load short_uri %}
+<html>
+<head>
+<title>{%block title%}taobao{%endblock%} - Taocode</title> 
+{% block stylesheet %}
+{% endblock %}
+
+<link rel="stylesheet" href="http://a.tbcdn.cn/p/global/1.0/global-min.css" />
+
+
+
+<script src="http://a.tbcdn.cn/??s/kissy/1.3.0/kissy-min.js,p/global/1.0/global-min.js"></script>
+	<script type="text/javascript" src="/js/jquery-1.5.min.js"></script>
+	<script type="text/javascript" src="/js/utils.js"></script>
+	<script type="text/javascript" src="/js/ajaxcall.js"></script>
+	
+	<script type="text/javascript">
+     
+      $(document).ready(function() {
+      init_csrf();
+      {%block ready_js%}
+      {%endblock%}
+      
+      
+      {%if user.is_authenticated %}
+      start_auth_call();
+      {%else%}
+      start_call();
+      {%endif%}
+      });
+       
+      KISSY.config({
+        packages:[
+            {
+                name:"js",
+                tag:"20130306",
+                path:"/"
+            }
+        ]
+   	  });
+   	 
+     KISSY.use('js/app/login/login');
+      
+      
+    </script>
+    
+    
+    
+    
+{% block extrastyle %}{% endblock %} 
+{% block extrascript %}{% endblock %}
+
+
+
+
+
+</head>
+<body>
+	
+	<div class="d-m-nav">
+		<div class="d-m-nav-top layout">
+		{%if user.is_authenticated %}
+			<a class="d-m-nav-logo" href="/my/">Taocode</a>
+		{%else%}
+			<a class="d-m-nav-logo" href="/fastregister/">Taocode</a>
+		{%endif%}
+			<ul class="d-m-main-nav">
+				
+			{%if current_page == "explore" %}
+				<li class="first-nav"><a href="/opensources" >{%trans "aliprojects"%}</a></li>
+               <li><a href="/project/explore" >{%trans "projects"%}</a></li>
+            {%else%}
+            	<li class="first-nav"><a href="/opensources" >{%trans "aliprojects"%}</a></li>
+            	<li><a href="/project/explore" >{%trans "projects"%}</a></li>
+            {%endif%}
+                <li><a href="/p/taobaocode/wiki/" target="_blank">{%trans "help"%}</a></li>
+           	</ul>
+			
+			<div class="d-m-search">{% include "layouts/user-nav.html" %}
+			</div>
+		</div>
+
+
+</div>
+
+	
+	{% block pagename-nav%}
+	<div class="d-g-wrapper d-p-code">
+		<div class="d-p-project-top">
+			<h2 class="d-p-project-name">
+				    {%if project%}
+				    <a href="/project/explore">{% trans "main" %}</a><span>&nbsp;&nbsp;>&nbsp;&nbsp;</span> <a href="{{project.owner|url}}">{{project.owner}}</a> / {{project.name}}</h2>
+			   		<span class="d-p-project-lang">{% trans "projectLanguage"%}:{{project.language}}</span>
+				    {%endif%}
+
+			  </h2>
+			  
+	{%endblock%} 
+	
+	{% block main-nav %} 
+	{% include "layouts/main-nav.html"%}
+	
+	{% endblock %}
+	
+	
+	{% block body-menu %}
+	{% endblock %} 
+	
+	{% block main-block %}
+	{% endblock %} 
+	
+
+
+	<div class="d-m-footer layout">
+		<div class="d-m-footer-main layout">
+			<dl>
+				<dt>{%trans "About Taobao"%}</dt>				
+				<dd>
+					<a href="/aboutus/">{%trans "About Us"%}</a>
+				</dd>
+
+				<dd>
+					<a href="/p/taobaocode/src/">{%trans "Open-source web site"%}</a>
+				</dd>
+			</dl>
+			<dl>
+				<dt>{%trans "help center"%}</dt>
+				<dd>
+					<a href="/p/taobaocode/wiki/SiteHelp/">{%trans "How to create a project"%}</a>
+				</dd>
+				<dd>
+					<a href="/p/taobaocode/wiki/SiteHelp/">{%trans "How to become a project member"%}</a>
+				</dd>
+				<dd>
+					<a href="/p/taobaocode/issues/">{%trans "Issue reponse"%}</a>
+				</dd>
+			</dl>
+			<dl>
+				<dt>{%trans "Contact Us"%}</dt>
+				<dd>
+					<a class="d-m-email" href="mailto:opensource@taobao.com">{%trans "Email"%}</a> <a
+						class="d-m-weibo" href="http://e.weibo.com/taobaoopensource " target="_blank">{%trans "weibo"%}</a> 
+				</dd>
+			</dl>
+		</div>
+		<p class="d-m-right">©&nbsp;&nbsp;2013&nbsp;&nbsp;Alibaba&nbsp;&nbsp;Inc.&nbsp;&nbsp;All&nbsp;&nbsp;rights&nbsp;&nbsp;resvered.</p>
+	</div>
+	
+
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-17329683-1']);
+      _gaq.push(['_trackPageview']);
+      
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();      
+    </script>    
+
+<script type="text/javascript" src="http://js.tongji.linezing.com/2711653/tongji.js"></script><noscript><a href="http://www.linezing.com"><img src="http://img.tongji.linezing.com/2711653/tongji.gif"/></a></noscript>
+	
+	
+</body>
+</html>

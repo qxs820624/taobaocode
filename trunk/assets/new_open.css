@@ -1,0 +1,292 @@
+/**
+ * Taocode 主导航
+ * @author: Author: wb-gaozhan
+ * Time: 13-2-19 上午10:05
+ */
+body{
+    background-color: #fafafa;
+}
+
+.d-g-wrapper{
+    width: 980px;
+    margin: 0px auto;
+}
+.layout::after, .main-wrap::after, .col-sub::after, .col-extra::after {
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+}
+.p-p-project-btn{
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+.d-p-project-praise{
+    background: url(http://img02.taobaocdn.com/tps/i2/T1BVlpXqtbXXbE6Pnu-26-200.png) no-repeat;
+}
+.d-p-project-praise{
+    border: 1px solid #e04212;
+    background-color: #f94a15;
+    color: #fff;
+    padding: 4px 10px 4px 20px;
+    position: relative;
+    float: left;
+    margin-top: -6px;
+    margin-left: 128px;
+    background-position: 3px 2px;
+}
+.d-p-project-join{
+    border: 1px solid #cccccc;
+    background-color: #e6e6e6;
+    color: #666;
+    padding:4px 10px;
+    position: relative;
+    float: left;
+    margin-top: -6px;
+    margin-left: 14px;
+}
+.d-p-project-praise:hover,.d-p-project-join:hover{
+    text-decoration: none;
+}
+/**
+ * Taocode 主导航
+ * @author: Author: wb-gaozhan
+ * Time: 13-2-19 上午10:05
+ */
+.d-m-main-nav{
+   background: #92cd03;
+    height: 34px;
+    border-color:#86b715 #80b309 #80b309 #80b309;
+    border-style: solid;
+    border-width: 1px;
+}
+.d-m-main-nav ul{
+    width: 980px;
+    margin: 0px auto;
+    /*background: url(http://img02.taobaocdn.com/tps/i2/T1TcprXvFaXXbaW9A_-102-3.png) 0px 30px no-repeat;*/
+}
+.d-m-main-nav li{float: left;margin: 0px 30px;padding-bottom: 1px;}
+.d-m-main-nav li a{
+    color: #fff;
+    display: block;
+    padding: 8px 15px 4px 15px;
+}
+.d-m-main-nav li a.current{
+    font-weight: 700;
+    border-bottom: 3px solid #fff;
+}
+.d-m-main-nav li a:hover{
+    border-bottom: 3px solid #fff;
+    text-decoration: none;
+}
+.d-m-nav{
+    background-color: #fff;
+}
+.d-m-nav-top{
+    width: 980px;
+    margin: 0px auto;
+    padding: 18px 0px;
+}
+.d-m-nav-logo{
+    background: url(http://img04.taobaocdn.com/tps/i4/T19KVpXxxeXXaQPdI6-112-46.png) no-repeat;
+    float: left;
+    text-indent: -999em;
+    width: 112px;
+    height: 46px;
+}
+.d-m-search{
+    float: right;
+    position: relative;
+}
+.d-m-search .search-text{
+    height: 25px;
+    border: 1px solid #d9d9d9;
+    outline: 0;
+    color: #333;
+    text-indent: 10px;
+    width: 198px;
+    float: left;
+    line-height: 25px;
+    border-right: none;
+}
+.d-m-search .d-m-search-type{
+    float: left;
+    position: relative;
+    height: 25px;
+    overflow: hidden;
+    background-color: #fff;
+    z-index: 1;
+    border-top: 1px solid #dadada;
+    border-bottom: 1px solid #dadada;
+    _width: 60px;
+}
+.d-m-search .d-m-search-type ul{
+    border-left: 1px #fff solid;
+    z-index: 2;
+    background-color: #fff;
+}
+.d-m-search .hover ul,.d-m-search-type:hover ul{
+    border: 1px solid #dadada;
+    border-top: none;
+    background-color: #fff;
+}
+.d-m-search .hover,.d-m-search-type:hover{
+    overflow: visible;
+    margin-right: -1px;
+}
+.d-m-search .hover .d-m-search-type,.d-m-search-type:hover .d-m-search-type{
+    overflow: visible;
+}
+.d-m-search .d-m-search-type li{
+    height: 25px;
+    line-height: 25px;
+    display: block;
+}
+.d-m-search .d-m-search-type a{
+    margin-top: 0px;
+    float: none;
+    position: static;
+    margin-right: 0px;
+    *height: 25px;
+    padding: 0px 20px 0px 10px;
+    display: block;
+    *width: 34px;
+}
+.d-m-search .d-m-search-type a:hover{
+    background-color: #fafafa;
+    text-decoration: none;
+}
+.d-m-search b{
+    background: url(http://img02.taobaocdn.com/tps/i2/T1_CNuXu8gXXamQ26b-9-10.png) no-repeat;
+    width: 9px;
+    height: 6px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    float: left;
+    z-index: 159;
+    top: 13px;
+    left: -77px;
+}
+.d-m-search a.search-btn{
+    background: url(http://img01.taobaocdn.com/tps/i1/T1uO4vXDBcXXcCMlDc-28-20.png) -1px 2px no-repeat;
+    width: 20px;
+    height: 25px;
+    text-indent: -999em;
+    position: relative;
+    float: left;
+    margin-top: 0;
+    margin-right: 25px;
+    border: 1px solid #d9d9d9;
+    padding-right: 6px;
+    padding-left: 10px;
+    border-left: none;
+}
+.d-m-search a,.d-m-main-logined{
+    float: left;
+    position: relative;
+    color: #666666;
+    margin-right: 13px;
+    margin-top: 4px;
+}
+.d-m-main-logined a{
+    float: none;
+    color: #57a0de;
+    margin-right: 0px;
+}
+/*footer*/
+.d-m-footer{
+    background-color: #e6e6e6;
+    margin-top: 50px;
+    width: 100%;
+    padding-bottom: 20px;
+}
+.d-m-footer-main{
+    width: 700px;
+    margin: 0px auto;
+    padding: 20px 0px;
+}
+.d-m-footer-main dl{
+    float: left;
+    margin: 0 45px 0px 25px;
+    color: #999;
+    line-height: 22px;
+    width: 160px;
+    display: inline;
+}
+.d-m-footer-main dl a{
+    color: #999;
+}
+.d-m-footer-main dt{
+    color: #666;
+}
+.d-m-email,.d-m-weibo,.d-m-twitter{
+    background: url(http://img04.taobaocdn.com/tps/i4/T1d3VaXz4iXXb7P52e-160-36.png) no-repeat;
+    float: left;
+    margin-right: 20px;
+    text-indent: -999em;
+    height: 26px;
+    width: 35px;
+    margin-top: 9px;
+}
+.d-m-email{
+    background-position: -6px -5px;
+}
+.d-m-weibo{
+    background-position: -58px -5px;
+}
+.d-m-twitter{
+    background-position: -104px -5px;
+    margin-right: 0px;
+}
+.d-m-right{
+    text-align: center;
+    color: #999999;
+    margin-top: 30px;
+}/**
+ * Taocode 最新开源
+ * @author: Author: wb-gaozhan
+ * Time: 13-2-19 上午10:05
+ */
+.d-p-newopen table{
+    width: 978px;
+    border:1px solid #ebebeb;
+    border-bottom: none;
+    margin-top: 20px;
+}
+.d-p-newopen td{
+    padding: 20px;
+    border-bottom:1px solid #ebebeb;
+}
+.d-p-newopen .d-p-projectintro{
+    color: #666666;
+}
+.d-p-newopen .d-p-projectname{
+    color: #333333;
+    font-weight: 700;
+}
+.d-p-newopen .d-p-project-others{
+    color: #b3b3b3;
+}
+.d-p-newopen .d-p-project-others a{
+    color: #349fea
+}
+.d-p-newopen .d-p-project-writer{
+    margin-right: 15px;
+}
+.d-p-newopen .d-p-project-others .d-p-project-lang{
+    margin-left: 60px;
+    float: none;
+    margin-right: 60px;
+}
+.d-p-newopen table .hover td{
+    background-color: #fafafa;
+    cursor: pointer;
+}
+.d-p-newopen .td1{
+    width:525px;
+}
+.d-p-newopen .hover .td1{
+    background: url(http://img04.taobaocdn.com/tps/i4/T1A9pvXpXcXXbIPdPr-2-2.png) #fafafa repeat-y;
+}

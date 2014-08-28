@@ -1,0 +1,109 @@
+{%extends "layouts/baseview.html" %}
+{%load i18n %}
+{%load short_uri %}
+
+{% block extrascript %}
+<script type="text/javascript">
+function watch_project(o) {
+q_get('prj/watch/{{project.name}}', {}, function(r){
+$(o).text(r[0]);
+$('#watch_text').text(r[1]);
+});
+
+}
+</script>
+{% endblock %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/code-min.css" />
+{% endblock %}
+
+
+
+
+{%block title%}{{project.name}} - {{path}}{%endblock%}
+
+
+
+{%block main-block%}
+
+<div class="d-p-project-content">
+   <div class="d-p-project-svn">
+     <span class="d-p-project-svnurl">
+       <input type="text" readonly spellcheck="false"  value={{REPOS}}>
+     </span>
+     <span class="d-p-project-power">
+                {% if power == 'all' %}
+                <b> {% trans "all"%}</b>
+                {% else %}
+              	<b> {% trans "want more"%}</b>
+                {% endif %}
+                {% if project.owner != user%}
+		  {% if project.my_status == 3 or project.my_status == 0 %}
+                     <a class= "d-p-project-praise p-p-project-btn" href= "javascript:void(0);" onclick="watch_project(this);"> 
+		     {{rs}}
+		     </a>	
+		  {% endif %}
+		{%endif%}
+      </span>
+  </div> 	
+<h2 class="d-p-project-root">{{project.name}}/
+  {%for p in paths%}
+     <a href="{{project|url}}src/{{p.url}}/">{{p.path}}</a>
+      <span>/</span>
+   {%endfor%}    
+</h2>
+ <a href="{{project|url}}logs/" class="all-versions">{%trans "View all versions"%}</a>
+
+
+<div class="filelist">
+  <table class="d-p-project-files">
+    <tr>
+      <th width="250" class="d-p-project-colfirst">{%trans "Path"%}</th>
+      <th width="210">{%trans "Last Changed"%}</th>
+      <th width="183">{%trans "Size"%}</th>
+      <th width="190">{%trans "Author"%}</th>
+      <th width="85">{%trans "Revision"%}</th>
+      
+      
+      
+    </tr>
+    {%if parent%}
+    <tr class="">
+      <td style="text-indent: 20px;"><a href="{{project|url}}src{{parent}}">..</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    {%endif%}
+
+    {%for f in files%}
+
+      <td class="d-p-project-colfirst" >
+	
+	  <a class='d-p-project-{{f.dir|yesno:"floder,file"}}' href="{{project|url}}src{{path}}{{f.name}}{{f.dir|yesno:"/,"}}">{{f.name}}{{f.dir|yesno:"/,"}}</a>
+      </td>
+      <td>{{f.date|utc2loc}}</td>
+      <td>
+      {%if not f.dir%}
+      {{f.size|filesizeformat}}
+      {%endif%}
+      </td>
+      <td><a href="/u/{{f.author}}/">{{f.author}}</a></td>
+      <td><a href="{{project|url}}log/{{f.rev}}{{path}}">{{f.rev}}</a></td>    
+    </tr>
+    {%endfor%}
+  </table> 
+
+{%if README%}
+<h2 class="d-p-project-readmehd">{{README_FILE}}</h2>
+<div class="d-p-project-box d-p-project-readme">
+  {{README|wikitext:project}}
+</div>
+{%endif%}
+	</div>
+
+ </div>
+
+{%endblock%}
