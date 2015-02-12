@@ -14,33 +14,27 @@ from taocode2.models import *
 from taocode2.helper.utils import *
 from taocode2.helper import consts,xmlo
 from taocode2 import settings
+
 import urllib2
 
 import os
+import time
 
 __author__ = 'luqi@taobao.com'
 
-"""
+def _rsvn_op(name, action):
+    pname = '%s%s/%s'%(settings.GET_RSVN_URL(name), name, action)
+    urllib2.urlopen(pname).read()
+
 def rinit_repos(name):
-    pname = '%s%s/add/'%(settings.REPOS_RSVN_URL,name)
+    name = name.lower()
+    _rsvn_op(name, 'new')
 
-    try:
-        urllib2.urlopen(pname).read()
-    except urllib2.HTTPError, error:
-        print "ERROR: ", error.read()
-        raise
-    
-
-def rdel_repos(name, del_name):
-    pname = '%s%s/del/%s/'%(settings.REPOS_RSVN_URL, name, del_name)
-    try:
-        urllib2.urlopen(pname).read()
-    except urllib2.HTTPError, error:
-        print "ERROR: ", error.read()
+def rdel_repos(name):
+    name = name.lower()
+    _rsvn_op(name, 'del')
         
-"""
-
-def init_repos(name):
+def init_local_repos(name):
     if name is None or len(name) <= 0:
         raise Exception('Project name fall ['+name+']')
     
@@ -51,14 +45,6 @@ def init_repos(name):
     if r != 0:
         raise Exception(err)
     
-    #r, out, err = exec_cmd(['chmod', 'o+w', '-R', repos_path])
-    #if r != 0:
-    #    raise Exception(err)
-    
-    #if settings.REPOS_POST_HOOK != '':
-    #    exec_cmd(['ln', '-s', settings.REPOS_POST_HOOK, 
-    #              os.path.join(repos_path,'hooks/post-commit')])
-        
     r, out, err = exec_cmd(['svn', 'mkdir', '--no-auth-cache', '--non-interactive',
                             ADMIN_REPOS(name, '/trunk/'),
                             ADMIN_REPOS(name, '/tags/'),
@@ -68,10 +54,14 @@ def init_repos(name):
         raise Exception(err)
 
 
-def del_repos(name, del_name):
+def del_local_repos(name):
     if name is None or len(name) <= 0:
         raise Exception('Project name fall ['+name+']')
     
+    name = name.lower()
+    timetag = time.strftime('%Y-%m-%d-%H-%M-%S',time.localtime(time.time()))
+    del_name = name + '_D_' + timetag
+
     repos_path = os.path.join(settings.REPOS_ROOT, name)
     del_repos_path = os.path.join(settings.REPOS_ROOT, del_name)
     
@@ -80,8 +70,6 @@ def del_repos(name, del_name):
     if r != 0:
         raise Exception(err)
 
-rinit_repos = init_repos
-rdel_repos  = del_repos
 
 def safe_path(path):
     path = path.strip()
@@ -95,7 +83,8 @@ def REPOS(name, path = ''):
 
 def ADMIN_REPOS(name, path = ''):
     name = name.decode('utf8')
-    return settings.REPOS_ADMIN_URL + '/' + name + path
+    u = settings.GET_REPOS_ADMIN_URL(name)
+    return u + '/' + name + path
 
 def LIST(url):
     code, out ,err = exec_cmd(['svn', 'list','--xml', '--incremental', 

@@ -42,7 +42,7 @@ class SimpleContextMiddleware:
         return None
 
 
-    def process_exception_none(self, request, exception):
+    def _process_exception_none(self, request, exception):
         if settings.DEBUG:
             return None
 

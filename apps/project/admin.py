@@ -17,6 +17,7 @@ from django.core.urlresolvers import reverse
 from django.http import *
 from django import forms
 from django.db.models import Count,Sum,Q
+from django.utils.translation import ugettext as _
 
 from taocode2.models import *
 from taocode2.helper.utils import *
@@ -34,12 +35,12 @@ __author__ = 'luqi@taobao.com'
 def build_prj_nav_menu(request, project, choice = None):
     uri = '/p/'+project.name
 
-    navmenusSource = [{'uri': uri + '/src', 'txt':'源码'},
-                {'uri': uri + '/issues', 'txt':'问答'},
-                {'uri': uri + '/wiki', 'txt':'文档'}]
+    navmenusSource = [{'uri': uri + '/src', 'txt':_("source")},
+                {'uri': uri + '/issues', 'txt':_("issues")},
+                {'uri': uri + '/wiki', 'txt':_("wiki")}]
 
     if project.owner == request.user:
-        navmenusSource.append({'uri': uri + '/admin', 'txt':'管理'})
+        navmenusSource.append({'uri': uri + '/admin', 'txt':_('admin')})
 
     if choice is None:
         navmenusSource[0]['choice'] = True
@@ -328,7 +329,7 @@ def del_prj(request, name):
     
     timetag = time.strftime('%Y-%m-%d-%H-%M-%S',time.localtime(time.time()))
     del_name = name + '_D_' + timetag
-    #print 'del_name',del_name
+
 
     project = request.rc.project
     old_name = project.name
@@ -337,7 +338,7 @@ def del_prj(request, name):
     project.status = consts.PROJECT_MARK_DELETED
     project.save()
        
-    svn.rdel_repos(old_name, del_name)
+    svn.rdel_repos(old_name)
     
     return (True, reverse('apps.user.views.view_user', args=[]))
 

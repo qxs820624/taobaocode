@@ -19,13 +19,11 @@ from taocode2.apps.project.views import *
 from taocode2.apps.project.admin import can_access
 from taocode2.apps.repos import svn
 from taocode2.apps.wiki.views import safe_esc
+from taocode2.apps.user import activity
 
-from pygments import highlight
-from pygments.lexers import *
-from pygments.formatters import HtmlFormatter
 from mimetypes import guess_type, add_type
 from isodate import  parse_datetime
-from taocode2.apps.user import activity
+
 from django.db.models import Q
 from django.utils.encoding import smart_unicode
 from django.utils.safestring import mark_safe
@@ -68,7 +66,7 @@ def get_ext_class(fname):
     return ''
 
 def mark_highlight(content, fname, lexer=None):
-    return content
+    return force_unicode(content)
         
 def force_unicode(v):
     try:
@@ -264,6 +262,12 @@ def browse(request, name, path='/'):
     return send_response(request,
                          'repos/browse.html')
 
+def no_preview_file(fname):
+    ext = os.path.splitext(fname)[1].lower()
+    if ext in ('.pdf', '.docx', '.xlsx', '.doc', '.xls'):
+        return True
+    return False
+    
 def view_file(request, name, path, r):   
     rc = request.rc
     ul = svn.REPOS(name, '/' + path)
@@ -283,13 +287,21 @@ def view_file(request, name, path, r):
     ft = guess_type(path)[0]
     fname = os.path.split(path)[1]
 
-    if ft is not None and ft.startswith('image'):
+    if no_preview_file(fname):
+        rc.srcurl = ul
+    elif ft is not None and ft.startswith('image'):
         rc.imgurl = ul
     elif fsize / (1024.0 * 1024.0) >= 1.0:  # file to big
         rc.srcurl = ul
     else:
-        content = svn.CAT(r)
-        if is_binary_string(content[0:512]):
+        is_binary = False
+        try:
+            content = svn.CAT(r)
+            is_binary = is_binary_string(content[0:128])
+        except:
+            is_binary = True
+            
+        if is_binary:
             rc.srcurl = ul
         else:
             rc.mimetype = get_ext_class(fname)
@@ -571,14 +583,10 @@ def build_line(oneContent):
     return oldStart, oldEnd, newStart, newEnd
     
 
-
-
 def rsvn_add(request, name):
-    svn.init_repos(name)
-    return send_json_response(request, "OK")
+    svn.init_local_repos(name)
+    return send_json_response("OK")
 
-def rsvn_del(request, name, del_name):
-    if del_name[-1] == '/':
-        del_name = del_name[:-1]
-    svn.del_repos(name, del_name)
-    return send_json_response(request, "OK")
+def rsvn_del(request, name):
+    svn.del_local_repos(name)
+    return send_json_response("OK")

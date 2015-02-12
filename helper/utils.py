@@ -95,6 +95,17 @@ def build_menu(items, choice):
 
 def exec_cmd(args, std_in = None):
 
+    utf8_args = []
+    for arg in args:
+        if type(arg) != unicode:
+            utf8_args.append(arg)
+            continue
+        try:
+            u = arg.encode('utf8')
+            utf8_args.append(u)
+        except:
+            utf8_args.append(arg)
+    args = utf8_args
     p = subprocess.Popen(args,
                          stdin=subprocess.PIPE,
                          stdout=subprocess.PIPE,

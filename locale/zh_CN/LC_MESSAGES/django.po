@@ -7,1245 +7,1228 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-29 21:35+0800\n"
+"POT-Creation-Date: 2015-02-11 15:06+0800\n"
 "PO-Revision-Date: 2013-08-14 15:37+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.5.4\n"
 
-msgid "min_length"
-msgstr "最小字符验证啊啊啊"
-
-#: .\models.py:162
+#: models.py:166
 msgid "Sending"
 msgstr "已发送邀请"
 
-#: .\models.py:164
+#: models.py:168
 msgid "Rejected"
 msgstr "已拒绝"
 
-#: .\models.py:166
+#: models.py:170
 msgid "Accepted"
 msgstr "已接受"
 
-#: .\apps\project\views.py:143
+#: apps/project/admin.py:38
+msgid "source"
+msgstr ""
+
+#: apps/project/admin.py:39
+#, fuzzy
+msgid "issues"
+msgstr "问答数"
+
+#: apps/project/admin.py:40
+msgid "wiki"
+msgstr ""
+
+#: apps/project/admin.py:43
+msgid "admin"
+msgstr ""
+
+#: apps/project/views.py:144
 msgid "total_visit_times"
 msgstr "访问量"
 
-#: .\apps\project\views.py:186
+#: apps/project/views.py:187
 msgid "total_watched_times"
 msgstr "关注量"
 
-#: .\apps\project\views.py:199
+#: apps/project/views.py:200
 msgid "total_issue_times"
 msgstr "问答量"
 
-#: .\apps\project\views.py:212
+#: apps/project/views.py:213
 msgid "total_submit_times"
 msgstr "提交量"
 
-#: .\apps\project\views.py:226
+#: apps/project/views.py:227
 msgid "total_download_times"
 msgstr "下载量"
 
-#: .\apps\user\activity.py:26
+#: apps/user/activity.py:26
 msgid "Commited"
 msgstr "提交代码"
 
-#: .\apps\user\activity.py:27
+#: apps/user/activity.py:27
 msgid "Create Project"
 msgstr "创建项目"
 
-#: .\apps\user\activity.py:28
+#: apps/user/activity.py:28
 msgid "Watch Project"
 msgstr "关注项目"
 
-#: .\apps\user\activity.py:29
+#: apps/user/activity.py:29
 msgid "New Issue"
 msgstr "创建问题"
 
-#: .\apps\user\activity.py:30
+#: apps/user/activity.py:30
 msgid "Closed Issue"
 msgstr "关闭问题"
 
-#: .\apps\user\activity.py:31
+#: apps/user/activity.py:31
 msgid "Update Issue"
 msgstr "更新问题"
 
-#: .\apps\user\activity.py:32
+#: apps/user/activity.py:32
 msgid "Reopen Issue"
 msgstr "打开问题"
 
-#: .\apps\user\activity.py:33
+#: apps/user/activity.py:33
 msgid "Del Issue"
 msgstr "删除问题"
 
-#: .\apps\user\forms.py:60 .\apps\user\forms.py:141
+#: apps/user/forms.py:61 apps/user/forms.py:164
 msgid "error password format"
 msgstr "密码至少包含一个字母或数字"
 
-#: .\apps\user\forms.py:91
+#: apps/user/forms.py:98
 msgid "email address"
 msgstr "Email地址"
 
-#: .\apps\user\forms.py:92
+#: apps/user/forms.py:99
 msgid "eg:user@example.org"
 msgstr "例如:user@example.org"
 
-#: .\apps\user\forms.py:97
+#: apps/user/forms.py:108
 msgid "phone"
 msgstr "电话"
 
-#: .\apps\user\forms.py:104
+#: apps/user/forms.py:115
 msgid "title"
 msgstr "签名档"
 
-#: .\apps\user\forms.py:105
+#: apps/user/forms.py:116
 msgid "eg:taobao,diaosi ','"
 msgstr "例如：taobao,屌丝 用','分割"
 
-#: .\apps\user\forms.py:112
+#: apps/user/forms.py:123
 msgid "password"
 msgstr "密码"
 
-#: .\apps\user\forms.py:120
+#: apps/user/forms.py:137
 msgid "password(replay)"
 msgstr "确认密码"
 
-#: .\apps\user\forms.py:124 .\apps\user\forms.py:144
+#: apps/user/forms.py:141 apps/user/forms.py:167
 msgid "password must same as twice"
 msgstr "密码与确认密码必须相同"
 
-#: .\apps\user\forms.py:129
+#: apps/user/forms.py:152
 msgid "accept privacy"
 msgstr "接受协议"
 
-#: .\apps\user\forms.py:130
+#: apps/user/forms.py:153
 msgid "must accept privacy"
 msgstr "必须接受协议才能注册成功"
 
-#: .\apps\user\forms.py:155
+#: apps/user/forms.py:178
 msgid "E-mail"
 msgstr "邮箱"
 
-#: .\apps\user\forms.py:163
+#: apps/user/forms.py:186
 msgid ""
 "That e-mail address doesn't have an associated user account. Are you sure "
 "you've registered?"
 msgstr "亲,该Email地址尚未注册过,不能登陆哦"
 
-#: .\apps\user\forms.py:183
+#: apps/user/forms.py:206
 msgid ""
 "Please enter a correct username and password. Note that both fields are case-"
 "sensitive."
 msgstr ""
 
-#: .\apps\user\forms.py:185
+#: apps/user/forms.py:208
 msgid ""
 "Your Web browser doesn't appear to have cookies enabled. Cookies are "
 "required for logging in."
 msgstr "你的浏览器没有启动Cookie"
 
-#: .\apps\user\forms.py:187
+#: apps/user/forms.py:210
 msgid "This account is inactive."
 msgstr "此帐户处于非活动状态"
 
-#: .\apps\user\views.py:385
+#: apps/user/views.py:381
 msgid "Email Not Exist"
 msgstr "Email不存在"
 
-#: .\apps\user\views.py:389 .\apps\user\views.py:403
+#: apps/user/views.py:385 apps/user/views.py:399
 msgid "InValid Request"
 msgstr "无效请求"
 
-#: .\apps\user\views.py:399
+#: apps/user/views.py:395
 msgid "Name Not Exist"
 msgstr "用户名不存在"
 
-#: .\apps\wiki\parser.py:313
-#, python-format
-msgid "HTML parsing error: %(message)s"
-msgstr "HTML 解析错误：%(message)s"
-
-#: .\apps\wiki\parser.py:318
+#: apps/wiki/parser.py:317
 msgid ""
 "Error: Forbidden character sequence \"--\" in htmlcomment wiki code block"
 msgstr "错误: 不允许在htmlcomment出现的字符 \"--\""
 
-#: .\apps\wiki\parser.py:398
+#: apps/wiki/parser.py:397
 #, python-format
 msgid "!#%(name)s must contain at most one table"
 msgstr "!#%(name)s 必须包括至少一个table"
 
-#: .\apps\wiki\parser.py:402
+#: apps/wiki/parser.py:401
 #, python-format
 msgid "!#%(name)s must contain at least one table cell (and table cells only)"
 msgstr "!#%(name)s 至少需要一个表格"
 
-#: .\helper\validator.py:27
+#: helper/validator.py:27
 msgid "has exist"
 msgstr "输入的信息已存在"
 
-#: .\templates\index.html.py:153 .\templates\layouts\baseview-nav.html.py:63
-#: .\templates\layouts\baseview-nav.html.py:65
-#: .\templates\layouts\baseview.html.py:71
-#: .\templates\layouts\baseview.html.py:73
+#: templates/index.html:154 templates/layouts/baseview-nav.html:63
+#: templates/layouts/baseview.html:71
 msgid "projects"
 msgstr "项目"
 
-msgid "aliprojects"
-msgstr "阿里开源"
-
-#: .\templates\index.html.py:155 .\templates\layouts\baseview.html.py:76
-#: .\templates\layouts\user-nav.html.py:27
-#: .\templates\layouts\user-nav.html.py:33
+#: templates/index.html:156 templates/layouts/baseview-nav.html:64
+#: templates/layouts/baseview.html:72 templates/layouts/user-nav.html:27
+#: templates/layouts/user-nav.html.py:33
 msgid "help"
 msgstr "帮助"
 
-#: .\templates\index.html.py:171 .\templates\layouts\baseview.html.py:92
-#: .\templates\layouts\baseview2.html.py:47 .\templates\main\search.html.py:40
-#: .\templates\main\search.html.py:51 .\templates\main\search.html.py:69
-#: .\templates\message\list.html.py:70 .\templates\project\new.html.py:17
-#: .\templates\user\change_password.html.py:18
-#: .\templates\user\edit_my.html.py:81 .\templates\user\view.html.py:120
+#: templates/index.html:172 templates/layouts/baseview.html:88
+#: templates/layouts/baseview2.html:47 templates/main/search.html:40
+#: templates/main/search.html.py:51 templates/main/search.html:71
+#: templates/message/list.html:70 templates/project/new.html:17
+#: templates/user/change_password.html:18 templates/user/edit_my.html:81
+#: templates/user/view.html:126
 msgid "main"
 msgstr "首页"
 
-#: .\templates\index.html.py:177 .\templates\user\view.html.py:126
+#: templates/index.html:178 templates/user/view.html:132
 msgid "sinaweibo"
 msgstr "微博"
 
-#: .\templates\index.html.py:177 .\templates\user\view.html.py:126
+#: templates/index.html:178 templates/user/view.html:132
 msgid "tweibo"
 msgstr "微博"
 
-#: .\templates\index.html.py:179 .\templates\user\view.html.py:128
+#: templates/index.html:180 templates/user/view.html:134
 msgid "editmy"
 msgstr "编辑资料"
 
-#: .\templates\index.html.py:179 .\templates\layouts\user-nav.html.py:25
-#: .\templates\user\view.html.py:128
+#: templates/index.html:180 templates/layouts/user-nav.html:25
+#: templates/user/view.html:134
 msgid "message"
 msgstr "站内信"
 
-#: .\templates\index.html.py:182 .\templates\index.html.py:256
-#: .\templates\user\view.html.py:134 .\templates\user\view.html.py:215
+#: templates/index.html:183 templates/index.html.py:257
+#: templates/user/view.html:140 templates/user/view.html.py:221
 msgid "created"
 msgstr "注册于"
 
-#: .\templates\index.html.py:184 .\templates\user\view.html.py:139
+#: templates/index.html:185 templates/user/view.html:145
 msgid "send message"
 msgstr "发站内信"
 
-#: .\templates\index.html.py:185 .\templates\user\view.html.py:140
+#: templates/index.html:186 templates/user/view.html:146
 msgid "mail"
 msgstr "mail联系"
 
-#: .\templates\index.html.py:190 .\templates\user\view.html.py:145
+#: templates/index.html:191 templates/user/view.html:151
 msgid "new create project"
 msgstr "新建项目"
 
-#: .\templates\index.html.py:192 .\templates\index.html.py:198
-#: .\templates\user\view.html.py:147 .\templates\user\view.html.py:153
+#: templates/index.html:193 templates/index.html.py:199
+#: templates/user/view.html:153 templates/user/view.html.py:159
 msgid "myproject"
 msgstr "所有项目"
 
-#: .\templates\index.html.py:193 .\templates\index.html.py:199
-#: .\templates\user\view.html.py:148 .\templates\user\view.html.py:154
+#: templates/index.html:194 templates/index.html.py:200
+#: templates/user/view.html:154 templates/user/view.html.py:160
 msgid "watchedproject"
 msgstr "关注的项目"
 
-#: .\templates\index.html.py:194 .\templates\index.html.py:200
-#: .\templates\user\view.html.py:149 .\templates\user\view.html.py:155
+#: templates/index.html:195 templates/index.html.py:201
+#: templates/user/view.html:155 templates/user/view.html.py:161
 msgid "worklogs"
 msgstr "工作记录"
 
-#: .\templates\index.html.py:212 .\templates\user\view.html.py:167
+#: templates/index.html:213 templates/user/view.html:173
 msgid "projectadmin"
 msgstr "项目管理"
 
-#: .\templates\index.html.py:213 .\templates\user\view.html.py:168
+#: templates/index.html:214 templates/user/view.html:174
 msgid "deleteproject"
 msgstr "删除项目"
 
-#: .\templates\index.html.py:225 .\templates\user\view.html.py:180
+#: templates/index.html:226 templates/user/view.html:186
 msgid "EXIT"
 msgstr "退出"
 
-#: .\templates\index.html.py:231 .\templates\user\view.html.py:187
+#: templates/index.html:232 templates/user/view.html:193
 msgid "ACCEPT"
 msgstr "接受"
 
-#: .\templates\index.html.py:232 .\templates\user\view.html.py:188
+#: templates/index.html:233 templates/user/view.html:194
 msgid "REJECT"
 msgstr "拒绝"
 
-#: .\templates\index.html.py:257 .\templates\user\view.html.py:216
+#: templates/index.html:258 templates/user/view.html:222
 msgid "language:"
 msgstr "热门语言"
 
-#: .\templates\index.html.py:257 .\templates\project\prj-info.html.py:10
-#: .\templates\user\view.html.py:216
+#: templates/index.html:258 templates/project/prj-info.html:10
+#: templates/user/view.html:222
 msgid "project_member_count"
 msgstr "成员数"
 
-#: .\templates\index.html.py:314 .\templates\user\login.html.py:23
+#: templates/index.html:315 templates/user/login.html:23
 msgid "All projects"
 msgstr "所有项目"
 
-#: .\templates\index.html.py:315 .\templates\user\login.html.py:24
+#: templates/index.html:316 templates/user/login.html:24
 msgid "All members"
 msgstr "会员数"
 
-#: .\templates\index.html.py:316 .\templates\user\login.html.py:25
+#: templates/index.html:317 templates/user/login.html:25
 msgid "Yesterday commit"
 msgstr "昨日提交"
 
-#: .\templates\index.html.py:317 .\templates\user\login.html.py:26
+#: templates/index.html:318 templates/user/login.html:26
 msgid "Yesterday issue"
 msgstr "昨日问答"
 
-#: .\templates\index.html.py:323
+#: templates/index.html:324
 msgid "fastregister"
 msgstr "注册"
 
-#: .\templates\index.html.py:338 .\templates\layouts\user-nav.html.py:31
-#: .\templates\user\login.html.py:32 .\templates\user\login.html.py:42
-#: .\templates\user\password_reset_done.html.py:8
+#: templates/index.html:339 templates/layouts/user-nav.html:31
+#: templates/user/login.html:32 templates/user/login.html.py:42
+#: templates/user/password_reset_done.html:8
 msgid "login"
 msgstr "登录"
 
-#: .\templates\index.html.py:369 .\templates\layouts\baseview-nav.html.py:112
-#: .\templates\layouts\baseview.html.py:117
-#: .\templates\layouts\baseview2.html.py:87
+#: templates/index.html:370 templates/layouts/baseview-nav.html:107
+#: templates/layouts/baseview.html:111 templates/layouts/baseview2.html:87
 msgid "About Taobao"
 msgstr "关于Taocode"
 
-#: .\templates\index.html.py:371 .\templates\layouts\baseview-nav.html.py:114
-#: .\templates\layouts\baseview.html.py:119
-#: .\templates\layouts\baseview2.html.py:88
+#: templates/index.html:372 templates/layouts/baseview-nav.html:109
+#: templates/layouts/baseview.html:113 templates/layouts/baseview2.html:88
 msgid "About Us"
 msgstr "关于我们"
 
-#: .\templates\index.html.py:374 .\templates\layouts\baseview-nav.html.py:117
-#: .\templates\layouts\baseview.html.py:123
-#: .\templates\layouts\baseview2.html.py:89
+#: templates/index.html:375 templates/layouts/baseview-nav.html:112
+#: templates/layouts/baseview2.html:89
 msgid "Open-source web site"
 msgstr "开源地址"
 
-#: .\templates\index.html.py:378 .\templates\layouts\baseview-nav.html.py:121
-#: .\templates\layouts\baseview.html.py:127
-#: .\templates\layouts\baseview2.html.py:92
+#: templates/index.html:379 templates/layouts/baseview-nav.html:116
+#: templates/layouts/baseview2.html:92
 msgid "help center"
 msgstr "帮助中心"
 
-#: .\templates\index.html.py:380 .\templates\layouts\baseview-nav.html.py:123
-#: .\templates\layouts\baseview.html.py:129
-#: .\templates\layouts\baseview2.html.py:93
-#: .\templates\repos\browse.html.py:110
+#: templates/index.html:381 templates/layouts/baseview-nav.html:118
+#: templates/layouts/baseview2.html:93
 msgid "How to create a project"
 msgstr "如何创建项目"
 
-#: .\templates\index.html.py:383 .\templates\layouts\baseview-nav.html.py:126
-#: .\templates\layouts\baseview.html.py:132
-#: .\templates\layouts\baseview2.html.py:94
-#: .\templates\repos\browse.html.py:113
+#: templates/index.html:384 templates/layouts/baseview-nav.html:121
+#: templates/layouts/baseview2.html:94
 msgid "How to become a project member"
 msgstr "如何成为项目成员"
 
-#: .\templates\index.html.py:386 .\templates\layouts\baseview-nav.html.py:129
-#: .\templates\layouts\baseview.html.py:135
+#: templates/index.html:387 templates/layouts/baseview-nav.html:124
 msgid "Issue reponse"
 msgstr "问题反馈"
 
-#: .\templates\index.html.py:390 .\templates\layouts\baseview-nav.html.py:133
-#: .\templates\layouts\baseview.html.py:139
-#: .\templates\layouts\baseview2.html.py:97
+#: templates/index.html:391 templates/layouts/baseview-nav.html:128
+#: templates/layouts/baseview.html:118 templates/layouts/baseview2.html:97
 msgid "Contact Us"
 msgstr "联系我们"
 
-#: .\templates\index.html.py:392 .\templates\layouts\baseview-nav.html.py:135
-#: .\templates\layouts\baseview.html.py:141
-#: .\templates\layouts\baseview2.html.py:99
-#: .\templates\layouts\baseview2.html.py:101
-#: .\templates\open\taobao\login_ext.html.py:103
-#: .\templates\open\wb\login_ext.html.py:104
+#: templates/index.html:393 templates/layouts/baseview-nav.html:130
+#: templates/layouts/baseview.html:120 templates/layouts/baseview2.html:99
+#: templates/layouts/baseview2.html:101
+#: templates/open/taobao/login_ext.html:103
+#: templates/open/wb/login_ext.html:104
 msgid "Email"
 msgstr "邮箱"
 
-#: .\templates\index.html.py:393 .\templates\layouts\baseview-nav.html.py:136
-#: .\templates\layouts\baseview.html.py:142
-#: .\templates\layouts\baseview2.html.py:100
+#: templates/index.html:394 templates/layouts/baseview-nav.html:131
+#: templates/layouts/baseview.html:121 templates/layouts/baseview2.html:100
 msgid "weibo"
 msgstr "微博"
 
-#: .\templates\privacy.html.py:4
+#: templates/privacy.html:4
 msgid "See also:"
 msgstr "请查阅"
 
-#: .\templates\issue\list.html.py:21 .\templates\issue\view.html.py:44
+#: templates/issue/list.html:21 templates/issue/view.html:44
 msgid "Are you sure delete this issue?"
 msgstr "你确定删除这条提问?"
 
-#: .\templates\issue\list.html.py:21 .\templates\issue\view.html.py:18
-#: .\templates\issue\view.html.py:44 .\templates\issue\view.html.py:53
-#: .\templates\message\list.html.py:39 .\templates\project\admin.html.py:75
-#: .\templates\project\admin.html.py:110 .\templates\user\view.html.py:68
-#: .\templates\user\view.html.py:77 .\templates\user\view.html.py:87
-#: .\templates\wiki\view.html.py:12 .\templates\wiki\view.html.py:36
+#: templates/issue/list.html:21 templates/issue/view.html:18
+#: templates/issue/view.html.py:44 templates/issue/view.html:53
+#: templates/message/list.html:39 templates/project/admin.html:74
+#: templates/project/admin.html.py:109 templates/user/view.html:74
+#: templates/user/view.html.py:83 templates/user/view.html:93
+#: templates/wiki/view.html:12 templates/wiki/view.html.py:36
 msgid "Yes"
 msgstr "是的"
 
-#: .\templates\issue\list.html.py:21 .\templates\issue\view.html.py:18
-#: .\templates\issue\view.html.py:44 .\templates\issue\view.html.py:53
-#: .\templates\message\list.html.py:39 .\templates\project\admin.html.py:75
-#: .\templates\project\admin.html.py:110 .\templates\user\view.html.py:68
-#: .\templates\user\view.html.py:77 .\templates\user\view.html.py:87
-#: .\templates\wiki\view.html.py:12 .\templates\wiki\view.html.py:36
+#: templates/issue/list.html:21 templates/issue/view.html:18
+#: templates/issue/view.html.py:44 templates/issue/view.html:53
+#: templates/message/list.html:39 templates/project/admin.html:74
+#: templates/project/admin.html.py:109 templates/user/view.html:74
+#: templates/user/view.html.py:83 templates/user/view.html:93
+#: templates/wiki/view.html:12 templates/wiki/view.html.py:36
 msgid "No"
 msgstr "不是"
 
-#: .\templates\issue\list.html.py:25
+#: templates/issue/list.html:25
 msgid "can not remove issue!"
 msgstr "不能删除issue"
 
-#: .\templates\issue\list.html.py:40 .\templates\repos\browse.html.py:38
-#: .\templates\repos\view_diff.html.py:38
-#: .\templates\repos\view_logs.html.py:56
+#: templates/issue/list.html:40 templates/repos/browse.html:37
+#: templates/repos/view_diff.html:38 templates/repos/view_file.html:25
+#: templates/repos/view_logs.html:56
 msgid "all"
 msgstr "所有"
 
-#: .\templates\issue\list.html.py:41
+#: templates/issue/list.html:41
 msgid "opened"
 msgstr "待解决"
 
-#: .\templates\issue\list.html.py:42
+#: templates/issue/list.html:42
 msgid "closed"
 msgstr "已解决"
 
-#: .\templates\issue\list.html.py:45 .\templates\issue\view.html.py:101
+#: templates/issue/list.html:45 templates/issue/view.html:101
 msgid "question"
 msgstr "我要提问"
 
-#: .\templates\issue\new.html.py:41
+#: templates/issue/new.html:41
 msgid "qtitle"
 msgstr "问题标题"
 
-#: .\templates\issue\new.html.py:43
+#: templates/issue/new.html:43
 msgid "input limit"
 msgstr "字数限制"
 
-#: .\templates\issue\new.html.py:44
+#: templates/issue/new.html:44
 msgid "question description"
 msgstr "问题描述"
 
-#: .\templates\issue\new.html.py:47
+#: templates/issue/new.html:47
 msgid "submit question"
 msgstr "提交问题"
 
-#: .\templates\issue\view.html.py:18
+#: templates/issue/view.html:18
 msgid "Are you sure delete this comment?"
 msgstr "你确定删除这条评论?"
 
-#: .\templates\issue\view.html.py:28
+#: templates/issue/view.html:28
 msgid "can not del comment"
 msgstr "不能删除评论"
 
-#: .\templates\issue\view.html.py:35
+#: templates/issue/view.html:35
 msgid "need comment content!"
 msgstr "需要评论内容"
 
-#: .\templates\issue\view.html.py:53
+#: templates/issue/view.html:53
 msgid "Are you sure close this issue?"
 msgstr "你确定关闭这条提问?"
 
-#: .\templates\issue\view.html.py:79 .\templates\project\view.html.py:44
+#: templates/issue/view.html:79 templates/project/view.html:45
 msgid "close issue"
 msgstr "关闭提问"
 
-#: .\templates\issue\view.html.py:84 .\templates\issue\view.html.py:126
-#: .\templates\message\list.html.py:136 .\templates\project\admin.html.py:55
-#: .\templates\project\admin.html.py:94 .\templates\wiki\view.html.py:70
+#: templates/issue/view.html:84 templates/issue/view.html.py:126
+#: templates/message/list.html:136 templates/project/admin.html:54
+#: templates/project/admin.html.py:93 templates/wiki/view.html:70
 msgid "delete"
 msgstr "删除"
 
-#: .\templates\issue\view.html.py:92 .\templates\issue\view.html.py:123
+#: templates/issue/view.html:92 templates/issue/view.html.py:123
 msgid "yu"
 msgstr "于"
 
-#: .\templates\issue\view.html.py:92 .\templates\project\view.html.py:37
+#: templates/issue/view.html:92 templates/project/view.html:38
 msgid "new issue"
 msgstr "发表了新问题"
 
-#: .\templates\issue\view.html.py:105 .\templates\issue\view.html.py:110
-#: .\templates\issue\view.html.py:141
+#: templates/issue/view.html:105 templates/issue/view.html.py:110
+#: templates/issue/view.html:141
 msgid "answer"
 msgstr "我来回答"
 
-#: .\templates\issue\view.html.py:117
+#: templates/issue/view.html:117
 msgid "answ"
 msgstr "回答"
 
-#: .\templates\issue\view.html.py:123
+#: templates/issue/view.html:123
 msgid "replay"
 msgstr "回复"
 
-#: .\templates\issue\view.html.py:143
+#: templates/issue/view.html:143
 msgid "Post comment"
 msgstr "发表评论"
 
-#: .\templates\layouts\baseview-nav.html.py:77
-#: .\templates\layouts\baseview2.html.py:33
+#: templates/layouts/baseview-nav.html:72 templates/layouts/baseview2.html:33
 msgid "gailan"
 msgstr "概况"
 
-#: .\templates\layouts\baseview-nav.html.py:78
-#: .\templates\layouts\baseview2.html.py:34
+#: templates/layouts/baseview-nav.html:73 templates/layouts/baseview2.html:34
 msgid "the latest open source"
 msgstr "最新开源"
 
-#: .\templates\layouts\baseview-nav.html.py:79
-#: .\templates\layouts\baseview2.html.py:35
+#: templates/layouts/baseview-nav.html:74 templates/layouts/baseview2.html:35
 msgid "the Popular items"
 msgstr "热门项目"
 
-#: .\templates\layouts\baseview-nav.html.py:80
-#: .\templates\layouts\baseview2.html.py:36
+#: templates/layouts/baseview-nav.html:75 templates/layouts/baseview2.html:36
 msgid "the last updated"
 msgstr "最近更新"
 
-#: .\templates\layouts\baseview-nav.html.py:81
-#: .\templates\layouts\baseview2.html.py:37
+#: templates/layouts/baseview-nav.html:76 templates/layouts/baseview2.html:37
 msgid "Language Classification"
 msgstr "语言分类"
 
-#: .\templates\layouts\baseview-nav.html.py:82
+#: templates/layouts/baseview-nav.html:77
 msgid "taobaokaiyuanxiangmu"
 msgstr "淘宝开源项目"
 
-#: .\templates\layouts\baseview.html.py:93
-#: .\templates\layouts\baseview2.html.py:48
+#: templates/layouts/baseview.html:89 templates/layouts/baseview2.html:48
 msgid "projectLanguage"
 msgstr "项目语言"
 
-#: .\templates\layouts\baseview2.html.py:38
+#: templates/layouts/baseview2.html:38
 msgid "Taobao open source project"
 msgstr "淘宝开源项目"
 
-#: .\templates\layouts\page-nav.html.py:7
-#: .\templates\layouts\page-nav.html.py:9
+#: templates/layouts/page-nav.html:7 templates/layouts/page-nav.html.py:9
 msgid "first"
 msgstr "第一页"
 
-#: .\templates\layouts\page-nav.html.py:12
-#: .\templates\layouts\page-nav.html.py:14
+#: templates/layouts/page-nav.html:12 templates/layouts/page-nav.html.py:14
 msgid "prev"
 msgstr "上一页"
 
-#: .\templates\layouts\page-nav.html.py:17
-#: .\templates\layouts\page-nav.html.py:19
+#: templates/layouts/page-nav.html:17 templates/layouts/page-nav.html.py:19
 msgid "next"
 msgstr "下一页"
 
-#: .\templates\layouts\page-nav.html.py:23
-#: .\templates\layouts\page-nav.html.py:25
+#: templates/layouts/page-nav.html:23 templates/layouts/page-nav.html.py:25
 msgid "last"
 msgstr "最后一页"
 
-#: .\templates\layouts\user-nav.html.py:8
+#: templates/layouts/user-nav.html:8
 msgid "pick something"
 msgstr "请输入搜索内容"
 
-#: .\templates\layouts\user-nav.html.py:12
+#: templates/layouts/user-nav.html:12
 msgid "s_project"
 msgstr "项目"
 
-#: .\templates\layouts\user-nav.html.py:13
+#: templates/layouts/user-nav.html:13
 msgid "s_user"
 msgstr "用户"
 
-#: .\templates\layouts\user-nav.html.py:15
+#: templates/layouts/user-nav.html:15
 msgid "s_language"
 msgstr "语言"
 
-#: .\templates\layouts\user-nav.html.py:20
+#: templates/layouts/user-nav.html:20
 msgid "search"
 msgstr "搜索"
 
-#: .\templates\layouts\user-nav.html.py:28
+#: templates/layouts/user-nav.html:28
 msgid "logout"
 msgstr "退出"
 
-#: .\templates\layouts\user-nav.html.py:32 .\templates\user\login.html.py:48
-#: .\templates\user\register.html.py:25
+#: templates/layouts/user-nav.html:32 templates/user/login.html:48
+#: templates/user/register.html:24
 msgid "register"
 msgstr "注册"
 
-#: .\templates\mail\change_email.html.py:5
+#: templates/mail/change_email.html:5
 msgid "change email"
 msgstr "更改 email"
 
-#: .\templates\mail\change_email.html.py:12
+#: templates/mail/change_email.html:12
 msgid "You can use this link to change your new email at our site!"
 msgstr "你可以通过这条连接来更新注册的邮箱地址"
 
-#: .\templates\mail\reset_password.html.py:4
-#: .\templates\user\password_reset.html.py:13
-#: .\templates\user\password_reset_form.html.py:12
+#: templates/mail/reset_password.html:4 templates/user/password_reset.html:13
+#: templates/user/password_reset_form.html:12
 msgid "reset password"
 msgstr "重置密码"
 
-#: .\templates\mail\reset_password.html.py:11
+#: templates/mail/reset_password.html:11
 msgid "You can use this link to change your new password at our site!"
 msgstr "你可以通过这条连接来更改你的密码"
 
-#: .\templates\main\files.html.py:5
+#: templates/main/files.html:5
 msgid "Attachments"
 msgstr "附件"
 
-#: .\templates\main\files.html.py:25
+#: templates/main/files.html:25
 msgid "Delete"
 msgstr "删除"
 
-#: .\templates\main\search.html.py:41
+#: templates/main/search.html:41
 msgid "Please pick something,to search"
 msgstr "请输入用户名"
 
-#: .\templates\main\search.html.py:52 .\templates\main\search.html.py:70
+#: templates/main/search.html:52 templates/main/search.html.py:72
 msgid "search have"
 msgstr "搜索"
 
-#: .\templates\main\search.html.py:52 .\templates\main\search.html.py:70
+#: templates/main/search.html:52 templates/main/search.html.py:72
 msgid "people，have"
 msgstr " 共有"
 
-#: .\templates\main\search.html.py:52 .\templates\main\search.html.py:70
+#: templates/main/search.html:52 templates/main/search.html.py:72
 msgid "ge"
 msgstr " 个"
 
-#: .\templates\message\list.html.py:14
+#: templates/message/list.html:14
 msgid "del message ok!"
 msgstr "删除消息成功!"
 
-#: .\templates\message\list.html.py:17
+#: templates/message/list.html:17
 msgid "can not del message!"
 msgstr "不能删除消息!"
 
-#: .\templates\message\list.html.py:23
+#: templates/message/list.html:23
 msgid "move message ok!"
 msgstr "消息移动成功!"
 
-#: .\templates\message\list.html.py:26
+#: templates/message/list.html:26
 msgid "can not move message!"
 msgstr "不能删除消息!"
 
-#: .\templates\message\list.html.py:39
+#: templates/message/list.html:39
 msgid "Are you sure delete this message?"
 msgstr "你确定删除这条消息?"
 
-#: .\templates\message\list.html.py:97
+#: templates/message/list.html:97
 msgid "sender"
 msgstr "发件人"
 
-#: .\templates\message\list.html.py:99
+#: templates/message/list.html:99
 msgid "receiver"
 msgstr "收件人"
 
-#: .\templates\message\list.html.py:101
+#: templates/message/list.html:101
 msgid "message content"
 msgstr "消息内容"
 
-#: .\templates\message\list.html.py:102
+#: templates/message/list.html:102
 msgid "send time"
 msgstr "发送时间"
 
-#: .\templates\message\list.html.py:129
+#: templates/message/list.html:129
 msgid "recovery"
 msgstr "恢复"
 
-#: .\templates\message\list.html.py:134
+#: templates/message/list.html:134
 msgid "reply"
 msgstr "回复"
 
-#: .\templates\open\taobao\login_ext.html.py:4
-#: .\templates\open\taobao\login_ext.html.py:90
+#: templates/open/taobao/login_ext.html:4
+#: templates/open/taobao/login_ext.html:90
 msgid "Taobao Login Ext"
 msgstr "淘宝登陆补充信息"
 
-#: .\templates\open\taobao\login_ext.html.py:31
-#: .\templates\open\wb\login_ext.html.py:31
+#: templates/open/taobao/login_ext.html:31 templates/open/wb/login_ext.html:31
 msgid "Name exist,Confirm binding Account?"
 msgstr "用户名已注册，是否要绑定该账号?"
 
-#: .\templates\open\taobao\login_ext.html.py:48
-#: .\templates\open\wb\login_ext.html.py:48
+#: templates/open/taobao/login_ext.html:48 templates/open/wb/login_ext.html:48
 msgid "Email exist,Confirm binding Account?"
 msgstr "Email已注册,是否要绑定该账号?"
 
-#: .\templates\open\taobao\login_ext.html.py:63
-#: .\templates\open\taobao\login_ext.html.py:71
-#: .\templates\open\wb\login_ext.html.py:63
-#: .\templates\open\wb\login_ext.html.py:71
+#: templates/open/taobao/login_ext.html:63
+#: templates/open/taobao/login_ext.html:71 templates/open/wb/login_ext.html:63
+#: templates/open/wb/login_ext.html:71
 msgid "password not match"
 msgstr "密码不正确"
 
-#: .\templates\open\taobao\login_ext.html.py:78
-#: .\templates\open\wb\login_ext.html.py:78
+#: templates/open/taobao/login_ext.html:78 templates/open/wb/login_ext.html:78
 msgid "binding account must check password first"
 msgstr "绑定账号时，必须输入密码确认"
 
-#: .\templates\open\taobao\login_ext.html.py:99
-#: .\templates\open\wb\login_ext.html.py:100
+#: templates/open/taobao/login_ext.html:99
+#: templates/open/wb/login_ext.html:100
 msgid "UserName"
 msgstr "用户名"
 
-#: .\templates\open\taobao\login_ext.html.py:113
-#: .\templates\open\wb\login_ext.html.py:114
+#: templates/open/taobao/login_ext.html:113
+#: templates/open/wb/login_ext.html:114
 msgid "BindAccount"
 msgstr "绑定账号"
 
-#: .\templates\open\taobao\login_ext.html.py:115
-#: .\templates\open\wb\login_ext.html.py:116
+#: templates/open/taobao/login_ext.html:115
+#: templates/open/wb/login_ext.html:116
 msgid "Bind Reged Account"
 msgstr "绑定已注册账号"
 
-#: .\templates\open\taobao\login_ext.html.py:118
-#: .\templates\open\wb\login_ext.html.py:119
+#: templates/open/taobao/login_ext.html:118
+#: templates/open/wb/login_ext.html:119
 msgid "Password"
 msgstr "密码"
 
-#: .\templates\open\taobao\login_ext.html.py:128
-#: .\templates\open\wb\login_ext.html.py:129
+#: templates/open/taobao/login_ext.html:128
+#: templates/open/wb/login_ext.html:129
 msgid "Login"
 msgstr "登录"
 
-#: .\templates\open\wb\login_ext.html.py:4
-#: .\templates\open\wb\login_ext.html.py:90
+#: templates/open/wb/login_ext.html:4 templates/open/wb/login_ext.html:90
 msgid "Weibo Login Ext"
 msgstr "微博登陆补充信息"
 
-#: .\templates\project\admin.html.py:74 .\templates\project\admin.html.py:109
+#: templates/project/admin.html:73 templates/project/admin.html.py:108
 msgid "Are you sure remove "
 msgstr "你确定删除成员"
 
-#: .\templates\project\admin.html.py:214
+#: templates/project/admin.html:213
 msgid "proinfo"
 msgstr "项目信息"
 
-#: .\templates\project\admin.html.py:217
+#: templates/project/admin.html:216
 msgid "meminfo"
 msgstr "成员管理"
 
-#: .\templates\project\admin.html.py:220
+#: templates/project/admin.html:219
 msgid "downinfo"
 msgstr "下载管理"
 
-#: .\templates\project\admin.html.py:224
+#: templates/project/admin.html:223
 msgid "issue"
 msgstr "问答数"
 
-#: .\templates\project\admin.html.py:224
+#: templates/project/admin.html:223
 msgid "tiao"
 msgstr "条"
 
-#: .\templates\project\admin.html.py:225
+#: templates/project/admin.html:224
 msgid "preview"
 msgstr "访问量"
 
-#: .\templates\project\admin.html.py:225
+#: templates/project/admin.html:224
 msgid "ci"
 msgstr "次"
 
-#: .\templates\project\admin.html.py:238 .\templates\project\new.html.py:31
+#: templates/project/admin.html:237 templates/project/new.html:31
 msgid "project des"
 msgstr "项目描述"
 
-#: .\templates\project\admin.html.py:244
+#: templates/project/admin.html:245
 msgid "license"
 msgstr "请"
 
-#: .\templates\project\admin.html.py:265
+#: templates/project/admin.html:261
 msgid "public"
 msgstr "公开项目"
 
-#: .\templates\project\admin.html.py:267 .\templates\project\new.html.py:60
+#: templates/project/admin.html:263 templates/project/new.html:62
 msgid "yes"
 msgstr "是"
 
-#: .\templates\project\admin.html.py:268 .\templates\project\new.html.py:61
+#: templates/project/admin.html:264 templates/project/new.html:63
 msgid "no"
 msgstr "否"
 
-#: .\templates\project\admin.html.py:275 .\templates\project\new.html.py:69
+#: templates/project/admin.html:271
 msgid "language"
 msgstr "语言"
 
-#: .\templates\project\admin.html.py:315
+#: templates/project/admin.html:311
 msgid "save"
 msgstr "保存"
 
-#: .\templates\project\admin.html.py:325
+#: templates/project/admin.html:321
 msgid "projectmem"
 msgstr "项目成员"
 
-#: .\templates\project\admin.html.py:334
+#: templates/project/admin.html:330
 msgid "add new member"
 msgstr "添加新成员"
 
-#: .\templates\project\admin.html.py:336
+#: templates/project/admin.html:332
 msgid "send invite"
 msgstr "发送邀请"
 
-#: .\templates\project\explore-proj.html.py:31
+#: templates/project/explore-proj.html:86
 msgid "Recommended projects"
 msgstr "推荐项目"
 
-#: .\templates\project\explore-proj.html.py:50
+#: templates/project/explore-proj.html:105
 msgid "Hot languages"
 msgstr "热门语言"
 
-#: .\templates\project\explore-proj.html.py:51
-#: .\templates\project\explore-proj.html.py:104
+#: templates/project/explore-proj.html:106
+#: templates/project/explore-proj.html:159
 msgid "More"
 msgstr "更多"
 
-#: .\templates\project\explore-proj.html.py:76
+#: templates/project/explore-proj.html:131
 msgid "remengxiangmu"
 msgstr "热门项目"
 
-#: .\templates\project\explore-proj.html.py:79
+#: templates/project/explore-proj.html:134
 msgid "Today"
 msgstr "今日"
 
-#: .\templates\project\explore-proj.html.py:82
+#: templates/project/explore-proj.html:137
 msgid "This week"
 msgstr "本周"
 
-#: .\templates\project\explore-proj.html.py:85
+#: templates/project/explore-proj.html:140
 msgid "This month"
 msgstr "本月"
 
-#: .\templates\project\explore-proj.html.py:103
+#: templates/project/explore-proj.html:158
 msgid "zuixinkaiyuan"
 msgstr "最新开源"
 
-#: .\templates\project\explore-proj.html.py:122
+#: templates/project/explore-proj.html:177
 msgid "Active Members"
 msgstr "活跃会员"
 
-#: .\templates\project\explore-proj.html.py:137
+#: templates/project/explore-proj.html:192
 msgid "The number of projects"
 msgstr "项目数"
 
-#: .\templates\project\explore-proj.html.py:149
+#: templates/project/explore-proj.html:204
 msgid "Recently"
 msgstr "最近更新"
 
-#: .\templates\project\explore-proj.html.py:155
+#: templates/project/explore-proj.html:210
 msgid "In"
 msgstr "在"
 
-#: .\templates\project\lang-proj.html.py:24
-#: .\templates\project\lang-view.html.py:17
+#: templates/project/lang-proj.html:24 templates/project/lang-view.html:17
 msgid "Search all languages"
 msgstr "搜索全部语言"
 
-#: .\templates\project\lang-proj.html.py:25
-#: .\templates\project\lang-view.html.py:18
+#: templates/project/lang-proj.html:25 templates/project/lang-view.html:18
 msgid "Search"
 msgstr "搜索"
 
-#: .\templates\project\lang-proj.html.py:45
-#: .\templates\project\prj-info.html.py:7
+#: templates/project/lang-proj.html:45 templates/project/prj-info.html:7
 msgid "Open from"
 msgstr "开源于"
 
-#: .\templates\project\lang-proj.html.py:45
-#: .\templates\project\prj-info.html.py:8
+#: templates/project/lang-proj.html:45 templates/project/prj-info.html:8
 msgid "project_lang"
 msgstr "语言"
 
-#: .\templates\project\lang-proj.html.py:45
+#: templates/project/lang-proj.html:45
 msgid "The number of members"
 msgstr "成员数"
 
-#: .\templates\project\lang-proj.html.py:45
+#: templates/project/lang-proj.html:45
 msgid "People"
 msgstr "人"
 
-#: .\templates\project\new.html.py:25
+#: templates/project/new.html:25
 msgid "new project name"
 msgstr "项目名"
 
-#: .\templates\project\new.html.py:57
+#: templates/project/new.html:59
 msgid "is public"
 msgstr "公开项目"
 
-#: .\templates\project\new.html.py:62
+#: templates/project/new.html:64
 msgid "all people can see"
 msgstr "所有人可见，但只限成员可以提交"
 
-#: .\templates\project\new.html.py:63
+#: templates/project/new.html:65
 msgid "member can see"
 msgstr "只限成员可见和提交"
 
-#: .\templates\project\new.html.py:92
+#: templates/project/new.html:71
+#, fuzzy
+msgid "Project Language"
+msgstr "项目语言"
+
+#: templates/project/new.html:94
 msgid "create project"
 msgstr "创建项目"
 
-#: .\templates\project\projectGraph.html.py:76
+#: templates/project/projectGraph.html:76
 msgid "hotproject-down"
 msgstr "下载量 TOP50"
 
-#: .\templates\project\projectGraph.html.py:80
+#: templates/project/projectGraph.html:80
 msgid "hotproject-visit"
 msgstr "访问量 TOP50"
 
-#: .\templates\project\projectGraph.html.py:83
+#: templates/project/projectGraph.html:83
 msgid "hotproject-attention"
 msgstr "关注度 TOP50"
 
-#: .\templates\project\projectGraph.html.py:86
+#: templates/project/projectGraph.html:86
 msgid "hotproject-submit"
 msgstr "提交次数 TOP50"
 
-#: .\templates\project\projectGraph.html.py:89
+#: templates/project/projectGraph.html:89
 msgid "hotproject-faqs"
 msgstr "问答次数 TOP50"
 
-#: .\templates\project\view.html.py:23
+#: templates/project/view.html:24
 msgid "new project"
 msgstr "新建项目"
 
-#: .\templates\project\view.html.py:29 .\templates\project\view.html.py:36
-#: .\templates\project\view.html.py:43 .\templates\project\view.html.py:48
+#: templates/project/view.html:30 templates/project/view.html.py:37
+#: templates/project/view.html:44 templates/project/view.html.py:49
 msgid "at project"
 msgstr "在项目"
 
-#: .\templates\project\view.html.py:30
+#: templates/project/view.html:31
 msgid "new commit"
 msgstr "提交代码"
 
-#: .\templates\project\view.html.py:49
+#: templates/project/view.html:50
 msgid "delete issue"
 msgstr "删除问答"
 
-#: .\templates\repos\browse.html.py:42 .\templates\repos\view_diff.html.py:42
-#: .\templates\repos\view_logs.html.py:60
+#: templates/repos/browse.html:39 templates/repos/view_diff.html:42
+#: templates/repos/view_file.html:27 templates/repos/view_logs.html:60
 msgid "want more"
 msgstr "权限:read-only(如需更高权限请先加入项目)"
 
-#: .\templates\repos\browse.html.py:57 .\templates\repos\view_diff.html.py:57
-#: .\templates\repos\view_logs.html.py:75
-msgid "want join"
-msgstr "申请加入"
-
-#: .\templates\repos\browse.html.py:70
+#: templates/repos/browse.html:56
 msgid "View all versions"
 msgstr "查看所有的版本号"
 
-#: .\templates\repos\browse.html.py:76
+#: templates/repos/browse.html:62
 msgid "Path"
 msgstr "路径"
 
-#: .\templates\repos\browse.html.py:77
+#: templates/repos/browse.html:63
 msgid "Last Changed"
 msgstr "最后更新时间"
 
-#: .\templates\repos\browse.html.py:78
+#: templates/repos/browse.html:64
 msgid "Size"
 msgstr "大小"
 
-#: .\templates\repos\browse.html.py:79 .\templates\repos\logs.html.py:15
+#: templates/repos/browse.html:65 templates/repos/logs.html:15
 msgid "Author"
 msgstr "作者"
 
-#: .\templates\repos\browse.html.py:80 .\templates\repos\logs.html.py:13
-#: .\templates\repos\view_log.html.py:23
-#: .\templates\repos\view_logs.html.py:92
+#: templates/repos/browse.html:66 templates/repos/logs.html:13
+#: templates/repos/view_log.html:32 templates/repos/view_logs.html:92
 msgid "Revision"
 msgstr "版本号"
 
-#: .\templates\repos\browse.html.py:111
-msgid "readme1"
-msgstr ""
-"我们希望高质量的开源项目能在taocode上成长，并得到社区的帮助，但为了减少重复无"
-"意义的开发，如果你有一个好的主意，请先在taocode上找找是不是有类似的项目，参与"
-"到这个项目的开发中（比如提交bug，翻译文档），而不是马上就创建另外的项目。</"
-"br>当然你想创建项目也是可以的，可以通过新建项目，你就拥有自己的项目了。"
-
-#: .\templates\repos\browse.html.py:114
-msgid "readme2"
-msgstr ""
-"首先，我们不再提供申请加入项目的功能，建议的方式:你通过提交path/issue/翻译文"
-"档之类的工作，先熟悉这个项目，再由项目的管理者通过 admin->邀请成员的试邀请你"
-"加入这个项目。"
-
-#: .\templates\repos\logs.html.py:8 .\templates\repos\logs.html.py:33
-#: .\templates\repos\view_logs.html.py:88
+#: templates/repos/logs.html:8 templates/repos/logs.html.py:33
+#: templates/repos/view_logs.html:88
 msgid "View changes"
 msgstr "查看更改"
 
-#: .\templates\repos\logs.html.py:14 .\templates\repos\view_logs.html.py:93
+#: templates/repos/logs.html:14 templates/repos/view_logs.html:93
 msgid "Message"
 msgstr "消息"
 
-#: .\templates\repos\logs.html.py:16 .\templates\repos\view_logs.html.py:95
+#: templates/repos/logs.html:16 templates/repos/view_logs.html:95
 msgid "Date"
 msgstr "日期"
 
-#: .\templates\repos\view_file.html.py:30
+#: templates/repos/view_diff.html:57 templates/repos/view_logs.html:75
+msgid "want join"
+msgstr "申请加入"
+
+#: templates/repos/view_file.html:46
 msgid "History"
 msgstr " 历史"
 
-#: .\templates\repos\view_file.html.py:36
+#: templates/repos/view_file.html:52
 msgid "Download"
 msgstr " 下载"
 
-#: .\templates\repos\view_log.html.py:24
+#: templates/repos/view_log.html:33
 msgid "Added by"
 msgstr "创建者"
 
-#: .\templates\repos\view_logs.html.py:94 .\templates\wiki\list.html.py:16
+#: templates/repos/view_logs.html:94 templates/wiki/list.html:16
 msgid "author"
 msgstr "作者"
 
-#: .\templates\user\change_password.html.py:41
+#: templates/user/change_password.html:41
 msgid "old password"
 msgstr "旧密码"
 
-#: .\templates\user\change_password.html.py:47
+#: templates/user/change_password.html:47
 msgid "new password"
 msgstr "新密码"
 
-#: .\templates\user\change_password.html.py:53
+#: templates/user/change_password.html:53
 msgid "new password again"
 msgstr "密码确认"
 
-#: .\templates\user\change_password.html.py:58
+#: templates/user/change_password.html:58
 msgid "change"
 msgstr "更改"
 
-#: .\templates\user\change_password_done.html.py:7
+#: templates/user/change_password_done.html:7
 msgid "change password done!"
 msgstr "用户修改密码成功！"
 
-#: .\templates\user\edit_my.html.py:104
+#: templates/user/edit_my.html:104
 msgid "username"
 msgstr "用户名"
 
-#: .\templates\user\edit_my.html.py:110
+#: templates/user/edit_my.html:110
 msgid "regmail"
 msgstr "注册邮箱"
 
-#: .\templates\user\edit_my.html.py:116 .\templates\user\edit_my.html.py:125
+#: templates/user/edit_my.html:116 templates/user/edit_my.html.py:125
 msgid "signature"
 msgstr "个性签名"
 
-#: .\templates\user\edit_my.html.py:131
+#: templates/user/edit_my.html:131
 msgid "edit my gravatar"
 msgstr "通过gravatar修改我的头像"
 
-#: .\templates\user\edit_my.html.py:133
+#: templates/user/edit_my.html:133
 msgid "gravatar"
 msgstr "头像"
 
-#: .\templates\user\edit_my.html.py:137
+#: templates/user/edit_my.html:137
 msgid "Change your avatar at"
 msgstr "修改你的头像"
 
-#: .\templates\user\edit_my.html.py:146 .\templates\wiki\edit.html.py:36
+#: templates/user/edit_my.html:146 templates/wiki/edit.html:36
 msgid "Save"
 msgstr "保存"
 
-#: .\templates\user\login.html.py:47
+#: templates/user/login.html:47
 msgid "Forgot password"
 msgstr "忘记密码"
 
-#: .\templates\user\password_reset_check.html.py:11
+#: templates/user/password_reset_check.html:11
 msgid "We send a verify mail to"
 msgstr "已发送密码验证邮件到你的邮箱："
 
-#: .\templates\user\password_reset_check.html.py:14
+#: templates/user/password_reset_check.html:14
 msgid "You need check this mail for found you password!"
 msgstr "你可以通过这封邮件找到密码"
 
-#: .\templates\user\password_reset_done.html.py:6
+#: templates/user/password_reset_done.html:6
 msgid "your password is reset now!"
 msgstr "你的密码已经重置了"
 
-#: .\templates\user\password_reset_done.html.py:8
+#: templates/user/password_reset_done.html:8
 msgid "please"
 msgstr "请"
 
-#: .\templates\user\password_reset_form.html.py:10
-#: .\templates\user\register.html.py:39
+#: templates/user/password_reset_form.html:10 templates/user/register.html:33
 msgid "r_email"
 msgstr "电邮地址"
 
-#: .\templates\user\register.html.py:33
+#: templates/user/register.html:32
 msgid "r_username"
 msgstr "用户名"
 
-#: .\templates\user\register.html.py:34
+#: templates/user/register.html:34
 msgid "r_title"
 msgstr "个性标签"
 
-#: .\templates\user\register.html.py:35
+#: templates/user/register.html:35
 msgid "r_phone"
 msgstr "联系方式"
 
-#: .\templates\user\register.html.py:38
+#: templates/user/register.html:38
 msgid "r_password_0"
 msgstr "密码"
 
-#: .\templates\user\register.html.py:42
+#: templates/user/register.html:39
 msgid "r_password_1"
 msgstr "确认密码"
 
-#: .\templates\user\register.html.py:43
+#: templates/user/register.html:42
 msgid "r_accept"
 msgstr "接受协议"
 
-#: .\templates\user\register.html.py:53
+#: templates/user/register.html:52
 msgid "already hava account"
 msgstr "已有账号，登录"
 
-#: .\templates\user\view.html.py:68
+#: templates/user/view.html:74
 msgid "Are you sure exit"
 msgstr "你确定退出项目"
 
-#: .\templates\user\view.html.py:77
+#: templates/user/view.html:83
 msgid "Are you sure reject "
 msgstr "你确定拒绝项目"
 
-#: .\templates\user\view.html.py:87
+#: templates/user/view.html:93
 msgid "Are you sure delete "
 msgstr "你确定删除项目"
 
-#: .\templates\wiki\changes.html.py:17 .\templates\wiki\view_change.html.py:24
+#: templates/wiki/changes.html:17 templates/wiki/view_change.html:24
 msgid "Changes:"
 msgstr "修正记录:"
 
-#: .\templates\wiki\changes.html.py:22 .\templates\wiki\list.html.py:17
+#: templates/wiki/changes.html:22 templates/wiki/list.html:17
 msgid "last author"
 msgstr "最后修改者"
 
-#: .\templates\wiki\changes.html.py:23 .\templates\wiki\list.html.py:19
+#: templates/wiki/changes.html:23 templates/wiki/list.html:19
 msgid "modify time"
 msgstr "修改时间"
 
-#: .\templates\wiki\changes.html.py:31
+#: templates/wiki/changes.html:31
 msgid "raw"
 msgstr "原始文本"
 
-#: .\templates\wiki\changes.html.py:32
+#: templates/wiki/changes.html:32
 msgid "diff"
 msgstr "对比"
 
-#: .\templates\wiki\edit.html.py:29
+#: templates/wiki/edit.html:29
 msgid "See Wiki Formats"
 msgstr "请参见文档格式"
 
-#: .\templates\wiki\edit.html.py:37
+#: templates/wiki/edit.html:37
 msgid "Preview"
 msgstr "预览"
 
-#: .\templates\wiki\list.html.py:15
+#: templates/wiki/list.html:15
 msgid "page name"
 msgstr "页面名字"
 
-#: .\templates\wiki\list.html.py:18
+#: templates/wiki/list.html:18
 msgid "create time"
 msgstr "创建时间"
 
-#: .\templates\wiki\view.html.py:12
+#: templates/wiki/view.html:12
 msgid "Are you sure delete this page?"
 msgstr "你确定删除这个页面?"
 
-#: .\templates\wiki\view.html.py:36
+#: templates/wiki/view.html:36
 msgid "Are you sure delete this file?"
 msgstr "你确定删除这个文件?"
 
-#: .\templates\wiki\view.html.py:40
+#: templates/wiki/view.html:40
 msgid "can not remove this file!"
 msgstr "不能删除这个文件!"
 
-#: .\templates\wiki\view.html.py:54
+#: templates/wiki/view.html:54
 msgid "Creater"
 msgstr "创建者"
 
-#: .\templates\wiki\view.html.py:55
+#: templates/wiki/view.html:55
 msgid "CreateTime:"
 msgstr "创建时间："
 
-#: .\templates\wiki\view.html.py:65
+#: templates/wiki/view.html:65
 msgid "Wiki index"
 msgstr "文档首页"
 
-#: .\templates\wiki\view.html.py:66 .\templates\wiki\view.html.py:126
+#: templates/wiki/view.html:66 templates/wiki/view.html.py:126
 msgid "All wiki pages"
 msgstr "所有文档页面 "
 
-#: .\templates\wiki\view.html.py:67
+#: templates/wiki/view.html:67
 msgid "Raw text"
 msgstr "查看源文件"
 
-#: .\templates\wiki\view.html.py:68
+#: templates/wiki/view.html:68
 msgid "changes"
 msgstr "查看修改记录"
 
-#: .\templates\wiki\view.html.py:69
+#: templates/wiki/view.html:69
 msgid "edit"
 msgstr "编辑此页"
 
-#: .\templates\wiki\view.html.py:82
+#: templates/wiki/view.html:82
 msgid "Add attachment"
 msgstr "添加附件"
 
-#: .\templates\wiki\view.html.py:94
+#: templates/wiki/view.html:94
 msgid "Append file"
 msgstr "添加文件"
 
-#: .\templates\wiki\view.html.py:103
+#: templates/wiki/view.html:103
 msgid "submit"
 msgstr "提交"
 
-#: .\templates\wiki\view.html.py:115
+#: templates/wiki/view.html:115
 msgid "Not found page"
 msgstr "找不到文档页"
 
-#: .\templates\wiki\view.html.py:124
+#: templates/wiki/view.html:124
 msgid "Create Page"
 msgstr "新增页面"
 
-#: .\templatetags\short_uri.py:139
+#: templatetags/short_uri.py:139
 msgid "just"
 msgstr " 刚刚"
 
-#: .\templatetags\short_uri.py:141
+#: templatetags/short_uri.py:141
 msgid "minuts_ago"
 msgstr " 分钟前"
 
-#: .\templatetags\short_uri.py:143
+#: templatetags/short_uri.py:143
 msgid "hours_ago"
 msgstr " 小时前"
 
-#: .\templatetags\short_uri.py:145
+#: templatetags/short_uri.py:145
 msgid "days_ago"
 msgstr " 天前"
 
-#: .\templatetags\short_uri.py:147
+#: templatetags/short_uri.py:147
 msgid "month_ago"
 msgstr " 月前"
 
-#: .\templatetags\short_uri.py:149
+#: templatetags/short_uri.py:149
 msgid "years_ago"
 msgstr " 年前"
+
+#~ msgid "min_length"
+#~ msgstr "最小字符验证啊啊啊"
+
+#~ msgid "HTML parsing error: %(message)s"
+#~ msgstr "HTML 解析错误：%(message)s"
+
+#~ msgid "aliprojects"
+#~ msgstr "阿里开源"
+
+#~ msgid "readme1"
+#~ msgstr ""
+#~ "我们希望高质量的开源项目能在taocode上成长，并得到社区的帮助，但为了减少重"
+#~ "复无意义的开发，如果你有一个好的主意，请先在taocode上找找是不是有类似的项"
+#~ "目，参与到这个项目的开发中（比如提交bug，翻译文档），而不是马上就创建另外"
+#~ "的项目。</br>当然你想创建项目也是可以的，可以通过新建项目，你就拥有自己的"
+#~ "项目了。"
+
+#~ msgid "readme2"
+#~ msgstr ""
+#~ "首先，我们不再提供申请加入项目的功能，建议的方式:你通过提交path/issue/翻译"
+#~ "文档之类的工作，先熟悉这个项目，再由项目的管理者通过 admin->邀请成员的试邀"
+#~ "请你加入这个项目。"
 
 #~ msgid "my_user"
 #~ msgstr "用户"

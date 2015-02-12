@@ -303,8 +303,9 @@ def new_project(request):
         return send_response(request, 'project/new.html')
 
     cd = form.cleaned_data
+    
+    #svn.rinit_repos(cd['name'])
     project = form.save(commit=False)
-    svn.rinit_repos(project.name)
 
     project.owner = request.user
     project.status = consts.PROJECT_ENABLE

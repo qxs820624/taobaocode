@@ -21,17 +21,9 @@ admin.autodiscover()
 
 
 u = ['',
-     ('^tbsts197324129\.txt', 'apps.main.views.tbsts'),
      #('^$', 'apps.main.views.index'),
      ('^$', 'apps.user.views.fast_register'),
-     ##
-     ('^opensources/$', 'apps.main.views.opensources_list'),
-     ('^opensources/(?P<pagenum>\d+)/(?P<key>.*)/$',  'apps.main.views.opensources_list'),
-     ('^opensources/(?P<pagenum>\d+)/$',  'apps.main.views.opensources_list'),
-     
-     ('^opensources/(?P<key>.*)/$',  'apps.main.views.opensources_list'),
-     
-     
+
      (r'^project/recently/$', 'apps.project.views.recently'),
      (r'^project/explore/$',  'apps.project.views.explore'),
      (r'^project/lang/$',  'apps.project.views.lang_view'),
@@ -40,11 +32,8 @@ u = ['',
      (r'^project/view/(?P<pid>\d+)/$', 'apps.project.views.view_old'),
      (r'^project/(?P<pid>\d+)/viewSvn/$', 'apps.project.views.view_old_src'),
 
-     (r'^trac/(?P<name>[\w]+)/wiki/(?P<path>.*)', 'apps.project.views.view_old_wiki'),
-     
-     (r'^rsvn/(?P<name>[\w]+)/add/', 'apps.repos.views.rsvn_add'),
-     (r'^rsvn/(?P<name>[\w]+)/del/(?P<del_name>.*)', 'apps.repos.views.rsvn_del'),
-     (ADMIN_PATH, include(admin.site.urls)),
+     (r'^trac/(?P<name>[\.\s\-\w]+)/wiki/(?P<path>.*)', 'apps.project.views.view_old_wiki'),
+
      ('^about/$', 'apps.main.views.show_page', {'name':'about.html','pagename':'About Taocode'},),
      ('^aboutus/$', 'apps.main.views.show_page', {'name':'aboutus.html','pagename':'About Us'},),
      ('^about/privacy/$', 'apps.main.views.show_page', {'name':'privacy.html','pagename':'Privacy'}),
@@ -52,7 +41,7 @@ u = ['',
      ('^license.html$', 'apps.main.views.show_page', {'name':'license.html','pagename':'License'}),
 
      # static file
-	 #
+     #
      ('^css/(?P<path>.*)$', 'django.views.static.serve', {'document_root' : os.path.join(MEDIA_ROOT,'css')}),
      ('^js/(?P<path>.*)$',  'django.views.static.serve', {'document_root' : os.path.join(MEDIA_ROOT,'js')}),
      ('^img/(?P<path>.*)$', 'django.views.static.serve', {'document_root' : os.path.join(MEDIA_ROOT,'img')}),
@@ -135,17 +124,10 @@ u = ['',
      (r'^p/(?P<name>[\.\s\-\w]+)/',   include('prj_urls')),  
      ('^wiki_formarts/$', 'apps.wiki.views.wiki_formarts'),
 
-     #api
-     #
-     (r'^api/', include('api.urls')),         
-     
      #ajax
      #
      (r'^ajax/', include('ajax_urls')),
-
-     #opens
-     (r'^open/', include('apps.open.urls')),
-
+     (ADMIN_PATH, include(admin.site.urls)),
      ]
 
 urlpatterns = patterns(*u)

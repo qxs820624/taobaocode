@@ -25,27 +25,16 @@ from django.core.cache import cache
 from random import randint
 from django.http import *
 
-import urllib2
-import json
-import MySQLdb
-import re
-
 try:
     from taocode2.private_setting import *
 except ImportError:
     pass
 
-from hashlib import md5
-
 __author__ = 'luqi@taobao.com'
 
-ATA='ATA_HOST'
 
 def index(request):
     rc =  request.rc
-
-    
-   
 
     ev = cache.get('index_cache')
 
@@ -211,8 +200,3 @@ def opensources_list(request, pagenum=1,key=None):
     rc.key_text = key_text
 
     return send_response(request,'main/opensources.html')
-
-def tbsts(request):
-    fdata = TBSTS
-    return HttpResponse(fdata)
-

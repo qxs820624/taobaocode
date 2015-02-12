@@ -58,17 +58,11 @@
 		{%else%}
 			<a class="d-m-nav-logo" href="/fastregister/">Taocode</a>
 		{%endif%}
+
 			<ul class="d-m-main-nav">
-				<li class="first-nav"><a href="/opensources" >{%trans "aliprojects"%}</a></li>
-            {%if current_page == "explore" %}
-               <li><a href="/project/explore" >{%trans "projects"%}</a></li>
-            {%else%}
-            	<li><a href="/project/explore" >{%trans "projects"%}</a></li>
-            {%endif%}
-                <!-- <li><a href="/opensources/" target="_blank">淘宝开源</a></li> -->
-                <li><a href="/p/taobaocode/wiki/" target="_blank">帮助</a></li>
-           	</ul>
-			
+                          <li><a href="/project/explore" >{%trans "projects"%}</a></li>
+                          <li><a href="/p/taobaocode/wiki/" target="_blank">{%trans "help"%}</a></li>
+                        </ul>
 			<div class="d-m-search">{% include "layouts/user-nav.html" %}
 			</div>
 		</div>
