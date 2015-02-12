@@ -144,7 +144,7 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 
 try:
-    from dev_settings import *
+    from private_setting import *
 except ImportError:
     pass
 

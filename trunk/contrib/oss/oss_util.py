@@ -100,7 +100,7 @@ class EmptyHandler(logging.Handler):
     def createLock(self):
         self.lock = None 
 
-class Logger():
+class Logger:
     def __init__(self, debug, log_name, log_level, logger):
         self.logger = logging.getLogger(logger)
         if debug:

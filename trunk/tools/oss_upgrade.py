@@ -4,13 +4,13 @@ from taocode2.contrib import oss_store
 from taocode2.models import *
 from taocode2.apps.main.files import get_upload_root
 import time
-import os
+import os,sys
 import binascii
 
 def upgrade_all(test=True):
     files = ProjectAttachment.objects.all()
     for f in files:
-        fname = f.fname
+        fname = f.fname.encode('utf8')
         if fname.startswith('oss://'):
             print 'pass', fname
             continue
@@ -33,9 +33,9 @@ def upgrade_all(test=True):
 
 if __name__ == '__main__':
     if len(sys.argv) >= 2 and sys.argv[1] == 'true':
-        upgrade_all(True)
+        upgrade_all(False)
     else:
         print 'tring runing'
-        upgrade_all(False)
+        upgrade_all(True)
 
 
