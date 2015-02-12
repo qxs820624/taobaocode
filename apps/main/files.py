@@ -52,7 +52,7 @@ def get_file_name(ftype, ftid, fname):
     return fname
 
 def add_file(request, prj, ftype, ftid, f):
-    fname = f.name
+    fname = f.name.encode('utf8')
     if safe_ext(fname) is True:
         return
 
@@ -80,7 +80,7 @@ def get_file(request, name, fid):
     if resp is not None:
         return resp
 
-    fname = item.fname
+    fname = item.fname.encode('utf8')
 
     if safe_ext(item.orig_name) is True:
         return Http404
