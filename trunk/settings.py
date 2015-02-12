@@ -18,11 +18,22 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMIN_PATH = r'^admin/'
-REPOS_ROOT = 'svn_root'
+REPOS_ROOT = '/svn_root/'
 REPOS_URL = 'http://127.0.0.1:8080/svn/'
+REPOS_RSVN_URL = 'http://127.0.0.1:8080/rsvn/'
 REPOS_ADMIN_URL = 'http://127.0.0.1:8080/adminsvn/'
-REPOS_RSVN_URL = 'http://127.0.0.1:8000/rsvn'
-HOOK_LOGS = '/tmp/err_hooks.log'
+
+OSS_ID='test_oss_id'
+OSS_KEY='test_oss_key'
+OSS_NAME='uploads'
+
+def GET_REPOS_ADMIN_URL(name):
+    return REPOS_ADMIN_URL
+
+def GET_RSVN_URL(name):
+    return REPOS_RSVN_URL
+
+ADMINS = ()
 
 MAIL_SENDER = 'code@taobao.org'
 TEAM_NAME = 'Taocode team'
@@ -33,7 +44,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME':'test.db',                              # Or path to database file if using sqlite3.
+        'NAME':'test.db3',                              # Or path to database file if using sqlite3.
     }
 }
 
@@ -58,7 +69,7 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = 'media'
 SITE_ROOT  = ''
 
 
@@ -133,8 +144,7 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 
 try:
-    from private_setting import *
+    from dev_settings import *
 except ImportError:
     pass
 
-TAOBAO_APP_IS_SANDBOX=False

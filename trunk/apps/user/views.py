@@ -87,7 +87,7 @@ def fast_register(request):
     user.status = consts.USER_ENABLE
     user.sex = consts.USER_UNKNOWN
     #user.pic = consts.DEFAULT_PIC
-    user.last_login_ip = request.META['HTTP_X_REAL_IP']
+    user.last_login_ip = request.META.get('HTTP_X_REAL_IP','0.0.0.0')
 
     user.save()
     
@@ -209,7 +209,7 @@ def register(request):
     user.status = consts.USER_ENABLE
     user.sex = consts.USER_UNKNOWN
     #user.pic = consts.DEFAULT_PIC
-    user.last_login_ip = request.META['HTTP_X_REAL_IP']
+    user.last_login_ip = request.META.get('HTTP_X_REAL_IP', '0.0.0.0')
 
     user.save()
     

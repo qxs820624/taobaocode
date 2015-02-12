@@ -66,18 +66,12 @@
 		{%else%}
 			<a class="d-m-nav-logo" href="/fastregister/">Taocode</a>
 		{%endif%}
+
 			<ul class="d-m-main-nav">
-				
-			{%if current_page == "explore" %}
-				<li class="first-nav"><a href="/opensources" >{%trans "aliprojects"%}</a></li>
-               <li><a href="/project/explore" >{%trans "projects"%}</a></li>
-            {%else%}
-            	<li class="first-nav"><a href="/opensources" >{%trans "aliprojects"%}</a></li>
-            	<li><a href="/project/explore" >{%trans "projects"%}</a></li>
-            {%endif%}
-                <li><a href="/p/taobaocode/wiki/" target="_blank">{%trans "help"%}</a></li>
-           	</ul>
-			
+                          <li><a href="/project/explore" >{%trans "projects"%}</a></li>
+                          <li><a href="/p/taobaocode/wiki/" target="_blank">{%trans "help"%}</a></li>
+                        </ul>
+
 			<div class="d-m-search">{% include "layouts/user-nav.html" %}
 			</div>
 		</div>
@@ -111,8 +105,6 @@
 	{% block main-block %}
 	{% endblock %} 
 	
-
-
 	<div class="d-m-footer layout">
 		<div class="d-m-footer-main layout">
 			<dl>
@@ -121,27 +113,12 @@
 					<a href="/aboutus/">{%trans "About Us"%}</a>
 				</dd>
 
-				<dd>
-					<a href="/p/taobaocode/src/">{%trans "Open-source web site"%}</a>
-				</dd>
-			</dl>
-			<dl>
-				<dt>{%trans "help center"%}</dt>
-				<dd>
-					<a href="/p/taobaocode/wiki/SiteHelp/">{%trans "How to create a project"%}</a>
-				</dd>
-				<dd>
-					<a href="/p/taobaocode/wiki/SiteHelp/">{%trans "How to become a project member"%}</a>
-				</dd>
-				<dd>
-					<a href="/p/taobaocode/issues/">{%trans "Issue reponse"%}</a>
-				</dd>
 			</dl>
 			<dl>
 				<dt>{%trans "Contact Us"%}</dt>
 				<dd>
-					<a class="d-m-email" href="mailto:opensource@taobao.com">{%trans "Email"%}</a> <a
-						class="d-m-weibo" href="http://e.weibo.com/taobaoopensource " target="_blank">{%trans "weibo"%}</a> 
+					<a class="d-m-email" href="mailto:opensource@taobao.com">{%trans "Email"%}</a> 
+					<a class="d-m-weibo" href="http://e.weibo.com/taobaoopensource " target="_blank">{%trans "weibo"%}</a> 
 				</dd>
 			</dl>
 		</div>

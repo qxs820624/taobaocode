@@ -13,18 +13,18 @@
 
 from django.contrib.auth.decorators import login_required
 from django.http import *
-from django.views.static import serve
 
+from taocode2 import settings
 from taocode2.helper.utils import *
 from taocode2.helper import consts
 from taocode2.models import *
 from taocode2.apps.project.admin import can_access, can_write
-from taocode2 import settings
+from taocode2.contrib import oss_store
 
-import urllib
 
-import datetime, time, re, os
+import time, re, os
 import binascii
+import urllib
 
 __author__ = 'luqi@taobao.com'
 
@@ -35,7 +35,6 @@ def safe_ext(f):
 
     return ext in ('.exe', '.com', '.bat', '.htm', '.js', '.html', '.php', '.swf')
 
-
 def get_upload_root():
     if settings.UPLOAD_DIR[0] == '/':
         d = settings.UPLOAD_DIR
@@ -43,43 +42,36 @@ def get_upload_root():
         d = os.path.join(os.getcwd(), settings.UPLOAD_DIR)
     return d
 
-def get_file_name(ftype, ftid, f):
-    d = os.path.join(get_upload_root(), 
-                     str(datetime.date.today()))
-    
-    if os.path.exists(d) is False:
-        try:
-            os.makedirs(d)
-        except:
-            pass
+def get_file_name(ftype, ftid, fname):
+    f = binascii.hexlify(os.urandom(12))
+    dir_name = time.strftime('%Y-%m')
+    now_time = str(time.time()).replace('.','_')
+    ext = os.path.splitext(fname)[1].lower()
+    fname = '%s/%s_%s_%s_%s%s'%(dir_name, now_time, ftype, ftid, f, ext)
 
-    f = binascii.hexlify(os.urandom(24))#safe_re.sub('_',f) # safe filename
-    return os.path.join(d,str(time.time()).replace('.','_') + '_%s_%s_%s'%(ftype, ftid, f))
+    return fname
 
 def add_file(request, prj, ftype, ftid, f):
-    fname = f.name.encode('utf8')
-
+    fname = f.name
     if safe_ext(fname) is True:
         return
 
-    fname = get_file_name(ftype, ftid, fname)
-        
-    open(fname, 'wb').write(f.read())
-    
+    oss_fname = get_file_name(ftype, ftid, fname)
+    oss_store.add_file(oss_fname, f.read())
+
     att = ProjectAttachment()
     att.project = prj
     att.ftype = ftype
     att.ftid = ftid
     att.owner = request.user
     att.status = consts.FILE_ENABLE
-    att.fname = os.path.relpath(fname, get_upload_root())
-    att.orig_name = os.path.split(f.name)[1]
+    att.fname = 'oss://'+oss_fname
+    att.orig_name = os.path.split(fname)[1]
     att.size = f.tell()
     att.save()
     
 def get_file(request, name, fid):
     item = q_get(ProjectAttachment, id=int(fid))
-
 
     if item is None or item.status != consts.FILE_ENABLE:
         raise Http404
@@ -88,15 +80,21 @@ def get_file(request, name, fid):
     if resp is not None:
         return resp
 
-    fname = item.fname.encode('utf8')
+    fname = item.fname
 
     if safe_ext(item.orig_name) is True:
         return Http404
+    fdata = None
+    if item.fname.startswith('oss://'):
+        ores = oss_store.get_file(item.fname[len('oss://'):])
+        if ores.status != 200:
+            return HttpResponse(status=ores.status)
+        fdata = ores.read()
+    else:
+        fdata = file(os.path.join(get_upload_root(), fname),'rb').read()
 
-    fdata = file(os.path.join(get_upload_root(), fname),'rb').read()
     resp = HttpResponse(fdata, content_type="application/oct-stream")
-    oname = os.path.split(item.orig_name)[1].encode('utf8')
-    resp['Content-Disposition'] = 'attachment; filename="%s"'%oname
+    resp['Content-Disposition'] = 'attachment; filename="%s"'%(urllib.quote(item.orig_name.encode('utf8')),)
     
     resp['X-Content-Type-Options'] = 'nosniff'
     resp['X-XSS-Protection'] = '1; mode=block'
