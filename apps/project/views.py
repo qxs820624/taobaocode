@@ -304,7 +304,7 @@ def new_project(request):
 
     cd = form.cleaned_data
     
-    #svn.rinit_repos(cd['name'])
+    svn.rinit_repos(cd['name'])
     project = form.save(commit=False)
 
     project.owner = request.user

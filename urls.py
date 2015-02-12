@@ -127,6 +127,11 @@ u = ['',
      #ajax
      #
      (r'^ajax/', include('ajax_urls')),
+
+     #for internal access only
+     (r'^rsvn/(?P<name>[\.\s\-\w]+)/new/', 'apps.repos.views.rsvn_add'),
+     (r'^rsvn/(?P<name>[\.\s\-\w]+)/del/', 'apps.repos.views.rsvn_del'),
+
      (ADMIN_PATH, include(admin.site.urls)),
      ]
 

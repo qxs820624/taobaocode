@@ -22,8 +22,14 @@ def upgrade_all(test=True):
         oname = '%s-%s/%s_%s%s'%(f.ctime.year, 
                                  f.ctime.month, tstr, ranname, ext)
         new_name = 'oss://'+oname
-        fdata = file(os.path.join(get_upload_root(), fname),'rb').read()
-
+        local_fname = os.path.join(get_upload_root(), fname)
+        fdata = None
+        try:
+            fdata = file(local_fname,'rb').read()
+        except IOError,e:
+            if e.errno == 2:
+                print 'not exist',local_fname
+                continue
         if test is False:
             oss_store.add_file(oname, fdata)
             f.fname = new_name

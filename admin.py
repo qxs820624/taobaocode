@@ -55,10 +55,10 @@ class IssueAdmin(admin.ModelAdmin):
 
 class ProjectAttachmentAdmin(admin.ModelAdmin):
     search_fields = ('project__name', 'orig_name')
-    list_display = ('ftype', 'orig_name', 'status', 'size', 'ctime')
+    list_display = ('ftype', 'fname', 'orig_name', 'status', 'size', 'ctime')
     ordering = ('ctime',)
     list_filter = ('ctime', 'status')
-
+    exclude = ('project', 'owner')
 
 class IssueCommentAdmin(admin.ModelAdmin):
     search_fields = ('issue__title', 'owner__name')
