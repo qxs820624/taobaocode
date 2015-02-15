@@ -23,9 +23,13 @@ REPOS_URL = 'http://127.0.0.1:8080/svn/'
 REPOS_RSVN_URL = 'http://127.0.0.1:8080/rsvn/'
 REPOS_ADMIN_URL = 'http://127.0.0.1:8080/adminsvn/'
 
-OSS_ID='test_oss_id'
-OSS_KEY='test_oss_key'
-OSS_NAME='uploads'
+OSS_ID = 'test_oss_id'
+OSS_KEY = 'test_oss_key'
+OSS_NAME = 'uploads'
+
+OCS_HOST = 'ocs_host'
+OCS_USER = 'ocs_user'
+OCS_PASSWORD = 'ocs_password'
 
 def GET_REPOS_ADMIN_URL(name):
     return REPOS_ADMIN_URL
