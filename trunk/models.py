@@ -115,6 +115,18 @@ class Message(models.Model):
                 str(self.send_time), str(self.read_time))
 
 
+prj_status_consts = [(consts.PROJECT_DISABLE, 'Disable'),
+                     (consts.PROJECT_ENABLE, 'Enable'),
+                     (consts.PROJECT_MARK_DELETED, 'Mark Deleted'),
+                     (consts.PROJECT_TRUE_DELETED, 'True Deleted')]
+
+class ReposPart(models.Model):
+    prefix = models.CharField(max_length=128)
+    can_new = models.BooleanField(db_index=True)
+    count = models.IntegerField(db_index=True)
+    ctime = models.DateTimeField(auto_now_add=True)
+    mtime = models.DateTimeField(auto_now=True)
+
 class Project(models.Model):
     owner = models.ForeignKey(User)
 
@@ -123,18 +135,16 @@ class Project(models.Model):
     tags = models.TextField(null=True, blank=True)
 
     status = models.SmallIntegerField(db_index=True,
-                                      choices = [(consts.PROJECT_DISABLE, 'Disable'),
-                                                 (consts.PROJECT_ENABLE, 'Enable'),
-                                                 (consts.PROJECT_MARK_DELETED, 'Mark Deleted'),
-                                                 (consts.PROJECT_TRUE_DELETED, 'True Deleted')])
+                                      choices = prj_status_consts)
     ctime = models.DateTimeField(auto_now_add=True)
 
-    license = models.CharField(max_length=255, null=True,blank=True)
+    license = models.CharField(max_length=255, null=True, blank=True)
     is_public = models.BooleanField()
     language = models.CharField(max_length=40, null=True)
     
-    click=models.BigIntegerField(default=0)
-    
+    click = models.BigIntegerField(default=0)
+    part = models.ForeignKey(ReposPart, null=True)
+
     def __unicode__(self):
         return self.name
 
