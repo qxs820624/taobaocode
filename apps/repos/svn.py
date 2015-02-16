@@ -35,9 +35,10 @@ def _rsvn_op(part, name, action):
         if repos_path is None:
             reason = 'Unknown repos_path part:%s name:%s action:%s'%(part, name, action)
             return False, reason
-    
-        repos_path = os.path.join(repos_path, '%s/%s'%(action, name))
-            
+        if repos_path[-1] != '/':
+            repos_path += '/'
+        
+        repos_path = repos_path + 'svnd/%s/%s'%(name, action)
         urllib2.urlopen(repos_path).read()
     except:
         reason = ''.join(traceback.format_exc())
@@ -46,7 +47,13 @@ def _rsvn_op(part, name, action):
     return True, None
     
 def rinit_repos(part, name):
-    return _rsvn_op(part, name, 'new')
+    result, reason = _rsvn_op(part, name, 'new')
+
+    if result is True:
+        trunk_path = REPOS(part, name, '/trunk')
+        exec_cmd(['svn', 'mkdir', '--no-auth-cache', '--non-interactive',
+                  trunk_path, '-m', 'init '+name])
+    return result, reason
 
 def rdel_repos(part, name):
     return _rsvn_op(part, name, 'del')
@@ -60,7 +67,9 @@ def safe_path(path):
 def REPOS(part, name, path = ''):
     name = name.decode('utf8')
     repos_path = _get_repos_path(part, name)
-    return os.path.join(repos_path, '%s%s'%(name, path))
+    if repos_path[-1] != '/':
+        repos_path += '/'
+    return repos_path + 'svn/%s%s'%(name, path)
 
 def LIST(url):
     code, out ,err = exec_cmd(['svn', 'list','--xml', '--incremental', 

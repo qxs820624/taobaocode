@@ -54,7 +54,7 @@ def init_local_repos(admin, path):
     r, out, err = exec_cmd([admin, 'create', path])
     if r != 0:
         raise Exception(err)
-
+    
 def del_local_repos(prj_path):
     timetag = time.strftime('%Y-%m-%d-%H-%M-%S',
                             time.localtime(time.time()))
@@ -64,13 +64,13 @@ def del_local_repos(prj_path):
 def do_svnd(env):
     uri = env['PATH_INFO']
     args = [u for u in uri.split('/') if len(u) > 0]
-    #svnd, hello, new
+    #hello, new
     
-    if len(args) != 3 or args[0] != 'svnd':
+    if len(args) != 2:
         raise Exception('Invalid PATH_INFO:%s'%(uri, ))
 
-    action = args[2].lower()
-    prj_name = os.path.normpath(args[1])
+    action = args[1].lower()
+    prj_name = os.path.normpath(args[0])
     repos_path = env.get('REPOS_PATH', '/tmp/repos')
 
     if os.path.exists(repos_path) is False:

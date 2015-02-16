@@ -305,8 +305,6 @@ def new_project(request):
     cd = form.cleaned_data
 
     prj_name = cd['name']
-    #get part_id 
-    part_id = None
 
     parts = ReposPart.objects.filter(can_new=True).order_by('-count')
     if len(parts) <= 0:
@@ -331,7 +329,12 @@ def new_project(request):
     project.is_public=bool(is_public)
     #project.license=license
     project.language=language
+    project.part = part
     project.save()
+
+    part.count += 1
+    part.save()
+
     activity.new_prj(project, request.user)
     
     return redirect(reverse('apps.project.views.view_project', args=[project.name]))

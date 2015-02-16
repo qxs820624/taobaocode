@@ -14,7 +14,7 @@ class ProjectAdmin(admin.ModelAdmin):
     list_display = ('name', 'is_public', 'title', 'status', 'owner', 'ctime')
     ordering = ('ctime',)
     list_filter = ('is_public', 'status', 'ctime', 'license')
-    fields = ('name', 'title', 'status', 'license', 'is_public', 'language', 'click')
+    fields = ('name', 'title', 'status', 'license', 'is_public', 'language', 'click', 'part')
     
 class AliProjectAdmin(admin.ModelAdmin):
     search_fields = ('subject', 'project_owner')

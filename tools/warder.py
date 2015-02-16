@@ -83,13 +83,13 @@ def get_part_meta(part_id):
 
     with _lock:
         part_meta = _parts.get(part_id, None)
-        if part is not None:
+        if part_meta is not None:
             return part_meta
         
         part = q_get(ReposPart, pk=part_id)
         if part is None:
             return
-        part_meta = (part.id, part.enable, part.prefix)
+        part_meta = (part.id, part.can_new, part.prefix)
         _parts[part.id] = part_meta
         return part_meta
         
@@ -104,14 +104,20 @@ def build_repos_path(part_id, name):
             return None
         repos_path = part_meta[2]
 
-    return os.path.join(repos_path, name)
+    if repos_path[-1] != '/':
+        repos_path += '/'
+
+    return repos_path + 'svn/' + name
 
 def check_auth_v0(request):
     uri = request.META.get('HTTP_X_ORIGINAL_URI')
     uri = uri[5:] #/svn/
     name = uri.split('/', 1)[0]
-    
-    resp =  check_auth(request, name, uri)
+    try:
+        resp =  check_auth(request, name, uri)
+    except:
+        traceback.print_exc()
+        raise
     return resp
     
 def check_auth(request, name, uri):
