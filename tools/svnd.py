@@ -15,8 +15,8 @@
 #
 # .query string:
 #
-# /{SVN_PART}/svnd/[new|delete]/{PRJ_NAME}
-# /{SVN_PART}/repos/{PRJ_NAME}/
+# /svnd/{PRJ_NAME}/(new|del)
+# /svn/{PRJ_NAME}/
 # 
 
 import os
@@ -64,14 +64,13 @@ def del_local_repos(prj_path):
 def do_svnd(env):
     uri = env['PATH_INFO']
     args = [u for u in uri.split('/') if len(u) > 0]
-    #svn_part, svnd, new, hello, 
+    #svnd, hello, new
     
-    if len(args) != 4 or args[1] != 'svnd':
-        print args
+    if len(args) != 3 or args[0] != 'svnd':
         raise Exception('Invalid PATH_INFO:%s'%(uri, ))
 
     action = args[2].lower()
-    prj_name = os.path.normpath(args[3])
+    prj_name = os.path.normpath(args[1])
     repos_path = env.get('REPOS_PATH', '/tmp/repos')
 
     if os.path.exists(repos_path) is False:
@@ -105,9 +104,9 @@ def application(environ, start_response):
 
     return [output]
 
-if __name__ == '__main__':
-    from wsgiref.simple_server import make_server
-    httpd = make_server('', 8000, application)
-    print "Serving on port 8000..."
-    httpd.serve_forever()
+#if __name__ == '__main__':
+#    from wsgiref.simple_server import make_server
+#    httpd = make_server('', 8000, application)
+#    print "Serving on port 8000..."
+#    httpd.serve_forever()
 
