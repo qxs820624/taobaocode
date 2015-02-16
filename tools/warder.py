@@ -1,5 +1,6 @@
 import os
 import cache_client
+import traceback
 
 from django.http import *
 from django.contrib.auth import authenticate
@@ -12,16 +13,11 @@ from taocode2.models import *
 from taocode2.helper.utils import *
 from taocode2.helper import consts
 
-
-_cacheMan = cache_client.ConnMan(setttings.OCS_HOST,
-                                 settiings.OCS_USER,
-                                 settiings.OCS_PASSWORD)
+_cacheMan = cache_client.ConnMan(settings.OCS_HOST,
+                                 settings.OCS_USER,
+                                 settings.OCS_PASSWORD)
 _lock = Lock()
 _parts = {}
-
-def strip_uri(uri):
-    u = [u for u in uri.split('/') if len(u) > 0]
-    return u
 
 def get_prj_meta(cli, name):
     key_prj = 'prj-' + name
@@ -79,7 +75,7 @@ def get_pm_meta(cli, prj_id, user_id):
 def is_write_method(request):
     mtd = request.method
 
-    if mtd not in ('GET','PROPFIND','OPTIONS','REPORT'):
+    if mtd  in ('GET','PROPFIND','OPTIONS','REPORT'):
         return False
     return True
 
@@ -111,11 +107,14 @@ def build_repos_path(part_id, name):
     return os.path.join(repos_path, name)
 
 def check_auth_v0(request):
-    uri = strip_uri(request.META.get('HTTP_X_ORIGINAL_URI'))
-    name = uri.split('/')[1]
-    return check_auth(request, name)
-
-def check_auth(request, name):
+    uri = request.META.get('HTTP_X_ORIGINAL_URI')
+    uri = uri[5:] #/svn/
+    name = uri.split('/', 1)[0]
+    
+    resp =  check_auth(request, name, uri)
+    return resp
+    
+def check_auth(request, name, uri):
     # project cache obj:
     # key: 'prj-' + name
     # tuple value: (id, is_public, owner.id, part_id)
@@ -128,26 +127,25 @@ def check_auth(request, name):
     # key: 'u-'+username+'-p-'+password
     # tuple value: (user_id, status, super)
     #
-
+    
     cli = cache_client.get_client(_cacheMan)
     prj_meta = get_prj_meta(cli, name)
-
     if prj_meta is None:
         return Http404()
 
     resp = HttpResponse()
-    resp['REPOS'] = build_repos_path(prj_meta[3], name)
+    resp['REPOS'] = build_repos_path(prj_meta[3], uri)
     
     is_write = is_write_method(request)
 
     if prj_meta[1] is True and not is_write: # is_public 
-        resp.set_status(200)
+        resp.status_code = 200
         return resp
     
     auth_value = request.META.get('HTTP_AUTHORIZATION', None)
 
     if auth_value is None:
-        resp.set_status(401)
+        resp.status_code = 401
         resp['WWW-Authenticate'] = 'Basic realm="%s"'%(settings.REALM,)
         return resp
 
@@ -156,17 +154,17 @@ def check_auth(request, name):
     user_meta = get_user_meta(cli, name, password)
 
     if user_meta is None:
-        resp.set_status(403)
+        resp.status_code = 403
         return resp
 
     if user_meta[0] == prj_meta[2]: # check is member
-        resp.set_status(200)
+        resp.status_code = 200
         return resp
 
     pm_meta = get_pm_meta(cli, prj_meta[0], user_meta[1])
     if pm_meta is None:
-        resp.set_status(403)
+        resp.status_code = 403
         return resp
         
-    resp.set_status(200)
+    resp.status_code = 200
     return resp

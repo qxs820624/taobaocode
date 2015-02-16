@@ -28,10 +28,6 @@ import shutil
 
 SVN_ADMIN='svnadmin'
 
-def strip_uri(uri):
-    u = [u for u in uri.split('/') if len(u) > 0]
-    return u
-
 def exec_cmd(args, std_in = None):
 
     utf8_args = []
@@ -67,7 +63,7 @@ def del_local_repos(prj_path):
     
 def do_svnd(env):
     uri = env['PATH_INFO']
-    args = strip_uri(uri)
+    args = [u for u in uri.split('/') if len(u) > 0]
     #svn_part, svnd, new, hello, 
     
     if len(args) != 4 or args[1] != 'svnd':
