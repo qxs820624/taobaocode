@@ -31,6 +31,7 @@ OCS_HOST = 'ocs_host'
 OCS_USER = 'ocs_user'
 OCS_PASSWORD = 'ocs_password'
 
+REALM = 'taocode'
 def GET_REPOS_ADMIN_URL(name):
     return REPOS_ADMIN_URL
 
@@ -118,7 +119,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     )
 
-ROOT_URLCONF = 'taocode2.urls'
+ROOT_URLCONF = os.getenv('ROOT_URLCONF', 'taocode2.urls')
 
 TEMPLATE_DIRS = (
     'templates',
