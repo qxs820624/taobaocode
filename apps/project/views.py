@@ -262,7 +262,7 @@ def project_info(request, name,pagenum=1,key=None):
 
     rc.navmenusSource = build_prj_nav_menu(request, project, 'info')
 
-    rc.REPOS = svn.REPOS(name, '/trunk')
+    rc.REPOS = svn.REPOS(project.part, name, '/trunk')
     
     q = Q(project=project)
     
@@ -303,13 +303,31 @@ def new_project(request):
         return send_response(request, 'project/new.html')
 
     cd = form.cleaned_data
-    
-    svn.rinit_repos(cd['name'])
+
+    prj_name = cd['name']
+    #get part_id 
+    part_id = None
+
+    parts = ReposPart.objects.filter(can_new=True).order_by('-count')
+    if len(parts) <= 0:
+        # not available part
+        log_error(request, 'not available parts!')
+        rc.form = form
+        return send_response(request, 'project/new.html')
+
+    part = parts[0]
+
+    result, reason = svn.rinit_repos(part, prj_name)
+    if not result:
+        log_error(request, reason)
+        rc.form = form
+        return send_response(request, 'project/new.html')
+
     project = form.save(commit=False)
 
     project.owner = request.user
     project.status = consts.PROJECT_ENABLE
-    project.name = project.name.lower()
+    project.name = prj_name
     project.is_public=bool(is_public)
     #project.license=license
     project.language=language
@@ -562,22 +580,3 @@ def update_user_info(user):
             lang_set.add(proj.language)
         user.languages = str_splice(lang_set, ",")
     return user
-
-
-
-
-
-
-
-
-
-
-def tool(request):
-    if request.method == "POST":
-        projectname=request.POST.get("p",'')
-        svn.rinit_repos(projectname)
-    return send_response(request, 'tool.html')
-
-
-
-

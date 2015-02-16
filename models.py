@@ -127,6 +127,9 @@ class ReposPart(models.Model):
     ctime = models.DateTimeField(auto_now_add=True)
     mtime = models.DateTimeField(auto_now=True)
 
+    def __unicode__(self):
+        return '%s - can_new(%s) count(%s)'%(self.prefix, self.can_new, self.count)
+
 class Project(models.Model):
     owner = models.ForeignKey(User)
 

@@ -20,8 +20,6 @@ TEMPLATE_DEBUG = DEBUG
 ADMIN_PATH = r'^admin/'
 REPOS_ROOT = '/svn_root/'
 REPOS_URL = 'http://127.0.0.1:8080/svn/'
-REPOS_RSVN_URL = 'http://127.0.0.1:8080/rsvn/'
-REPOS_ADMIN_URL = 'http://127.0.0.1:8080/adminsvn/'
 
 OSS_ID = 'test_oss_id'
 OSS_KEY = 'test_oss_key'
@@ -32,11 +30,10 @@ OCS_USER = 'ocs_user'
 OCS_PASSWORD = 'ocs_password'
 
 REALM = 'taocode'
-def GET_REPOS_ADMIN_URL(name):
-    return REPOS_ADMIN_URL
+LOG_FIFO = '/tmp/taocode.fifo'
 
-def GET_RSVN_URL(name):
-    return REPOS_RSVN_URL
+def GET_REPOS_ADMIN_URL(name):
+    return REPOS_URL
 
 ADMINS = ()
 

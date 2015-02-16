@@ -15,14 +15,18 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response, redirect
 from django.http import HttpResponse
 from taocode2.helper.func import wrap
-import subprocess
+from taocode2 import settings
+
 from datetime import datetime
 from datetime import timedelta
 from string import join
 from django.utils.encoding import smart_unicode
 from decimal import *
+
+import subprocess
 import time
 import string
+import os
 
 try:
     from djangoutils import simplejson as json
@@ -31,6 +35,13 @@ except ImportError:
 
 __author__ = 'luqi@taobao.com'
 
+def log_error(request, reason):
+    try:
+        fd = os.open(settings.LOG_FIFO, os.O_NONBLOCK|os.O_WRONLY)
+        os.write(fd, '----%s------\nrequest:%s\nreason:%s\n'%(time.ctime(), request, reason))
+        os.close(fd)
+    except:
+	pass
 
 def send_json_response(data):
     return HttpResponse(json.dumps(data,cls=ComplexJsonEncoder), mimetype='application/json')
