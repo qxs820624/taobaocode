@@ -19,72 +19,48 @@ import urllib2
 
 import os
 import time
+import traceback
 
 __author__ = 'luqi@taobao.com'
 
-def _rsvn_op(name, action):
-    pname = '%s%s/%s'%(settings.GET_RSVN_URL(name), name, action)
-    urllib2.urlopen(pname).read()
+def _get_repos_path(part, name):
+    if part is None:
+        return settings.GET_REPOS_ADMIN_URL(name)
+    
+    return part.prefix
 
-def rinit_repos(name):
-    name = name.lower()
-    _rsvn_op(name, 'new')
+def _rsvn_op(part, name, action):
+    try:
+        repos_path = _get_repos_path(part, name)
+        if repos_path is None:
+            reason = 'Unknown repos_path part:%s name:%s action:%s'%(part, name, action)
+            return False, reason
+    
+        repos_path = os.path.join(repos_path, '%s/%s'%(action, name))
+            
+        urllib2.urlopen(repos_path).read()
+    except:
+        reason = ''.join(traceback.format_exc())
+        return False, reason
 
-def rdel_repos(name):
-    name = name.lower()
-    _rsvn_op(name, 'del')
+    return True, None
+    
+def rinit_repos(part, name):
+    return _rsvn_op(part, name, 'new')
+
+def rdel_repos(part, name):
+    return _rsvn_op(part, name, 'del')
         
-def init_local_repos(name):
-    if name is None or len(name) <= 0:
-        raise Exception('Project name fall ['+name+']')
-    
-    name = name.lower()
-    repos_path = os.path.join(settings.REPOS_ROOT, name)
-    r, out, err = exec_cmd(['svnadmin', 'create', repos_path])
-
-    if r != 0:
-        raise Exception(err)
-    
-    r, out, err = exec_cmd(['svn', 'mkdir', '--no-auth-cache', '--non-interactive',
-                            ADMIN_REPOS(name, '/trunk/'),
-                            ADMIN_REPOS(name, '/tags/'),
-                            ADMIN_REPOS(name, '/branches/'),
-                            '-m', 'init '+name])
-    if r != 0:
-        raise Exception(err)
-
-
-def del_local_repos(name):
-    if name is None or len(name) <= 0:
-        raise Exception('Project name fall ['+name+']')
-    
-    name = name.lower()
-    timetag = time.strftime('%Y-%m-%d-%H-%M-%S',time.localtime(time.time()))
-    del_name = name + '_D_' + timetag
-
-    repos_path = os.path.join(settings.REPOS_ROOT, name)
-    del_repos_path = os.path.join(settings.REPOS_ROOT, del_name)
-    
-    r, out, err = exec_cmd(['mv', repos_path, del_repos_path])
-    
-    if r != 0:
-        raise Exception(err)
-
-
 def safe_path(path):
     path = path.strip()
     if path != '/':
         return '/' + path
     return '/'
 
-def REPOS(name, path = ''):
+def REPOS(part, name, path = ''):
     name = name.decode('utf8')
-    return settings.REPOS_URL + '/'+ name + path
-
-def ADMIN_REPOS(name, path = ''):
-    name = name.decode('utf8')
-    u = settings.GET_REPOS_ADMIN_URL(name)
-    return u + '/' + name + path
+    repos_path = _get_repos_path(part, name)
+    return os.path.join(repos_path, '%s%s'%(name, path))
 
 def LIST(url):
     code, out ,err = exec_cmd(['svn', 'list','--xml', '--incremental', 

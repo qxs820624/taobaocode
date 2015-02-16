@@ -117,7 +117,7 @@ def check_acl(request, name, path):
         if rc.parent != '/':
             rc.parent += '/'
 
-    r = svn.ADMIN_REPOS(name, path)
+    r = svn.REPOS(project.part, name, path)
     return resp, r, rc
 
 def update_last_log(request, r, project):
@@ -196,11 +196,11 @@ def browse(request, name, path='/'):
         files.append(f)
 
     rc.files = files 
-    rc.REPOS = svn.REPOS(name, '/trunk')
+    rc.REPOS = svn.REPOS(rc.project.part, name, '/trunk')
     if path == '/':
         for v in ['/trunk/README', '/README']:
             try:
-                c = svn.CAT(svn.ADMIN_REPOS(name, v))
+                c = svn.CAT(svn.REPOS(rc.project.part, name, v))
                 if len(c) > 0:
                     rc.README = force_unicode(c)
                     rc.README_FILE = v
@@ -270,14 +270,14 @@ def no_preview_file(fname):
     
 def view_file(request, name, path, r):   
     rc = request.rc
-    ul = svn.REPOS(name, '/' + path)
+    ul = svn.REPOS(rc.project.part, name, '/' + path)
 
     if request.GET.get('orig', None) is not None:
         return redirect(ul)
 
     info = svn.LIST(r)
         
-    rc.REPOS = svn.REPOS(name, '/trunk')
+    rc.REPOS = svn.REPOS(rc.project.part, name, '/trunk')
     rc.mtime = parse_datetime(str(info.entry.commit.date))
     rc.author = get_author(getattr(info.entry.commit, 'author', ''))
     fsize = int(str(getattr(info.entry, 'size', '0')))
@@ -348,7 +348,7 @@ def log(request, name, path='/', rev=None):
         
     e = o.log.logentry
     
-    rc.REPOS = svn.REPOS(name, '/trunk')
+    rc.REPOS = svn.REPOS(rc.project.part, name, '/trunk')
     rc.author = get_author(getattr(e, 'author', ''))
     rc.mtime = parse_datetime(str(e.date))
     rc.msg = unicode(e.msg)
@@ -417,7 +417,7 @@ def diff(request, name, revN, revM=None, path='/'):
     rc.revN = revN
     rc.revM = revM
     
-    rc.REPOS = svn.REPOS(name)
+    rc.REPOS = svn.REPOS(rc.project.part, name)
 
     prj_q = Q(project__status=consts.PROJECT_ENABLE)
 

@@ -338,8 +338,11 @@ def del_prj(request, name):
     project.status = consts.PROJECT_MARK_DELETED
     project.save()
        
-    svn.rdel_repos(old_name)
-    
+    result, reason = svn.rdel_repos(old_name)
+    if not result:
+        # log it
+        log_error(request, reason)
+
     return (True, reverse('apps.user.views.view_user', args=[]))
 
 @login_required

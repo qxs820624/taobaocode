@@ -117,8 +117,6 @@ u = ['',
      ('^watched/$',               'apps.project.views.list_projects', {'pt':'watched'}),
  
      ('^new/$',                   'apps.project.views.new_project'),
-     ('^tool/$',                   'apps.project.views.tool'),
-
      #project url
      #
      (r'^p/(?P<name>[\.\s\-\w]+)/',   include('prj_urls')),  
