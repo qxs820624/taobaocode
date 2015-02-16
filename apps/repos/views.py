@@ -58,7 +58,12 @@ add_type('text/plain', '.conf')
 textchars = ''.join(map(chr, [7, 8, 9, 10, 12, 13, 27] + range(0x20, 0x100)))
 is_binary_string = lambda bytes: bool(bytes.translate(None, textchars))
 
-
+def get_repos_base(request, name):
+    repos_path = request.META.get('HOST', 'code.taobao.org')
+    repos_path += os.path.join(settings.REPOS_ROOT,name)
+    return 'http://' + repos_path + '/'
+    
+    
 def get_ext_class(fname):
     ext = os.path.splitext(fname)[1]
     if ext.startswith('.'):
@@ -162,12 +167,9 @@ def update_last_log(request, r, project):
         rchk.save()
 
 def browse(request, name, path='/'):
-
-    
     resp, r, rc = check_acl(request, name, path)
     if resp is not None:
         return resp
-
     
     if path[-1] != '/':
         return view_file(request, name, path, r)
@@ -196,7 +198,8 @@ def browse(request, name, path='/'):
         files.append(f)
 
     rc.files = files 
-    rc.REPOS = svn.REPOS(rc.project.part, name, '/trunk')
+    rc.REPOS = get_repos_base(request, name)
+
     if path == '/':
         for v in ['/trunk/README', '/README']:
             try:
@@ -270,14 +273,15 @@ def no_preview_file(fname):
     
 def view_file(request, name, path, r):   
     rc = request.rc
-    ul = svn.REPOS(rc.project.part, name, '/' + path)
+    ul = os.path.join(settings.REPOS_ROOT, name + '/' + path)
 
     if request.GET.get('orig', None) is not None:
         return redirect(ul)
 
     info = svn.LIST(r)
         
-    rc.REPOS = svn.REPOS(rc.project.part, name, '/trunk')
+    rc.REPOS = get_repos_base(request, name)
+
     rc.mtime = parse_datetime(str(info.entry.commit.date))
     rc.author = get_author(getattr(info.entry.commit, 'author', ''))
     fsize = int(str(getattr(info.entry, 'size', '0')))
@@ -335,20 +339,11 @@ def log(request, name, path='/', rev=None):
     if resp is not None:
         return resp
 
-    cache_key = 'mar_%s_%s_%s'%(name, path, rev)
-    cache_o   = cache.get(cache_key)
-    if cache_o is None:
-        o = svn.LOG(r, rev, limit= -1)
-        try:
-            cache.set(cache_key, o, 7* 24* 3600)
-        except:
-            pass
-    else:
-        o = cache_o
-        
+    o = svn.LOG(r, rev, limit= -1)
     e = o.log.logentry
     
-    rc.REPOS = svn.REPOS(rc.project.part, name, '/trunk')
+    rc.REPOS = get_repos_base(request, name)
+
     rc.author = get_author(getattr(e, 'author', ''))
     rc.mtime = parse_datetime(str(e.date))
     rc.msg = unicode(e.msg)
@@ -395,30 +390,16 @@ def diff(request, name, revN, revM=None, path='/'):
     if resp is not None:
         return resp
 
-    cache_key = '%s_%s_%s_%s'%(name, path, revN, revM)
-    cache_content = cache.get(cache_key)
-    if cache_content is None:
-        content = svn.DIFF(r, revN, revM)
-    
-        if content is not None and len(content) > 0:
-            rc.content = mark_highlight(content, 'uname.diff', DiffLexer())
-            rc.mimetype = 'diff'
-        else:
-            rc.content = content
-            
-        cache.set(cache_key, rc.content, 7 * 24 * 3600)
-
-    else:
-        rc.content = cache_content
-    
+    content = svn.DIFF(r, revN, revM)
+    rc.content = content
+        
     if  revM==None:
         revM=int(revN)
         revN=revM-1
     rc.revN = revN
     rc.revM = revM
     
-    rc.REPOS = svn.REPOS(rc.project.part, name)
-
+    rc.REPOS = get_repos_base(request, name)
     prj_q = Q(project__status=consts.PROJECT_ENABLE)
 
     current_user = q_get(User, name=request.user, status=consts.USER_ENABLE)
