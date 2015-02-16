@@ -18,8 +18,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMIN_PATH = r'^admin/'
-REPOS_ROOT = '/svn_root/'
-REPOS_URL = 'http://127.0.0.1:8080/svn/'
+REPOS_ROOT = '/svn/'
 
 OSS_ID = 'test_oss_id'
 OSS_KEY = 'test_oss_key'
