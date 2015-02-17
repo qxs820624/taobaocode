@@ -63,6 +63,9 @@ class ClientWrap:
     def get(self, key):
         return self._cli[0].get(key)
 
+    def delete(self, key):
+        return self._cli[0].delete(key)
+
 def get_client(man):
     return ClientWrap(man)
 

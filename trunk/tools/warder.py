@@ -107,7 +107,8 @@ def build_repos_path(part_id, name):
     if repos_path[-1] != '/':
         repos_path += '/'
 
-    return repos_path + 'svn/' + name
+    repos_path += 'svn/'
+    return repos_path + name
 
 def check_auth_v0(request):
     uri = request.META.get('HTTP_X_ORIGINAL_URI')
@@ -163,7 +164,7 @@ def check_auth(request, name, uri):
         resp.status_code = 403
         return resp
 
-    if user_meta[0] == prj_meta[2]: # check is member
+    if user_meta[0] == prj_meta[2] or user_meta[2] is True: # check is member
         resp.status_code = 200
         return resp
 
