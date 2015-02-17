@@ -29,16 +29,16 @@ def _get_repos_path(part, name):
     
     return part.prefix
 
+def build_repos_base(part, name, root):
+    repos_path = _get_repos_path(part, name)
+    if repos_path[-1] != '/':
+        repos_path += '/'
+    return repos_path + root
+
 def _rsvn_op(part, name, action):
     try:
-        repos_path = _get_repos_path(part, name)
-        if repos_path is None:
-            reason = 'Unknown repos_path part:%s name:%s action:%s'%(part, name, action)
-            return False, reason
-        if repos_path[-1] != '/':
-            repos_path += '/'
-        
-        repos_path = repos_path + 'svnd/%s/%s'%(name, action)
+        repos_path = build_repos_base(part, name, 'svnd/')
+        repos_path = repos_path + '%s/%s'%(name, action)
         urllib2.urlopen(repos_path).read()
     except:
         reason = ''.join(traceback.format_exc())
@@ -66,10 +66,8 @@ def safe_path(path):
 
 def REPOS(part, name, path = ''):
     name = name.decode('utf8')
-    repos_path = _get_repos_path(part, name)
-    if repos_path[-1] != '/':
-        repos_path += '/'
-    return repos_path + 'svn/%s%s'%(name, path)
+    repos_path = build_repos_base(part, name, 'svn/')
+    return repos_path + '%s%s'%(name, path)
 
 def LIST(url):
     code, out ,err = exec_cmd(['svn', 'list','--xml', '--incremental', 

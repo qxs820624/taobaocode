@@ -26,8 +26,9 @@ from taocode2.helper import consts
 from taocode2.apps.user import activity
 from taocode2.apps.repos import svn
 from taocode2.settings import *
-import time
 
+import time
+import traceback
 
 __author__ = 'luqi@taobao.com'
 
@@ -75,6 +76,9 @@ def can_access(prj, user):
 
     if user.is_authenticated() is False:
         return HttpResponseForbidden()
+
+    if user.supper is True:
+        return None
 
     if prj.owner != user:
         pm = q_get(ProjectMember, project = prj, user = user)
@@ -327,7 +331,7 @@ def del_prj(request, name):
     if request.method != 'POST':
         return False
     
-    timetag = time.strftime('%Y-%m-%d-%H-%M-%S',time.localtime(time.time()))
+    timetag = time.strftime('%Y%m%d%S',time.localtime(time.time()))
     del_name = name + '_D_' + timetag
 
 
@@ -336,9 +340,14 @@ def del_prj(request, name):
 
     project.name = del_name
     project.status = consts.PROJECT_MARK_DELETED
-    project.save()
-       
-    result, reason = svn.rdel_repos(old_name)
+
+    try:
+        project.save()
+    except Exception, e:        
+        reason = ''.join(traceback.format_exc())
+        log_error(request, reason)
+
+    result, reason = svn.rdel_repos(project.part, old_name)
     if not result:
         # log it
         log_error(request, reason)

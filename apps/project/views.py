@@ -306,7 +306,7 @@ def new_project(request):
 
     prj_name = cd['name']
 
-    parts = ReposPart.objects.filter(can_new=True).order_by('-count')
+    parts = ReposPart.objects.filter(can_new=True).order_by('count')
     if len(parts) <= 0:
         # not available part
         log_error(request, 'not available parts!')
