@@ -62,10 +62,9 @@ def get_pm_meta(cli, prj_id, user_id):
         return pm_meta
 
     pm = q_get(ProjectMember, 
-               project__id = prj_id, user__id = user_id, 
-               member_type = consts.PM_ACCEPT_INV)
+               project__id = prj_id, user__id = user_id)
 
-    if pm is None:
+    if pm is None or pm.member_type == consts.PM_REJECT_INV:
         return None
 
     pm_meta = pm.id
@@ -168,7 +167,7 @@ def check_auth(request, name, uri):
         resp.status_code = 200
         return resp
 
-    pm_meta = get_pm_meta(cli, prj_meta[0], user_meta[1])
+    pm_meta = get_pm_meta(cli, prj_meta[0], user_meta[0])
     if pm_meta is None:
         resp.status_code = 403
         return resp
