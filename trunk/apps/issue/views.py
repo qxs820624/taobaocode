@@ -59,6 +59,10 @@ def list_issues(request, name, status, pagenum=1, key=None):
 def query_issues(request, name, pagenum, key, st=None):
     rc = request.rc
     project = q_get(Project, name=name)
+
+    if project is None:
+        raise Http404
+
     rc.navmenusSource = build_prj_nav_menu(request, project, 'issues')
 
     rc.bodymenus = [{'uri':'issues/', 'text':'all','class':'p-p-project-btn all'},

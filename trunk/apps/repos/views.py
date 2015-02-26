@@ -25,7 +25,7 @@ from mimetypes import guess_type, add_type
 from isodate import  parse_datetime
 
 from django.db.models import Q
-from django.utils.encoding import smart_unicode, DjangoUnicodeDecodeError
+from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
 from django.core.cache import cache
 
@@ -72,16 +72,6 @@ def get_ext_class(fname):
 
 def mark_highlight(content, fname, lexer=None):
     return force_unicode2(content)
-        
-def force_unicode2(v):
-    try:
-        return smart_unicode(v)
-    except DjangoUnicodeDecodeError, e:
-        try:
-            return smart_unicode(v, encoding='gbk')
-        except DjangoUnicodeDecodeError, e:
-            pass
-    return smart_unicode(v, errors='replace')
 
 def get_author(v):
     v = unicode(v)
@@ -170,17 +160,27 @@ def browse(request, name, path='/'):
     resp, r, rc = check_acl(request, name, path)
     if resp is not None:
         return resp
-    
+    try:
+        o = svn.LIST(r)
+    except Exception, e:
+        if 'E200009' in e.message:
+            raise Http404
+        raise
+
+
+    entrys = getattr(o.list, 'entry', [])
+
     if path[-1] != '/':
-        return view_file(request, name, path, r)
+        if type(entrys) == list or entrys['kind'] == 'dir':
+            return redirect(reverse('apps.repos.views.browse', args=[name, path + '/']))
+
+        return view_file(request, name, path, r, o)
 
     if path == '/':
         update_last_log(request, r, rc.project)
-
-    o = svn.LIST(r)
     
     files = []
-    entrys = getattr(o.list, 'entry', [])
+
     if type(entrys) != list:
         entrys = [entrys]
 
@@ -271,15 +271,13 @@ def no_preview_file(fname):
         return True
     return False
     
-def view_file(request, name, path, r):   
+def view_file(request, name, path, r, info):   
     rc = request.rc
     ul = os.path.join(settings.REPOS_ROOT, name + '/' + path)
 
     if request.GET.get('orig', None) is not None:
         return redirect(ul)
 
-    info = svn.LIST(r)
-        
     rc.REPOS = get_repos_base(request, name)
 
     rc.mtime = parse_datetime(str(info.entry.commit.date))
@@ -378,9 +376,6 @@ def logs(request, name, path='/'):
 
     rc.logs = get_logs(request, r, limit=100)
     
-    browse(request,name)
-    
-
     return send_response(request,
                          'repos/view_logs.html')
 
