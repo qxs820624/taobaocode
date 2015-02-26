@@ -41,7 +41,7 @@ def get_prj_meta(cli, name):
     return prj_meta
 
 def get_user_meta(cli, username, password):
-    key_user = 'u-%s-p-%s'%(username, password)
+    key_user = 'u-%s-p4-%s'%(username, password)
     user_meta = cli.get(key_user)
 
     if user_meta is not None:
@@ -51,7 +51,7 @@ def get_user_meta(cli, username, password):
     if user is None:
         return None
 
-    user_meta = (user.id, user.status, user.supper)
+    user_meta = (user.id, user.status, user.supper, user.name)
     cli.set(key_user, user_meta)
     return user_meta
 
@@ -141,7 +141,7 @@ def check_auth(request, name, uri):
 
     resp = HttpResponse()
     resp['REPOS'] = build_repos_path(prj_meta[3], uri)
-    
+
     is_write = is_write_method(request)
 
     if prj_meta[1] is True and not is_write: # is_public 
@@ -163,6 +163,7 @@ def check_auth(request, name, uri):
         resp.status_code = 403
         return resp
 
+    resp['AUTHUSER'] = user_meta[3]
     if user_meta[0] == prj_meta[2] or user_meta[2] is True: # check is member
         resp.status_code = 200
         return resp
