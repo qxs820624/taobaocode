@@ -20,7 +20,7 @@ from taocode2 import settings
 from datetime import datetime
 from datetime import timedelta
 from string import join
-from django.utils.encoding import smart_unicode
+from django.utils.encoding import smart_unicode, DjangoUnicodeDecodeError
 from decimal import *
 
 import subprocess
@@ -105,18 +105,7 @@ def build_menu(items, choice):
 
 
 def exec_cmd(args, std_in = None):
-
-    utf8_args = []
-    for arg in args:
-        if type(arg) != unicode:
-            utf8_args.append(arg)
-            continue
-        try:
-            u = arg.encode('utf8')
-            utf8_args.append(u)
-        except:
-            utf8_args.append(arg)
-    args = utf8_args
+    args = [force_unicode2(arg) for arg in args]
     p = subprocess.Popen(args,
                          stdin=subprocess.PIPE,
                          stdout=subprocess.PIPE,
@@ -147,7 +136,7 @@ def build_project_graph(model, vals, k, c, totals,titlestr):
     menus = []
     for v in vals:
         p=model.objects.filter(pk__in=[v[k]])
-        menus.append({'project':p[0], 'uc':force_unicode(titlestr)+str(v[c]), 'width':v[c]*500/totals})
+        menus.append({'project':p[0], 'uc':force_unicode2(titlestr)+str(v[c]), 'width':v[c]*500/totals})
         
     return menus
 
@@ -171,17 +160,16 @@ def str_none_to_none_str(v):
     return v
 
 
-def force_unicode(v):
+def force_unicode2(v):
     try:
-        # enc = chardet.detect(v)['encoding']
-        # if enc is None:
-        #    enc = 'utf8'
-        return smart_unicode(v, 'gbk')
-    except:
-        pass
-    return v
-    
-    
+        return smart_unicode(v)
+    except UnicodeError, e:
+        try:
+            return smart_unicode(v, encoding='gbk')
+        except UnicodeError, e:
+            pass
+    return smart_unicode(v, errors='replace')
+
 class ComplexJsonEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, Decimal):
