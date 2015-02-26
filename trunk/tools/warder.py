@@ -136,10 +136,12 @@ def check_auth(request, name, uri):
     
     cli = cache_client.get_client(_cacheMan)
     prj_meta = get_prj_meta(cli, name)
-    if prj_meta is None:
-        return Http404()
-
     resp = HttpResponse()
+
+    if prj_meta is None:
+        resp.status_code = 404
+        return resp
+
     resp['REPOS'] = build_repos_path(prj_meta[3], uri)
 
     is_write = is_write_method(request)

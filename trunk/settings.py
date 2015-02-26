@@ -36,7 +36,7 @@ def GET_REPOS_ADMIN_URL(name):
 
 ADMINS = ()
 
-MAIL_SENDER = 'code@taobao.org'
+MAIL_SENDER = 'admin@localhost'
 TEAM_NAME = 'Taocode team'
 SITE_URL = 'http://code.taobao.org'
 

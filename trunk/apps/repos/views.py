@@ -25,7 +25,7 @@ from mimetypes import guess_type, add_type
 from isodate import  parse_datetime
 
 from django.db.models import Q
-from django.utils.encoding import smart_unicode
+from django.utils.encoding import smart_unicode, DjangoUnicodeDecodeError
 from django.utils.safestring import mark_safe
 from django.core.cache import cache
 
@@ -71,17 +71,17 @@ def get_ext_class(fname):
     return ''
 
 def mark_highlight(content, fname, lexer=None):
-    return force_unicode(content)
+    return force_unicode2(content)
         
-def force_unicode(v):
+def force_unicode2(v):
     try:
-        # enc = chardet.detect(v)['encoding']
-        # if enc is None:
-        #    enc = 'utf8'
-        return smart_unicode(v, 'gbk')
-    except:
-        pass
-    return v
+        return smart_unicode(v)
+    except DjangoUnicodeDecodeError, e:
+        try:
+            return smart_unicode(v, encoding='gbk')
+        except DjangoUnicodeDecodeError, e:
+            pass
+    return smart_unicode(v, errors='replace')
 
 def get_author(v):
     v = unicode(v)
@@ -205,7 +205,7 @@ def browse(request, name, path='/'):
             try:
                 c = svn.CAT(svn.REPOS(rc.project.part, name, v))
                 if len(c) > 0:
-                    rc.README = force_unicode(c)
+                    rc.README = force_unicode2(c)
                     rc.README_FILE = v
                     break
             except:
@@ -391,7 +391,7 @@ def diff(request, name, revN, revM=None, path='/'):
         return resp
 
     content = svn.DIFF(r, revN, revM)
-    rc.content = content
+    rc.content = force_unicode2(content)
         
     if  revM==None:
         revM=int(revN)
@@ -485,8 +485,8 @@ def handle_content(newContent):
                     elif not re.search('^-', tt) and not re.search('^\+', tt):
                         leftCont = leftCont + tt + '\n'
                         rightCont = rightCont + tt + '\n'
-                leftCont=  force_unicode(leftCont)  
-                rightCont = force_unicode(rightCont)
+                leftCont=  force_unicode2(leftCont)  
+                rightCont = force_unicode2(rightCont)
                 cc=({'oldStart':oldStart, 'oldEnd':oldEnd, 'newStart':newStart, 'newEnd':newEnd, 'leftCont':leftCont, 'rightCont':rightCont})
                     
                 content.append({'content':cc})
@@ -505,8 +505,8 @@ def handle_content(newContent):
                     elif not re.search('^-', tt) and not re.search('^\+', tt):
                         leftCont = leftCont + tt + '\n'
                         rightCont = rightCont + tt + '\n'
-                leftCont=  force_unicode(leftCont)  
-                rightCont = force_unicode(rightCont)    
+                leftCont=  force_unicode2(leftCont)  
+                rightCont = force_unicode2(rightCont)    
                 cc=({'oldStart':oldStart, 'oldEnd':oldEnd, 'newStart':newStart, 'newEnd':newEnd, 'leftCont':leftCont, 'rightCont':rightCont})
                     
                 content.append({'content':cc})
@@ -525,8 +525,8 @@ def handle_content(newContent):
             elif not re.search('^-', tt) and not re.search('^\+', tt):
                 leftCont = leftCont + tt + '\n'
                 rightCont = rightCont + tt + '\n'
-        leftCont=  force_unicode(leftCont)  
-        rightCont = force_unicode(rightCont) 
+        leftCont=  force_unicode2(leftCont)  
+        rightCont = force_unicode2(rightCont) 
         cc=({'oldStart':oldStart, 'oldEnd':oldEnd, 'newStart':newStart, 'newEnd':newEnd, 'leftCont':leftCont, 'rightCont':rightCont})
                     
         content.append({'content':cc})   
