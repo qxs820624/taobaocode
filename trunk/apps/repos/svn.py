@@ -14,6 +14,7 @@ from taocode2.models import *
 from taocode2.helper.utils import *
 from taocode2.helper import consts,xmlo
 from taocode2 import settings
+from django.http import Http404
 
 import urllib2
 
@@ -22,6 +23,11 @@ import time
 import traceback
 
 __author__ = 'luqi@taobao.com'
+
+class SVNException(Exception):
+    def __init__(self, message):
+        self.code = code
+        Exception.__init__(self, message)
 
 def _get_repos_path(part, name):
     if part is None:
@@ -69,23 +75,35 @@ def REPOS(part, name, path = ''):
     repos_path = build_repos_base(part, name, 'svn/')
     return repos_path + '%s%s'%(name, path)
 
-def LIST(url):
-    code, out ,err = exec_cmd(['svn', 'list','--xml', '--incremental', 
-                               '--no-auth-cache', '--non-interactive', url])
+def exec_svn_cmd(args):
+    code, out ,err = exec_cmd(args)
     if code != 0:
-        raise Exception(err)
+        if err.startswith('svn'):
+            c,code,reason = err.split(':', 2)
+            #svn: E205000: Syntax error parsing peg revision 'taobao.com'
+            #svn: E160013: '/svn/...' path not found
+            #svn: E195012: Unable to find repository location for 
+            code = code.strip()
+            if code in ('E160013', 'E195012'):
+                raise Http404
+
+            if code in ('E205000',):
+                raise Http404
+
+            raise SVNException(err)
+    return out
+
+def LIST(url):
+    out = exec_svn_cmd(['svn', 'list','--xml', '--incremental', 
+                        '--no-auth-cache', '--non-interactive', url])
     return xmlo.loads(out) 
 
 def CAT(url):
-    code, out ,err = exec_cmd(['svn','cat', '--no-auth-cache', '--non-interactive', url])
-    if code != 0:
-        raise Exception(err)
+    out = exec_svn_cmd(['svn','cat', '--no-auth-cache', '--non-interactive', url])
     return out
 
 def INFO(url):
-    code, out ,err = exec_cmd(['svn','info', '--xml', '--no-auth-cache', '--non-interactive', url])
-    if code != 0:
-        raise Exception(err)
+    out = exec_svn_cmd(['svn','info', '--xml', '--no-auth-cache', '--non-interactive', url])
     return xmlo.loads(out)
 
 def LOG(url, rev=None, limit=-1):
@@ -97,11 +115,7 @@ def LOG(url, rev=None, limit=-1):
         cmd.append('-l')
         cmd.append(str(limit))
     cmd.append(url)
-    code, out ,err = exec_cmd(cmd)
-
-    if code != 0:
-        raise Exception(err)
-
+    out = exec_svn_cmd(cmd)
     return xmlo.loads(out)
     
 def DIFF(url, revN, revM=None):
@@ -114,9 +128,6 @@ def DIFF(url, revN, revM=None):
         cmd.append(revN + ':' + revM)
 
     cmd.append(url)    
-    code, out ,err = exec_cmd(cmd)
-
-    if code != 0:
-        return None
+    out = exec_svn_cmd(cmd)
     return out
 
