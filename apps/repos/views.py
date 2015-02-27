@@ -29,7 +29,7 @@ from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
 from django.core.cache import cache
 
-import marshal
+
 import os, sys, re
 
 __author__ = 'luqi@taobao.com'
@@ -160,13 +160,8 @@ def browse(request, name, path='/'):
     resp, r, rc = check_acl(request, name, path)
     if resp is not None:
         return resp
-    try:
-        o = svn.LIST(r)
-    except Exception, e:
-        if 'E200009' in e.message:
-            raise Http404
-        raise
 
+    o = svn.LIST(r)
 
     entrys = getattr(o.list, 'entry', [])
 
