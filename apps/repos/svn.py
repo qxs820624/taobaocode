@@ -26,7 +26,6 @@ __author__ = 'luqi@taobao.com'
 
 class SVNException(Exception):
     def __init__(self, message):
-        self.code = code
         Exception.__init__(self, message)
 
 def _get_repos_path(part, name):
@@ -82,12 +81,16 @@ def exec_svn_cmd(args):
             c,code,reason = err.split(':', 2)
             #svn: E205000: Syntax error parsing peg revision 'taobao.com'
             #svn: E160013: '/svn/...' path not found
-            #svn: E195012: Unable to find repository location for 
+            #W160013 
+            #
             code = code.strip()
+            if code == 'warning':
+                code = reason.split(':', 1)[0].strip()
+
             if code in ('E160013', 'E195012'):
                 raise Http404
 
-            if code in ('E205000',):
+            if code in ('E205000','W160013'):
                 raise Http404
 
             raise SVNException(err)
