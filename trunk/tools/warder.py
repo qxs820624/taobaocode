@@ -1,6 +1,7 @@
 import os
 import cache_client
 import traceback
+import urllib
 
 from django.http import *
 from django.contrib.auth import authenticate
@@ -48,6 +49,7 @@ def get_user_meta(cli, username, password):
         return user_meta
 
     user = authenticate(username=username, password=password)
+
     if user is None:
         return None
 
@@ -164,8 +166,11 @@ def check_auth(request, name, uri):
     if user_meta is None:
         resp.status_code = 403
         return resp
+    try:
+        resp['AUTHUSER'] = urllib.quote(user_meta[3].encode('utf8'))
+    except UnicodeError, e:
+        resp['AUTHUSER'] = name
 
-    resp['AUTHUSER'] = user_meta[3]
     if user_meta[0] == prj_meta[2] or user_meta[2] is True: # check is member
         resp.status_code = 200
         return resp

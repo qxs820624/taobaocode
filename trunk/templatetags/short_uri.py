@@ -31,14 +31,14 @@ register = template.Library()
 
 @register.simple_tag
 def gravatar(email, alt='', size=48):
-    url = "http://www.gravatar.com/avatar/"+md5(email).hexdigest()
+    url = "http://en.gravatar.com/avatar/"+md5(email).hexdigest()
     url += '?s='+str(size)
 
     return """<img src="%s" width="%s" height="%s" title="%s" border="0"/>""" % (url, size, size, alt)
 
 @register.simple_tag
 def gravatarExplore(email, alt='', size=67):
-    url = "http://www.gravatar.com/avatar/"+md5(email).hexdigest()
+    url = "http://en.gravatar.com/avatar/"+md5(email).hexdigest()
     url += '?s='+str(size)
 
     return """<a href="/u/%s" target="_blank"><img  class="d-p-index-memberphoto"  src="%s" width="%s" height="%s" title="%s" border="0"/></a>""" % (alt,url, size, size, alt)
