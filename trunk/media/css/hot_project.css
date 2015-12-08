@@ -224,11 +224,19 @@ a{
     margin: 0px auto;
     padding: 18px 0px;
 }
-.d-m-nav-logo{
+.d-m-nav-logo {
     background: url(http://img01.taobaocdn.com/tps/i1/T1sbl1XApfXXXZm037-115-27.png) 0px 11px no-repeat;
     float: left;
     text-indent: -999em;
-    width: 230px;
+    width: 120px;
+    height: 54px;
+}
+
+.d-m-nav-crp{
+    background: url(http://tmaster.taobao.org/p/taobaocode/file/3980/crp-logo.png) 0px 11px no-repeat;
+    float: left;
+    text-indent: -999em;
+    width: 142px;
     height: 54px;
 }
 .d-m-search{
