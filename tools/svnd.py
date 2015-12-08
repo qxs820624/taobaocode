@@ -54,7 +54,9 @@ def init_local_repos(admin, path):
     r, out, err = exec_cmd([admin, 'create', path])
     if r != 0:
         raise Exception(err)
-    
+
+    exec_cmd(['svn', 'mkdir', 'file://'+path+'/trunk', '-m', 'initial commit', '--username','""'])
+
 def del_local_repos(prj_path):
     timetag = time.strftime('%Y-%m-%d-%H-%M-%S',
                             time.localtime(time.time()))

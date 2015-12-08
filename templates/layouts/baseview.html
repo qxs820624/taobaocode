@@ -62,10 +62,11 @@
 	<div class="d-m-nav">
 		<div class="d-m-nav-top layout">
 		{%if user.is_authenticated %}
-			<a class="d-m-nav-logo" href="/my/">Taocode</a>
+		<a class="d-m-nav-logo" href="/my/">Taocode</a>
 		{%else%}
-			<a class="d-m-nav-logo" href="/fastregister/">Taocode</a>
+		<a class="d-m-nav-logo" href="/fastregister/">Taocode</a>
 		{%endif%}
+		<a class="d-m-nav-crp" href="https://crp.aliyun.com/?from_taocode">CRP</a>
 
 			<ul class="d-m-main-nav">
                           <li><a href="/project/explore" >{%trans "projects"%}</a></li>
