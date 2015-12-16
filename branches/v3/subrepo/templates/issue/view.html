@@ -1,0 +1,156 @@
+{%extends "layouts/baseview.html" %}
+{%load i18n %}
+{%load short_uri %}
+
+{%block title%}{{project.name}}{%endblock%}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/code-min.css" />
+{% endblock %}
+
+
+
+{%block ready_js%}
+
+$('.del-answer').click(function(e) {
+    var comment_id = $(this).attr('data-id');
+    var row = $('#comment-row-'+comment_id);
+    sure(e, '{%trans "Are you sure delete this comment?"%}', '{%trans "Yes"%}', '{%trans "No"%}', function(e) {	  
+	q_get("issue/del_comment", {'comment_id':comment_id}, function(result) {
+
+	    row.remove();
+	    q_get('issue/get_comment_count/'+{{issue.id}}, {}, function(result){
+		
+		$('#answer-count').text(result);
+		
+	    });
+	}, function() {
+	    show_info("{%trans "can not del comment"%}");
+	});	    
+    });
+});
+
+$('#btn_add_comment').click(function() {
+    if ($('#add_comment_form textarea').val().length <= 0) {
+	show_info('{%trans "need comment content!"%}');
+	return;
+    }
+    $('#add_comment_form').submit();
+});
+
+$('#btn_del').click(function (e) {
+   var issue_id = $(this).attr('data-id');
+
+   sure(e, '{%trans "Are you sure delete this issue?"%}' ,'{%trans "Yes"%}', '{%trans "No"%}', function() {
+	$("#edit_issue_form input[name^='op']").val('del');
+	$("#edit_issue_form").submit();
+    });
+});
+
+$('#btn_close').click(function (e) {
+   var issue_id = $(this).attr('data-id');
+
+   sure(e, '{%trans "Are you sure close this issue?"%} <!-- {{issue.status|choice:"0:close,1:reopen"}}? -->' ,'{%trans "Yes"%}', '{%trans "No"%}', function() {
+	$("#edit_issue_form input[name^='op']").val('{{issue.status|choice:"0:close,1:reopen"}}');
+	$("#edit_issue_form").submit();
+    });
+});
+
+{%endblock%}
+
+{%block main-block%}
+<div class="d-p-project-content d-p-project-faqs">
+
+	<div class="question-info">
+		<form id="edit_issue_form" action="{{project|url}}issue/change/{{issue.id}}/" method="POST">
+  		{%csrf_token%}
+    		<input type="hidden" name="op" value=""/>
+		</form>
+		
+		{%if issue.status == 0 %}
+			<p class="question-name-nosolve">{{issue.title}}
+		{%else%}
+			<p class="question-name-solve">{{issue.title}}
+		{%endif%}
+		
+		{%if issueowner%}
+		
+				{%if issue.status == 0 %}
+					<a href="javascript:;" id="btn_close">{%trans "close issue"%}</a>			
+				
+					
+				{%endif%}
+				
+			<a href="javascript:;" id="btn_del" data-id="{{issue.id}}">{%trans "delete"%}</a>
+		{%endif%}
+		</p>
+		
+		
+		<div class="layout other-info">
+			<span class="new-question">
+				<a href="{{issue.creator|url}}" class="quizzer">{%gravatar issue.creator.email issue.creator.name 25 %}{{issue.creator}}</a>
+				{%trans "yu"%}&nbsp;&nbsp;{{issue.ctime|difftime}}&nbsp;&nbsp;{%trans "new issue"%}#{{issue.id}}				                				
+			</span>	
+			<p class="question-content">{{issue.content}}</p>
+			<!-- <ul class="question-attachments">				
+				<li><a href="" class="">1：attachment1.jpg</a><li>
+				<li><a href="" class="">1：attachment1.jpg</a><li>				
+			</ul>  -->
+			
+			<span class="quiz-quesbox">
+					 <a href="{{issue.project|url}}issue/new/" class="p-p-project-btn toquiz">{%trans "question"%}</a>
+
+					 {%if user.is_authenticated%}
+					 	{%if issue.status == 0 %}
+						 <a href="#toanswer" class="p-p-project-btn toans">{%trans "answer"%}</a> 		
+					 	{%endif%}
+					 
+					 
+					 {%else%}
+					 	<a href="/login/" class="p-p-project-btn toans">{%trans "answer"%}</a>
+					 {%endif%}
+			</span> 
+		
+		</div>		
+	</div>
+	<div class="answer-box">
+		<p class="answer-count">{%trans "answ"%}（<span id ="answer-count" >{{comments|length}}</span>）</p>
+            <ul>
+            {%for comment in comments%}
+                <li class="layout" id="comment-row-{{comment.id}}">
+                    <a href="{{comment.owner|url}}" class="answerer-pic">{%gravatar comment.owner.email comment.owner.name 50 %}</a>
+                	<div class="answer-data">
+                		<p><a href="{{comment.owner|url}}" class="quizzer">{{comment.owner}}</a>{%trans "yu"%}{{comment.ctime|difftime}}{%trans "replay"%}:</p>
+                		<p class="answer-content">{{comment.content}}</p>
+                		{%if commowner%}
+                			<a class="del-answer" data-id="{{comment.id}}" href="javascript:;" >{%trans "delete"%}</a>
+                		{%endif%}
+                		
+                	</div>                
+                
+                </li>
+                
+			{%endfor%}  
+			</ul>
+			{%if not issue.closed%}
+				  {%if user.is_authenticated%}    
+				  	<form id="add_comment_form" action="" method="POST">
+					    {%csrf_token%}
+					    <input type="hidden" name="prj_id"/>
+					    <input type="hidden" name="issue_id"/>
+						<p class="answer-count"  style="margin-bottom: 20px;" id="toanswer">{%trans "answer"%}</p>
+			            <textarea name="content" class="text" style="width:910px;height:70px;margin-bottom:20px;"></textarea>
+			            <a href="javascript:;" id="btn_add_comment" class="p-p-project-btn answer-btn">{%trans "Post comment"%}</a>
+			            
+			        </form>
+			      {%endif%}
+			{%endif%}
+	
+	</div>
+
+</div>
+
+{%endblock%}
+
+
+

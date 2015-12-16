@@ -1,0 +1,27 @@
+{% load i18n %} {% load short_uri %}
+
+<td class="td1"><a class="d-g-blue d-p-projectname" href="{{project|url}}">{{project}}</a>
+	<p class="d-p-projectintro">{{project.title|truncatechars:60}}</p>
+	<p class="d-p-project-others">
+		<a class="d-g-orange d-p-project-writer" href="{{project.owner|url}}">{{project.owner}}</a>
+		{% trans "Open from" %}{{project.ctime|date}} 
+		  <span	class="d-p-project-lang">{% trans "project_lang" %}: <a	href="/project/lang/list/{{project.language|urlencode}}/1">{{project.language}}</a>
+		 </span>
+		 {% trans "project_member_count" %}: {{project.member_count|default:0}} 
+
+	</p> <!--  {%if project.owner == user%}
+  span class="img-btn">
+    <a href="{{project|url}}admin/"><img src="/img/prj_admin.png" title="admin"></img></a>
+   
+  </span>  
+  {%endif%}
+  <span>
+    <img id="prj-public" src='/img/{{project.is_public|yesno:"unlock,lock"}}.png' title="{{project.is_public|yesno:"public,private"}}">
+  </span>
+  <strong><a class="username" href="{{project.owner|url}}">{{project.owner}}</a>
+  /
+  <a href="{{project|url}}">{{project}}</a></strong>
+  <em>{{project.ctime|date}}</em>
+  <div>{{project.title|truncatechars:60}}</div>
+   --></td>
+

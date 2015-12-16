@@ -1,0 +1,374 @@
+{% extends "layouts/baseview.html" %}
+{% load i18n %}
+{% load short_uri %}
+{%block title%}project admin{%endblock%}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/css/code-min.css" />
+{% endblock %}
+
+{% block extrastyle %}
+<script type="text/javascript">
+
+function update_project_meta() {
+    $('#license').val('{{project.license}}');
+    $('#id_language').val('{{project.language}}');
+    
+    {%if not project.is_public%}
+      $('#is_private').attr("checked", 'true'); 
+    {%endif%}
+}
+
+function do_invite(in_name) {
+
+    var name = in_name;
+    if (name == null)
+    {
+	name = $('#invite #name').val();
+    }
+
+    if(name.length <= 0) {
+	return;
+    }
+    q_get("prj/invite/{{project.name}}", {'u':name}, function(result) {
+	get_members();
+    }, function () {
+	show_info('can not invite:'+name);
+
+    }, function() {
+	$('#add-member #invite #name').val('');	
+	alert("成功向"+name+"发出邀请")
+    });
+}
+
+function get_members() {
+    var members1 = $('#members1');
+    members1.empty();
+
+    q_get("prj/members1/{{project.name}}", {}, function(result) {
+   	var t="<div name='prj-member1-{1}'><li>"+
+   	"<a href= '{0}' >"+
+	            "<img src='http://img01.taobaocdn.com/tps/i1/T1TWBJXpxcXXXmMqDm-67-67.png'/>"+
+	            
+	            "<span> {1}</span>"+
+	        "</a>"+"<a class='del1' href='javascript:;'>{%trans "delete"%}</a>"+
+	        "</li></div>";  
+	        	
+
+	
+	
+	for(var i = 0; i < result.length; i++) {
+	    if (result[i][2] == 'reject'){
+		result[i].push('<a class="resend button" href="javascript:;">reinvite</a>');
+	    }else {
+		result[i].push('');
+	    }
+	    var new_elm = $(format_string(t, result[i]));
+	    members1.append(new_elm);
+	}
+	
+	$('div[name^="prj-member1-"]').each(function() {
+	    var m = $(this);
+	    var uname = m.attr('name').substring("prj-member1-".length);
+	    m.find('.del1').confirm('{%trans "Are you sure remove "%}'+uname+' ?',
+					 '{%trans "Yes"%}', '{%trans "No"%}', function() {
+                del_member(uname);
+	    });
+
+	    m.find('.resend').click(function() {
+		do_invite(uname);
+	    });
+	});
+    });
+    
+    
+    
+    var members = $('#members');
+    members.empty();
+
+    q_get("prj/members/{{project.name}}", {}, function(result) {
+	var t="<div name='prj-member-{1}'>"+
+	    "[<span class='actiontext'>{2}</span>] <span>{4}</span>"+
+	    "<a class='username' href='{0}'>{1}</a> "+
+	    "<span class='em'>{3}</span><a class='del' href='javascript:;'>{%trans "delete"%}</a>"+
+	    "</div>";
+	
+	for(var i = 0; i < result.length; i++) {
+	    if (result[i][2] == 'reject'){
+		result[i].push('<a class="resend button" href="javascript:;">reinvite</a>');
+	    }else {
+		result[i].push('');
+	    }
+	    var new_elm = $(format_string(t, result[i]));
+	    members.append(new_elm);
+	}
+	$('div[name^="prj-member-"]').each(function() {
+	    var m = $(this);
+	    var uname = m.attr('name').substring("prj-member-".length);
+	    m.find('.del').confirm('{%trans "Are you sure remove "%}'+uname+' ?',
+					 '{%trans "Yes"%}', '{%trans "No"%}', function() {
+                del_member(uname);
+	    });
+
+	    m.find('.resend').click(function() {
+		do_invite(uname);
+	    });
+	});
+    });
+    
+    
+    
+    
+    
+    
+}
+
+function del_member(name) {
+    q_get("prj/del_member/{{project.name}}", {'u':name}, function() {
+	get_members();
+    }, function() {
+	show_info('can not remove member '+name);
+    });
+}
+
+function del_prj() {
+    q_get("prj/del/{{project.name}}", {}, function(result) {
+	window.location.href = result;
+    }, function() {
+	show_info('can not del project!');
+    });
+}
+
+function edit_prj() {
+    var title = $('#title').val();
+    
+    var license = $('#license').html();
+
+    var language=$('#id_language').val();
+    var is_public = $('#is_public').attr("checked");
+    
+    if (title.length <= 0) {
+	alert('need description!');
+	return;
+    }
+    if (language.length <= 0){
+    alert("need language");
+    return;
+    }
+
+    var onerror = function () {
+	alert('can not edit project!');
+	update_project_meta();
+    };
+
+    q_get("prj/edit/{{project.name}}", 
+	   {'t':title,'l':license,'pub':is_public?1:0,'lang':language},
+	  function(result){	      
+	      $('#prj-title').text(title);
+	      $('#prj-public').attr('src', is_public ? '/img/unlock.png':'/img/lock.png');
+	      $('#prj-public').attr('title', is_public ? 'public':'private');
+	      show_info('edit ok!');
+	     
+	      alert("项目修改成功")
+	  }, function() {
+	      onerror();
+	  });	
+}
+
+</script>
+
+
+
+{% endblock %}
+
+{%block ready_js%}
+    $('#btn-invite').click(function () {
+	do_invite();
+    });
+
+    $('#btn-edit').click(function () {
+	$('#prj-edit').toggle(100);
+    });
+
+    $('#btn-save').click(function () {
+	edit_prj();
+    });
+    
+    $('#btn-del').confirm('Are you sure delete this project?<br/>'+
+			  '<font color="red">CAN NOT RECOVERY!</font>', 'Yes', 'No', function() {
+	del_prj();
+    });
+
+    update_project_meta();
+
+    get_members();
+{%endblock%}
+
+
+{%block main-block%}
+      <div class="d-p-project-content d-p-project-manage layout">
+            <div class="col-sub">
+                <ul class="d-p-managesort">
+                    {%if cur_info_page == "proinfo" %}<li class="current">{%else%}<li>{%endif%}
+                        <a href="/p/{{project.name}}/admin/proinfo/">{%trans "proinfo"%}</a>
+                    </li>
+                    {%if cur_info_page == "meminfo" %}<li class="current">{%else%}<li>{%endif%}
+                        <a href="/p/{{project.name}}/admin/meminfo/">{%trans "meminfo"%}</a>
+                    </li>
+                    <!-- {%if cur_info_page == "downinfo" %}<li class="current">{%else%}<li>{%endif%}
+                        <a href="/p/{{project.name}}/admin/downinfo/">{%trans "downinfo"%}</a>
+                    </li> -->
+                </ul>
+                <div class="d-p-manage-info">
+                    <dl><dt>{%trans "issue"%}:</dt><dd><span>{{issCount}}</span>{%trans "tiao"%}</dd></dl>
+                    <dl><dt>{%trans "preview"%}:</dt><dd><span>{{click}}</span>{%trans "ci"%}</dd></dl>
+                    
+                    <!--  <dl><dt>附件数:</dt><dd><span>10</span>条</dd></dl>
+                    <dl><dt>附件用量:</dt><dd><span>10</span>条</dd></dl>
+                    <dl><dt>仓库用量:</dt><dd><span>10</span>条</dd></dl>-->
+                </div>
+            </div>
+            
+            
+            {%if cur_info_page == "proinfo" %}
+            <div class="col-main" id="prj-edit">
+            
+	            <dl class="layout">
+	                    <dt>{%trans "project des"%}:</dt>
+	                    <dd >
+	                        <textarea  id="title" class="text" style="width:500px;height:90px;">{{project.title|linebreaks|removetags:"p"}}
+				</textarea>
+	                    </dd>
+	            </dl>
+<!--
+				<dl class="layout">
+				    <dt>{%trans "license"%}:</dt>
+				    <dd>
+				       <div class="liecense-text" style="z-index:51;">
+				              <span id="license">Apache License 2.0</span>
+				              <div id="J_nfpinpai_list" class="text-list">
+				                  <div class="text-down">
+				                 	 {%for li in licenses%}
+					                     <a href="javascript:void(0);">{{li}}</a>
+				                     {%endfor%}
+				                  </div>
+				              <div>
+				         </div>
+				    </dd>
+				</dl>
+-->
+				<dl class="layout">
+				    <dt>{%trans "public"%}:</dt>
+				    <dd>
+				        <input name="public" id = "is_public" type="radio" value="" checked  class="radio"/>{%trans "yes"%}
+				        <input name="public" id = "is_private" type="radio" value="" class="radio" style="margin-left:57px;"/>{%trans "no"%}
+				        <p class="yestag">所有人可见，但只限成员可以提交</p>
+				        <p class="notag">只限成员可见和提交</p>
+				    </dd>
+				</dl>
+				
+				<dl class="layout">
+            <dt style="margin-top:30px;">{%trans "language"%}:</dt><input type="hidden" name="language" id="id_language" />
+            <dd>
+			  <p class="select_language">
+             {%if lan == "yes" %}
+             		{%for l in languages%}
+            			<span><b>{{l}}</b><a href="javascript:void(0);" class="p-p-project-btn close">close</a></span> 
+                    {%endfor%}
+             {%endif%}
+             </p>
+            <div class="language-text" style="z-index:50;">
+      
+             
+             
+            	
+            		
+            		
+                  
+                      <input id="language" type="text" class="text" >
+                      
+                      <div id="J_language_list" class="text-list">
+                          <div class="text-down">
+			              {%for la in langs%}
+			                  <a href="javascript:void(0);">{{la}}</a>
+			                   
+			              {%endfor%}
+                          </div>
+                      </div>
+  
+                 </div>               
+            
+            	
+            	
+            
+
+                
+            </dd>
+    </dl>
+				
+				
+					<dd>
+						<a id="btn-save" href="javascript:;" class="p-p-project-btn btn">{%trans "save"%}</a>
+					</dd>
+
+            </div>
+            {%endif%}
+            
+            {%if cur_info_page == "meminfo" %}
+            <div class="col-main" id="invite">
+            
+				<dl class="layout">
+					<dt>{%trans "projectmem"%}:</dt>					
+                   	<dd>
+                    	<ul class="d-p-project-memberlist layout">
+							  <li id="members1">
+							  </li>                    		                   	
+                    	</ul>                
+                   	 </dd>       
+				</dl>
+				<dl class="layout">
+                    <dt>{%trans "add new member"%}:</dt>
+                    <dd>
+                        <input type="text" id="name" class="text" /><a class="p-p-project-btn btn" href="javascript:;" id="btn-invite">{%trans "send invite"%}</a>
+                    </dd>
+                </dl>
+                
+                
+                <div id="members"></div>  
+                
+				
+		               
+            
+    		</div>
+
+			{%endif%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<script>
+
+
+ KISSY.use('js/app/project/project_amend'); 
+
+ </script>
+{%endblock%}
+
+
