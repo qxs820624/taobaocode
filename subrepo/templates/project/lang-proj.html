@@ -1,0 +1,71 @@
+{% extends "layouts/baseview-nav.html" %}
+{% load i18n %}
+{% load short_uri %}
+
+{%block title%}Language list{%endblock%}
+
+
+{% block extrascript %}
+<link rel="stylesheet" href="/css/new_open.css" />
+<script type="text/javascript">
+function watch_project(o,projname) {
+q_get('prj/watch/' + projname, {}, function(r){
+$(o).text(r[0]);
+$('#watch_text').text(r[1]);
+});
+}
+</script>
+{% endblock %}
+
+{%block main-block%}
+<div class="d-g-wrapper layout d-p-languagearts">
+    <div class="col-sub">
+        <div class="d-p-languagesearch">
+            <input type="text" name="" id="" class="search-text" placeholder='{%trans "Search all languages" %}' maxlength="" >
+            <a class="search-btn" href="javascript:void(0);">{%trans "Search" %}</a>
+        </div>
+        <ul class="d-p-languagelist">
+			{%for lang in langs%}
+				{%if lang == currentlang %}
+						<li class="current"><a title="{{lang}}" href="/project/lang/list/{{lang|urlencode}}/1/">{{lang|truncatechars:12}}</a></li>
+				{% else %}
+						<li><a title="{{lang}}" href="/project/lang/list/{{lang|urlencode}}/1/">{{lang|truncatechars:12}}</a></li>
+				{% endif %}
+        	{%endfor%}
+        </ul>
+    </div>
+        <div class="col-main d-p-newopen">
+			{%if projs%}
+                <table>
+        				{%for project in projs%}
+                            <tr>
+                                <td class="td1">
+                                    <a target="_blank" href="{{project|url}}"class="d-g-blue d-p-projectname">{{project.name}}</a>
+                                    <p class="d-p-projectintro">{{project.title|truncatechars:60}}</p>
+                                    <p class="d-p-project-others"><a href="{{project.owner|url}}"  class="d-g-orange d-p-project-writer">{{project.owner}}</a>{%trans "Open from" %}{{project.ctime|date}}<span class="d-p-project-lang">{% trans "project_lang" %}:<a href="">{{project.language}}</a></span>{% trans "The number of members" %}:{{project.member_count|default:0}}{%trans "People" %}</p>
+                                </td>
+                                <td>
+        							{% if user.is_authenticated %}
+        								<a class= "d-p-project-praise p-p-project-btn d-p-praised" href= "javascript:void(0)" onclick="watch_project(this,'{{project.name}}');">{{project.watcher_count|default:0}}</a>
+        							{%endif%}
+        						</td>
+                            </tr>
+        				{%endfor%}
+                </table>
+        		<div class="pagination">
+        			{% include "layouts/page-nav.html" %}
+                </div>
+			{% else %}
+				<div class="no_language">该语言下暂无项目。</div>
+    		{%endif%}
+        </div>
+		
+		
+</div>
+
+
+
+<script>
+    KISSY.use('js/app/main/new_open');
+</script>
+{%endblock%}
