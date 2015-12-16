@@ -1,1 +1,0 @@
-KISSY.use("switchable,dom,event,sizzle",function(b,a,e,d){var c=new a.Slide("#J_Slide",{effect:"none",easing:"easeOutStrong",activeTriggerCls:"current"});d.on(".d-p-projectlist li","mouseenter mouseleave",function(f){e.toggleClass(this,"current")})});
