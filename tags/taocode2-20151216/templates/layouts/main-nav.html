@@ -1,0 +1,51 @@
+{%if navmenusSource%}
+<ul class="layout d-p-project-tabs">
+	  {%for m in navmenusSource%}
+	  {%if m.choice%}
+	  <li class="d-p-project-tab">
+	    <a href="{{m.uri}}/" class="current">{{m.txt}}</a>
+	  </li>
+	  {%else%}
+	  <li class="d-p-project-tab">
+	    <a href="{{m.uri}}/">{{m.txt}}</a>
+	  </li>
+	  {%endif%}
+	  {%endfor%}
+</ul>
+{%endif%}
+
+
+
+{%if navmenusMsg%}
+<ul class="layout d-p-project-tabs">
+	  {%for m in navmenusMsg%}
+	  {%if m.choice%}
+	  <li class="d-p-project-tab">
+	    <a href="{{m.uri}}/" class="current">{{m.txt}}</a>
+	  </li>
+	  {%else%}
+	  <li class="d-p-project-tab">
+	    <a href="{{m.uri}}/">{{m.txt}}</a>
+	  </li>
+	  {%endif%}
+	  {%endfor%}
+</ul>
+{%endif%}
+
+
+{%if profilenavmenus%}
+<ul class="layout d-p-user-tabs">
+	  {%for m in profilenavmenus%}
+	  {%if m.choice%}
+	  <li class="d-p-user-tab">
+	    <a href="{{m.uri}}/" class="current">{{m.txt}}</a>
+	  </li>
+	  {%else%}
+	  <li class="d-p-user-tab">
+	    <a href="{{m.uri}}/">{{m.txt}}</a>
+	  </li>
+	  {%endif%}
+	  {%endfor%}
+</ul>
+{%endif%}
+

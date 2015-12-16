@@ -1,0 +1,263 @@
+{% extends "layouts/baseview.html" %}
+{% load i18n %}
+{% load short_uri %}
+{% load humanize %} 
+
+{%block title%}{{current_user.name}}{%endblock%}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/user-min.css" />
+{% endblock %}
+
+
+{% block extrastyle %}
+<script type="text/javascript" src="/js/sendmsg-min.js"></script>
+<script type="text/javascript">
+
+if(!KISSY.Cookie.get("_taocode"))
+{KISSY.Cookie.set("_taocode","_taocode",7,".code.taobao.org","/");
+} 
+
+function do_pm_op(row, name, op) {
+    q_get("prj/"+op+"/"+name, {}, function(result) {
+	row.remove();
+    }, function() {
+	show_info('can not '+ op +' '+name);
+    });
+}
+
+function do_exit(row, name) {
+    do_pm_op(row, name, "exit");
+}
+
+function do_accept(row, name) {
+    do_pm_op(row, name, "accept");
+}
+
+function do_reject(row, name) {
+    do_pm_op(row, name, "reject");
+}
+
+
+function del_prj(row,name) {
+    q_get('prj/del/'+ name, {}, function(result) {
+	row.remove();
+    }, function() {
+	show_info('can not del project!');
+    });
+}
+
+function watch_project(o,proname) {
+q_get('prj/watch/' + proname, {}, function(r){
+$(o).text(r[0]);
+$('#watch_text').text(r[1]);
+});
+}
+
+
+
+
+</script>
+
+{% endblock %}
+
+{%block ready_js%}
+
+
+
+{%if user != current_user%}
+init_send_msg('{{current_user.name}}');
+{%else%}
+    $('tr[name^="joined-prj-"]').each(function() {
+	var prj_row = $(this);
+	var prj_name = prj_row.attr('name').substring('joined-prj-'.length);
+	prj_row.find('#exit').confirm('{%trans "Are you sure exit" %} '+prj_name+'?', '{%trans "Yes"%}', '{%trans "No"%}', function() {
+	    do_exit(prj_row, prj_name);
+	});
+	
+	var prj_op = prj_row.find('#joined-op');
+	prj_row.find('#accept').click(function() {
+	    do_accept(prj_op, prj_name);
+	});
+	
+	prj_row.find('#reject').confirm('{%trans "Are you sure reject "%}'+prj_name+'?', '{%trans "Yes"%}', '{%trans "No"%}', function() {
+	    do_reject(prj_row, prj_name);
+	});
+    });
+    
+    
+
+    $('tr[name^="owner-prj-"]').each(function(){
+   	 	var own_row = $(this);
+      	var own_name = own_row.attr('name').substring('owner-prj-'.length);
+      	own_row.find('#btn-del').confirm('{%trans "Are you sure delete "%}'+own_name+'?', '{%trans "Yes"%}', '{%trans "No"%}', function(){
+      	del_prj(own_row, own_name);
+      	
+      	
+      	}
+    
+    
+    
+    )
+    }  
+    )
+    
+    
+    
+    
+   
+    
+
+ 
+
+    
+       
+{%endif%}
+
+{%endblock%}
+{%block pagename%}
+<span class="username">{{current_user.name}}</span>
+{%endblock%}
+
+{%block main-block %}
+
+<div class="d-g-wrapper d-p-user">
+	<div class="d-p-user-top">
+		<h2 class="d-p-project-name"><a href="/project/explore">{% trans "main" %}</a>&nbsp;&nbsp;>&nbsp;&nbsp;</span><a href="{{current_user|url}}">{{current_user.name}}</a>
+		</h2>
+		
+		<div class="layout d-p-user-info">
+			<div class="user-photo">{%gravatar current_user.email current_user.name 105 %}</div>			
+			<div class="user-data">
+				<span class="user-name">{{current_user.name}}</span><!-- <a href="" class="sina-weibo">{%trans "sinaweibo"%}</a><a href="" class="tqq">{%trans "tweibo"%}</a> -->
+				{%if user == current_user and user.is_authenticated%}
+					<a href="/my/edit/" class="edit-infor">{%trans "editmy"%}</a><a href="/msg/" class="message-manage">{%trans "message"%}</a>
+				{%endif%}
+                
+
+                <p class="user-intro">{{current_user.signature}}</p>
+                
+				<span class="register-time">{%trans "created"%}  {{current_user.ctime|date:"Y-m-d"}}</span>
+
+
+                
+                {%if user != current_user and user.is_authenticated%}
+	                <a id="send-msg" href="javascript:;" class="p-p-project-btn message">{%trans "send message"%}</a>
+	                <a href="mailto:{{current_user.email}}" class="p-p-project-btn mail">{%trans "mail"%}</a>
+                {%endif%}			
+			</div>
+		</div>
+		{%if user == current_user%}
+		<a href="/new/" class="p-p-project-btn add">+&nbsp;&nbsp;{%trans "new create project"%}</a>
+	    <ul class="layout d-p-user-tabs">
+            <li class="d-p-user-tab"><a href="/my/mypro" {%if current_page == "mypro"%}class="current"{%endif%}>{%trans "myproject"%}</a></li>
+            <li class="d-p-user-tab"><a href="/my/watpro" {%if current_page == "watpro"%}class="current"{%endif%}>{%trans "watchedproject"%}</a></li>
+            <li class="d-p-user-tab"><a href="/my/worklogs" {%if current_page == "worklogs"%}class="current"{%endif%}>{%trans "worklogs"%}</a></li>
+        </ul>
+        {%else%}
+	    <ul class="layout d-p-user-tabs">
+            <li class="d-p-user-tab"><a href="/u/{{current_user}}/mypro" {%if current_page == "mypro"%}class="current"{%endif%}>{%trans "myproject"%}</a></li>
+            <li class="d-p-user-tab"><a href="/u/{{current_user}}/watpro" {%if current_page == "watpro"%}class="current"{%endif%}>{%trans "watchedproject"%}</a></li>
+            <li class="d-p-user-tab"><a href="/u/{{current_user}}/worklogs" {%if current_page == "worklogs"%}class="current"{%endif%}>{%trans "worklogs"%}</a></li>
+        </ul>
+        
+        {%endif%}
+        {%if current_page == "mypro"%}
+	        <div class="d-p-user-content d-p-myproject">
+	        	 <table>
+	                  <tbody>
+	                  {%for project in owner_projects%}
+	                        <tr name="owner-prj-{{project.name}}">
+	                            <td class="td1"><a class="d-g-blue d-p-projectname" href="{{project|url}}">{{project.name}}</a>
+	                            	{%if user == current_user%}
+	                                <a href="{{project|url}}admin/" class="project-manage">{%trans "projectadmin"%}</a>
+	                                <a id="btn-del" href="javascript:;" class="project-delete">{%trans "deleteproject"%}</a>
+	                                {%endif%}
+	                                <p class="d-p-projectintro">{{project.title}}</p>
+	                            </td>   
+	                       	</tr> 
+	                    {%endfor%}    
+	                   	{%for project in joined_projects%}
+	                        <tr name="joined-prj-{{project.project.name}}">
+	                       
+	                            <td class="td1">
+	                            <a class="d-g-blue d-p-projectname" href="{{project.project|url}}">{{project.project.name}}</a>
+	                             	{%if current_user == user and project.member_type == 1 %}
+	                             		<a id="exit" href="javascript:;"  class="d-p-project-exit">{%trans "EXIT"%}</a>
+	                             	
+
+	                             	{%endif%}
+	                             	
+	                             	{%if user == current_user and project.member_type == 0%}
+                             			<span id="joined-op">
+										<a id="accept" href="javascript:;" class="d-p-project-agree">{%trans "ACCEPT"%}</a>
+										<a id="reject" href="javascript:;" class="d-p-project-notagree">{%trans "REJECT"%}</a>
+										</span>
+		                            {%endif%} 
+	                             	<p class="d-p-projectintro">{{project.project.title}}</p>
+
+	                            </td>	    
+	                                               
+	                       	</tr> 
+	                    {%endfor%}                 
+		        		</tbody>
+	        		</table>
+	        </div>
+         {%endif%}
+        
+
+
+
+        {%if current_page == "watpro"%}
+	        <div class="d-p-user-content d-p-myproject">
+	        	 <table>
+	                  <tbody>
+	                  {%for project in watch_projects%}
+	                        <tr>
+								<td class="td1">
+									<a class="d-g-blue d-p-projectname" href="{{project.project|url}}">{{project.project}}</a>
+	                                <p class="d-p-projectintro">{{project.project.title}}</p>
+	                                <p class="d-p-project-others"><a href="{{project.project.owner|url}}" class="d-g-orange d-p-project-writer">{{project.project.owner}}</a>
+	                                {%trans "created"%}{{project.project.ctime|date:"Y-m-d"}}
+	                                <span class="d-p-project-lang">{%trans "language:"%}<a href="">{{project.project.language}}</a></span>{% trans "project_member_count" %}: {{project.member_count|default:0}} </p>	
+								</td>
+	                            <td>
+	                            	<a class="d-p-project-praise p-p-project-btn "  href= "javascript:void(0)" onclick="watch_project(this,'{{project.project}}');">{{project.watcher_count|default:0}}</a>	                            	
+	                            </td>
+	                       	</tr> 
+	                       	
+	                    {%endfor%}                    
+		        		</tbody>
+	        		</table>
+	        </div>
+         {%endif%}
+        
+        
+        
+        
+        
+        
+        
+		{%if current_page == "worklogs"%}
+			<div class="d-p-user-content d-p-myproject">
+				<table>
+					<tbody>
+						{%for log in logs%}
+						<tr>
+							<td>
+							{%include "user/activity.html" with log=log%}
+							</td>
+						</tr>
+						{%endfor%}
+					</tbody>
+				</table>
+			</div>
+		{%endif%}
+
+	</div>
+	
+</div>
+
+
+{%endblock%}
+
