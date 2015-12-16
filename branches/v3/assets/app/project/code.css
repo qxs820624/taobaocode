@@ -1,0 +1,146 @@
+/**
+ * Taocode Ô´ÂëÒ³
+ * @author: Author: wb-gaozhan
+ * Time: 13-2-19 ÉÏÎç10:05
+ */
+.d-p-project-box{
+    border: 1px solid #d9d9d9;
+    background-color: #fafafa;
+    color: #666666;
+}
+.d-p-project-top{
+    /*height: 77px;*/
+    /*border-left: 1px solid #d9d9d9;*/
+    /*border-right: 1px solid #d9d9d9;*/
+}
+.d-p-project-name{
+    margin: 10px 0px;
+}
+.d-p-project-name a{
+    color: #333;
+}
+.d-p-project-lang{
+    position: relative;
+    margin-top:-30px;
+    float: right;
+    color: #666666;
+}
+.d-p-project-tab{
+    float: left;
+}
+.d-p-project-tabs{
+    background: url(http://img03.taobaocdn.com/tps/i3/T1qI8pXrxgXXcVep_a-5-11.png) 0px 36px repeat-x;
+}
+.d-p-project-tab a{
+    display: block;
+    padding: 9px 30px 12px 30px;
+    border-top: 3px solid #fafafa;
+    color: #666666;
+}
+.d-p-project-tab a.current{
+    border-top: #92cd03 3px solid;
+    border-left: #d9d9d9 1px solid;
+    border-right: #d9d9d9 1px solid;
+    border-bottom: none;
+    font-weight: 700;
+    color: #333;
+    background-color: #fff;
+}
+/**/
+/*Í¼Æ¬*/
+.d-p-project-root,.d-p-project-file,.d-p-project-floder,.d-p-project-readmehd{
+    background: url(http://img02.taobaocdn.com/tps/i2/T1BVlpXqtbXXbE6Pnu-26-200.png) no-repeat;
+}
+.d-p-project-content{
+    border-left: 1px solid #d9d9d9;
+    border-right: 1px solid #d9d9d9;
+    padding: 20px 28px 50px 28px;
+    border-bottom: 1px solid #d9d9d9;
+    background-color: #fff;
+}
+.d-p-project-svn{
+    background: url(http://img03.taobaocdn.com/tps/i3/T1IXs8Xm0jXXa0p7fb-920-39.jpg) no-repeat;
+    width: 920px;
+    height: 37px;
+    padding-top: 2px;
+}
+.d-p-project-svnurl{
+    float: left;
+    margin-left: 87px;
+    display: inline;
+}
+.d-p-project-svnurl input{
+    outline: none;
+    color: #666666;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    vertical-align: middle;
+    height: 35px;
+    width: 291px;
+    text-indent: 12px;
+}
+.d-p-project-power{
+    float: left;
+    display: inline;
+    padding-top: 10px;
+    color: #999999;
+    padding-left: 10px;
+}
+.d-p-project-power b{
+    float: left;
+    font-weight: normal;
+}
+
+
+/**/
+.d-p-project-files{
+    width: 918px;
+    border-top: 1px solid #d9d9d9;
+    border-left: 1px solid #d9d9d9;
+    border-right: 1px solid #d9d9d9;
+}
+.d-p-project-files tr{
+    border-bottom: 1px solid #d9d9d9;
+}
+.d-p-project-files th{
+    font-weight: normal;
+    height: 35px;
+    line-height: 35px;
+    text-align: left;
+    background-color: #fafafa;
+}
+.d-p-project-files td{
+    height: 31px;
+    color: #666666;
+}
+.d-p-project-files .d-p-project-colfirst{
+    text-indent: 38px;
+}
+.d-p-project-file,.d-p-project-floder{
+    color: #666666;
+    padding-left: 24px;
+}
+.d-p-project-floder{
+    background-position: -1px -112px;
+}
+.d-p-project-file{
+    background-position: -1px -139px;
+}
+
+
+/**/
+.d-p-project-readmehd,.d-p-project-root{
+    padding: 18px 0px 18px 35px;
+}
+.d-p-project-readmehd{background-position: 2px -60px;}
+.d-p-project-root{background-position: 0px -21px;}
+.d-p-project-readme{
+    padding: 10px;
+}
+.d-p-project-readme h2{
+    margin-bottom: 1px;
+}
+
+
+
+

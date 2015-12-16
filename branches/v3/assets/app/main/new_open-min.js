@@ -1,0 +1,1 @@
+KISSY.ready(function(a){a.add(function(){},{requires:["assets/mods/search"]});a.use("dom,event,sizzle",function(b,d,c){c.on(".d-p-newopen tr","mouseenter mouseleave",function(f){d.toggleClass(this,"hover")})})});

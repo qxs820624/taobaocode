@@ -1,0 +1,121 @@
+/**
+ * Taocode ×¢²áºÍµÇÂ¼Ò³
+ * @author: Author: wb-gaozhan
+ * Time: 13-2-19 ÉÏÎç10:05
+ */
+.d-p-register-hd,.email-text,.name-text,.password-text,.d-p-login-hd{
+    background: url(http://img01.taobaocdn.com/tps/i1/T1jF0qXrdaXXbJMFjl-19-155.png) no-repeat;
+}
+.d-p-login,.d-p-register{
+    width: 980px;
+    margin-top: 10px;
+}
+.d-p-login-box{
+    width: 240px;
+    background-color: #fff;
+    border: 1px solid #b3b3b3;
+    margin: -433px 20px 0px 675px;
+    position: relative;
+    float: left;
+    *display: inline;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -webkit-box-shadow: rgb(179, 179, 179) 0px 2px 16px;
+    box-shadow: rgb(179, 179, 179) 0px 2px 16px;
+    z-index: 20;
+}
+.tologin{
+    color: #68b318;
+    display: block;
+    margin: 0px 20px 20px 20px;
+    text-align: right;
+}
+.d-p-login p{
+    margin: 0px 20px 20px 20px;
+}
+.lost-password{
+    float: left;
+    color: #999;
+}
+.toregister{
+    color: #68b318;
+    float: right;
+}
+.d-p-login-box .d-p-login-bd{
+    padding: 20px 20px 0px 20px;
+}
+.d-p-login-box td{
+    padding-bottom: 20px;
+    height: 40px;
+}
+.d-p-register-hd,.d-p-login-hd{
+    height: 36px;
+    color: #666666;
+    text-align: center;
+    line-height: 36px;
+    background-color: #e7e7e7;
+}
+.d-p-register-hd{
+    background-position: 86px 12px;
+}
+.d-p-login-hd{
+    background-position: 86px -23px;
+}
+.email-text,.name-text,.password-text{
+    width: 150px;
+    padding: 10px 10px 10px 40px;
+    vertical-align: middle;
+    border: #e6e6e6 1px solid;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    color: #999999;
+    outline: none;
+}
+.email-text{
+    background-position: 13px -129px;
+}
+.name-text{
+    background-position: 13px -97px;
+}
+.password-text{
+    background-position: 13px -59px;
+}
+.btn-register,.btn-login{
+    background: url(http://img04.taobaocdn.com/tps/i4/T1WNU_XdFjXXcS2FYh-200-80.png) no-repeat;
+    width: 198px;
+    border: 0;
+    height: 36px;
+    text-indent: -999em;
+    display: block;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.btn-register{background-position: -1px -5px;}
+.btn-login{
+    background:url(http://img04.taobaocdn.com/tps/i4/T14X0ZXxNXXXaojXzh-200-42.jpg) -1px -4px no-repeat;
+}
+.statistics{
+    width:980px;
+    height: 39px;
+    line-height: 39px;
+    background-color: #000;
+    opacity: 0.3;
+    color: #fff;
+    margin-top: -40px;
+    z-index: 20;
+    position: relative;
+}
+.statistics li{
+    float: left;
+    margin-left: 130px;
+    _display:inline;
+
+}
+.bg_slide{
+    position: relative;
+    height: 514px;
+    width: 980px;
+    overflow: hidden;
+}

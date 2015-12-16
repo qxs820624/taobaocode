@@ -1,0 +1,104 @@
+{% extends "layouts/baseview.html" %}
+{% load i18n %}
+{% load short_uri %}
+
+{%block title%}new project{%endblock%}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/css/code-min.css" />
+{% endblock %}
+
+{% block pagename-nav%}
+{%endblock%} 
+
+{%block main-block%}
+<div class="d-g-wrapper d-p-code">
+      <div class="d-p-project-top">
+            <h2 class="d-p-project-name"><a href="/project/explore">{% trans "main" %}</a>
+            <span>&nbsp;&nbsp;>&nbsp;&nbsp;</span><a href="{{user|url}}">{{user}}</a></h2>
+            
+      </div>
+
+
+<div class="d-p-project-content d-p-creatproject">
+	<div class="d-p-project-name">
+		<h2>{%trans "new project name"%}:</h2>
+		<form id="new-prj-form" action="" method="post">
+		{% csrf_token %}
+		<span>{{user}}/</span>{{form.name}}{{form.name.errors}}
+	</div>
+	<div class="d-p-project-intro">
+		<h2>{%trans "project des"%}:</h2>
+		{{form.title}}{{form.title.errors}}
+	</div>
+	<!--
+	<dl class="layout">
+        <dt>license:</dt> {{form.license}}
+        <dd>
+            <div class="liecense-text" style="z-index:51;">
+           
+                  <span>Apache License 2.0</span>
+                  <div id="J_nfpinpai_list" class="text-list">
+                      <div class="text-down">
+                      {%for li in licenses%}
+                          <a href="javascript:void(0);">{{li}}</a>
+                           
+                      {%endfor%}
+                      
+                      </div>
+                       
+                  </div>
+                 {{form.license.errors}}
+             </div>
+            
+            
+        </dd>
+	</dl>
+	-->
+	<dl class="layout">
+            <dt>{%trans "is public"%}:</dt>
+            
+            <dd>
+                <input name="public" id="is_public"  type="radio" value="1" checked="" class="radio">{%trans "yes"%}
+                <input name="public" id="is_private" type="radio" value="0"  class="radio no-radio" style="margin-left:57px;">{%trans "no"%}
+                <p class="yestag">{%trans "all people can see"%}</p>
+                <p class="notag">{%trans "member can see"%}</p>
+            </dd>
+
+    </dl>
+
+    <dl class="layout">
+            <dt style="margin-top:30px;">{%trans "Project Language"%}:</dt>
+            <dd>
+			  <p class="select_language"></p>             
+            	<div class="language-text" style="z-index:50;">
+            	
+                      <input type="text" class="text">
+                      
+                      <div id="J_language_list" class="text-list">
+                          <div class="text-down">
+			              {%for la in langs%}
+			                  <a href="javascript:void(0);">{{la}}</a>
+			                   
+			              {%endfor%}
+                          </div>
+                      </div>
+                      
+                 </div>            	
+            {{form.language.errors}}	
+            {{form.language}}
+                
+            </dd>
+    </dl>
+
+		<a class="p-p-project-btn creat-btn" href="javascript:;" onclick="javascript:$('#new-prj-form').submit();">{%trans "create project"%}</a>
+		</form>
+
+</div>
+<script>
+ KISSY.use('js/app/project/project_operate');
+</script>
+{%endblock%}
+
+
+
