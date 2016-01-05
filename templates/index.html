@@ -7,9 +7,9 @@
 
 {% block stylesheet %}
 {% if user.is_authenticated %}
-<link rel="stylesheet" href="/css/user-min.css" />
+<link rel="stylesheet" href="/css/user-min.css?ver=2" />
 {%else%}
-<link rel="stylesheet" href="/css/register-min.css" />
+<link rel="stylesheet" href="/css/register-min.css?ver=2" />
 {%endif%}
 {% endblock %}
 

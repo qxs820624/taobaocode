@@ -225,7 +225,7 @@ a{
     padding: 18px 0px;
 }
 .d-m-nav-logo {
-    background: url(http://img01.taobaocdn.com/tps/i1/T1sbl1XApfXXXZm037-115-27.png) 0px 11px no-repeat;
+    background: url(http://img01.taobaocdn.com/tps/i1/T1sbl1XApfXXXZm037-115-27.png) 0px 14px no-repeat;
     float: left;
     text-indent: -999em;
     width: 120px;
@@ -233,7 +233,7 @@ a{
 }
 
 .d-m-nav-crp{
-    background: url(http://tmaster.taobao.org/p/taobaocode/file/3980/crp-logo.png) 0px 11px no-repeat;
+    background: url(/img/crp-logo.png) 0px 11px no-repeat;
     float: left;
     text-indent: -999em;
     width: 142px;
