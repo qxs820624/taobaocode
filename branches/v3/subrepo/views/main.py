@@ -1,38 +1,22 @@
-# -*- coding: utf-8 -*-
-# Copyright (C) 2011 Taobao .Inc
-# All rights reserved.
-#
-# This software is licensed as described in the file COPYING, which
-# you should have received as part of this distribution. The terms
-# are also available at http://code.taobao.org/license.html.
-#
-# This software consists of voluntary contributions made by many
-# individuals. For the exact contribution history, see the revision
-# history and logs, available at http://code.taobao.org/.
+from django.shortcuts import render
+from ..utils import page_context
 
-from taocode2.models import *
-from taocode2.helper import consts
-from django.db.models import Q,Count, Sum
-from django.views.static import serve
-
-from taocode2.helper.page import build_page
-from taocode2.settings import SITE_ROOT
-from taocode2.apps.project.views import update_my_project_status
-
-from taocode2.apps.user.activity import get_user_activitys
-from taocode2.helper.utils import *
-from django.core.cache import cache
-from random import randint
-from django.http import *
-
-try:
-    from taocode2.private_setting import *
-except ImportError:
-    pass
-
-__author__ = 'luqi@taobao.com'
+def index(request):
+    rc = page_context(title='Welcome!')
+    return render(request, 'main/index.html', rc)
 
 
+def flat_page(request, name, title):
+    rc = page_context(title=title)
+    return render(request, name, rc)
+
+def about(request):
+    return flat_page(request, 'main/about.html', title='About US')
+
+def license(request):
+    return flat_page(request, 'main/license.html', title='About license')
+
+"""
 def index(request):
     rc =  request.rc
 
@@ -200,3 +184,4 @@ def opensources_list(request, pagenum=1,key=None):
     rc.key_text = key_text
 
     return send_response(request,'main/opensources.html')
+"""

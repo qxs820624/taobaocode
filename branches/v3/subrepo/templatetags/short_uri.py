@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2011 Taobao .Inc
+# Copyright (C) 2011 - 2016 Alibaba Group Inc
 # All rights reserved.
 #
 # This software is licensed as described in the file COPYING, which
@@ -11,6 +11,9 @@
 # individuals. For the exact contribution history, see the revision
 # history and logs, available at http://code.taobao.org/.
 
+
+__author__ = 'luqi@taobao.com'
+"""
 from django import template
 from django.utils.translation import ugettext as _
 from taocode2.settings import SITE_ROOT
@@ -34,14 +37,14 @@ def gravatar(email, alt='', size=48):
     url = "http://en.gravatar.com/avatar/"+md5(email).hexdigest()
     url += '?s='+str(size)
 
-    return """<img src="%s" width="%s" height="%s" title="%s" border="0"/>""" % (url, size, size, alt)
+    return "-""<img src="%s" width="%s" height="%s" title="%s" border="0"/>""-" % (url, size, size, alt)
 
 @register.simple_tag
 def gravatarExplore(email, alt='', size=67):
     url = "http://en.gravatar.com/avatar/"+md5(email).hexdigest()
     url += '?s='+str(size)
 
-    return """<a href="/u/%s" target="_blank"><img  class="d-p-index-memberphoto"  src="%s" width="%s" height="%s" title="%s" border="0"/></a>""" % (alt,url, size, size, alt)
+    return "-""<a href="/u/%s" target="_blank"><img  class="d-p-index-memberphoto"  src="%s" width="%s" height="%s" title="%s" border="0"/></a>"-"" % (alt,url, size, size, alt)
 
 def choice(value, arg):
     args = dict([a.strip().split(':') for a in arg.split(',')])
@@ -155,3 +158,4 @@ register.filter('wikitext', tracwiki)
 register.filter('choice', choice)
 register.filter('url', show_url)
 register.filter('difftime', difftime)
+"""

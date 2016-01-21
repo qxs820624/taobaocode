@@ -1,15 +1,6 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2011 Taobao .Inc
-# All rights reserved.
-#
-# This software is licensed as described in the file COPYING, which
-# you should have received as part of this distribution. The terms
-# are also available at http://code.taobao.org/license.html.
-#
-# This software consists of voluntary contributions made by many
-# individuals. For the exact contribution history, see the revision
-# history and logs, available at http://code.taobao.org/.
+from django.db import models
+
+"""
 from django.utils.translation.trans_real import gettext
 from django.db import models
 from django.db.models import Q,Count,Sum
@@ -259,7 +250,7 @@ class Issue(models.Model):
     def __unicode__(self):
         return self.title
 
-"""
+"-""
 class Tracker(models.Model):
     project = models.ForeignKey(Project)
     name = models.CharField(max_length=64, unique=True)
@@ -281,7 +272,7 @@ class Version(models.Model):
     class Meta:
         unique_together = [("name", "project")]
 
-"""    
+"-""    
 class Tag(models.Model):
     project = models.ForeignKey(Project)
     name = models.CharField(max_length=64)
@@ -435,3 +426,4 @@ class AliProjectUser(models.Model):
     def __unicode__(self):
         return '%s - %s' %(self.name, self.project.subject)
         
+"""

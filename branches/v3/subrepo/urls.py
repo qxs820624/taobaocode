@@ -1,61 +1,17 @@
-"""subrepo URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/1.9/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
-Including another URLconf
-    1. Add an import:  from blog import urls as blog_urls
-    2. Import the include() function: from django.conf.urls import url, include
-    3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
-"""
 from django.conf.urls import url
 from django.contrib import admin
+from . import views
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', views.main.index),
+    url(r'^about$', views.main.about),
+    url(r'^license$', views.main.license),
 ]
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2011 Taobao .Inc
-# All rights reserved.
-#
-# This software is licensed as described in the file COPYING, which
-# you should have received as part of this distribution. The terms
-# are also available at http://code.taobao.org/license.html.
-#
-# This software consists of voluntary contributions made by many
-# individuals. For the exact contribution history, see the revision
-# history and logs, available at http://code.taobao.org/.
 
 
-from django.conf.urls.defaults import patterns, include
-from taocode2.settings import SITE_ROOT
-
-
-from taocode2.helper.utils import *
-from taocode2.helper.validator import fast_validator,fclean
-from taocode2.apps.project.forms import NewProjectForm
-from taocode2.apps.user.forms import NewUserForm
-
-__fvs = {}
-#fast_validator(__fvs, SITE_ROOT + '/ajax/prj/clean', NewProjectForm)
-#fast_validator(__fvs, SITE_ROOT + '/ajax/user/clean', NewUserForm)
-
-@as_json
-def user_fclean(request, fid):
-    return fclean(request, __fvs, fid)
-
-@as_json
-def prj_fclean(request, fid):
-    return fclean(request, __fvs, fid)
-
-
+"""
 u = ['',
      (r'^msg/unread_count/$', 'apps.message.views.get_unread_count'),
      (r'^msg/send/$', 'apps.message.views.send_msg'),
@@ -101,22 +57,6 @@ u = ['',
      ]
 
 urlpatterns = patterns(*u)
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2011 Taobao .Inc
-# All rights reserved.
-#
-# This software is licensed as described in the file COPYING, which
-# you should have received as part of this distribution. The terms
-# are also available at http://code.taobao.org/license.html.
-#
-# This software consists of voluntary contributions made by many
-# individuals. For the exact contribution history, see the revision
-# history and logs, available at http://code.taobao.org/.
-
-
-from django.conf.urls.defaults import patterns, include
-from taocode2.settings import SITE_ROOT
 
 u = ['',
      ('^$',       'apps.project.views.view_project'),
@@ -169,4 +109,4 @@ u = ['',
      ('^diff_log_wiki/(?P<logid>\d+)/$', 'apps.wiki.views.diff_log_wiki'),
      ]
 
-urlpatterns = patterns(*u)
+"""

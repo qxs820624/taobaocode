@@ -1,17 +1,11 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2011 Taobao .Inc
-# All rights reserved.
-#
-# This software is licensed as described in the file COPYING, which
-# you should have received as part of this distribution. The terms
-# are also available at http://code.taobao.org/license.html.
-#
-# This software consists of voluntary contributions made by many
-# individuals. For the exact contribution history, see the revision
-# history and logs, available at http://code.taobao.org/.
+from django.db import models
+from django.template import Context
+from . import settings
 
-from django.template import RequestContext
+def page_context(title= None):
+    return Context({'pagetitle':title, 'sitetitle':settings.SUBR_SITE_TITLE})
+
+"""
 from django.shortcuts import render_to_response, redirect
 from django.http import HttpResponse
 from taocode2.helper.func import wrap
@@ -176,3 +170,4 @@ class ComplexJsonEncoder(json.JSONEncoder):
             return str(obj)
         else:
             return json.JSONEncoder.default(self, obj)
+"""

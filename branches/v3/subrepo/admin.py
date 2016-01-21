@@ -1,3 +1,7 @@
+from django.db import models
+
+
+"""
 from django.contrib import admin
 from taocode2.models import *
 
@@ -79,3 +83,4 @@ admin.site.register(FeatureProject, FeatureProjectAdmin)
 admin.site.register(AliProject, AliProjectAdmin)
 admin.site.register(AliProjectUser, AliProjectUserAdmin)
 admin.site.register(ReposPart)
+"""
