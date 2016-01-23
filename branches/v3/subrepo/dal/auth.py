@@ -1,21 +1,26 @@
-#
-# Copyright (C) 2011 Taobao .Inc
-# All rights reserved.
-#
-# This software is licensed as described in the file COPYING, which
-# you should have received as part of this distribution. The terms
-# are also available at http://code.taobao.org/license.html.
-#
-# This software consists of voluntary contributions made by many
-# individuals. For the exact contribution history, see the revision
-# history and logs, available at http://code.taobao.org/.
 
 from taocode2.models import User
 from taocode2.helper import consts
 from django.db.models import Q
+from hashlib import md5,sha256
 
-__author__ = 'luqi@taobao.com'
 
+def md5_pwd(pwd):
+    return md5('%s'%(pwd)).hexdigest()
+
+def sha_pwd(pwd):
+    return sha256(md5_pwd(pwd)).hexdigest()
+
+def check_password(user, raw_password):
+    if user.password.startswith('sha:'):
+        return user.password[4:] == sha_pwd(raw_password)
+    else:
+        return user.password == md5_pwd(raw_password)
+    
+def set_password(user, new_password):
+    user.password = 'sha:'+sha_pwd(new_password)
+
+    
 class UserAuthBackend:
     def authenticate(self, username=None, password=None):
         try:

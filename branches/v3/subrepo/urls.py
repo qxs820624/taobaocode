@@ -1,15 +1,21 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from . import views
-
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.main.index),
     url(r'^about$', views.main.about),
     url(r'^license$', views.main.license),
+    url(r'^user/', include(views.auth.urls)),
+    url(r'^u/', include(views.user.urls)),
+    url(r'^p/', include(views.project.urls)),
 ]
 
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns.append(url(r'^__debug__/', include(debug_toolbar.urls)))
 
 """
 u = ['',

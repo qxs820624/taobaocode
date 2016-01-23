@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'subrepo',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -124,4 +125,13 @@ STATIC_URL = '/static/'
 
 # SubRepo Config
 SUBR_SITE_TITLE = ' - SubRepo'
+
+if DEBUG:
+    DEBUG_TOOLBAR_CONFIG = {
+        'JQUERY_URL':'//cdn.bootcss.com/jquery/2.1.4/jquery.min.js'
+    }
+    
+    MIDDLEWARE_CLASSES.insert(0, 
+     'debug_toolbar.middleware.DebugToolbarMiddleware')
+
 
