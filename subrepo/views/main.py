@@ -16,6 +16,7 @@ def about(request):
 def license(request):
     return flat_page(request, 'main/license.html', title='About license')
 
+
 """
 def index(request):
     rc =  request.rc
