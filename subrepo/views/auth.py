@@ -1,8 +1,10 @@
 from django.conf.urls import url
+from django.contrib.auth import views as auth_views
 
 urls = [
-    url('login/$', )
+    url('login/$', auth_views.login),
 ]
+
 """
 from taocode2.helper import consts
 from taocode2.helper.utils import *

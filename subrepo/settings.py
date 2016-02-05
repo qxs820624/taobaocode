@@ -125,6 +125,7 @@ STATIC_URL = '/static/'
 
 # SubRepo Config
 SUBR_SITE_TITLE = ' - SubRepo'
+LOGIN_URL='/user/login/'
 
 if DEBUG:
     DEBUG_TOOLBAR_CONFIG = {
